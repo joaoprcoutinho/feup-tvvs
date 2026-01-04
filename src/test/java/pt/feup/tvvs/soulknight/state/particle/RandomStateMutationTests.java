@@ -1,0 +1,64 @@
+package pt.feup.tvvs.soulknight.state.particle;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.*;
+import java.io.IOException;
+
+import pt.feup.tvvs.soulknight.controller.menu.ParticleMenuController;
+import pt.feup.tvvs.soulknight.model.dataStructs.Position;
+import pt.feup.tvvs.soulknight.model.menu.Particle;
+
+import java.util.Random;
+
+public class RandomStateMutationTests {
+
+    @Test
+    void move_shouldMoveHorizontallyRandomly() {
+        RandomState randomState = new RandomState();
+        Particle particle = mock(Particle.class);
+        ParticleMenuController controller = mock(ParticleMenuController.class);
+
+        when(particle.getPosition()).thenReturn(new Position(10, 10));
+        when(controller.wrapPosition(anyInt(), anyInt())).thenAnswer(invocation -> new Position(invocation.getArgument(0), invocation.getArgument(1)));
+
+        Position newPosition = randomState.move(particle, 1000, controller);
+
+        double deltaX = newPosition.x() - 10;
+        assertTrue(deltaX >= -1 && deltaX <= 1, "Particle should move by -1, 0, or +1 on the x-axis");
+
+        double deltaY = newPosition.y() - 10;
+        assertTrue(deltaY >= 1 && deltaY <= 3, "Particle should move by 1, 2, or 3 on the y-axis");
+    }
+
+    @Test
+    void move_shouldHandleSubtractionInYMovement() {
+        RandomState randomState = new RandomState();
+        Particle particle = mock(Particle.class);
+        ParticleMenuController controller = mock(ParticleMenuController.class);
+
+        when(particle.getPosition()).thenReturn(new Position(10, 10));
+        when(controller.wrapPosition(anyInt(), anyInt())).thenAnswer(invocation -> new Position(invocation.getArgument(0), invocation.getArgument(1)));
+
+        Position newPosition = randomState.move(particle, 1000, controller);
+
+        double deltaY = newPosition.y() - 10;
+        assertTrue(deltaY >= 1 && deltaY <= 3, "Particle should move by 1, 2, or 3 on the y-axis");
+    }
+
+    @Test
+    void move_shouldHandleNullReturnFromWrapPosition() {
+        RandomState randomState = new RandomState();
+        Particle particle = mock(Particle.class);
+        ParticleMenuController controller = mock(ParticleMenuController.class);
+
+        when(particle.getPosition()).thenReturn(new Position(10, 10));
+        when(controller.wrapPosition(anyInt(), anyInt())).thenReturn(null);
+
+        Position newPosition = randomState.move(particle, 1000, controller);
+
+        assertNull(newPosition, "The position should be null if wrapPosition returns null");
+    }
+}
