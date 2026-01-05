@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests
 -------------------------------------------------------------------------------
-Tests run: 29, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.394 s -- in pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests
+Tests run: 29, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.252 s -- in pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests

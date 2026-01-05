@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: pt.feup.tvvs.soulknight.gui.LanternaGUIMutationTests
 -------------------------------------------------------------------------------
-Tests run: 25, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.522 s -- in pt.feup.tvvs.soulknight.gui.LanternaGUIMutationTests
+Tests run: 25, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.300 s -- in pt.feup.tvvs.soulknight.gui.LanternaGUIMutationTests
