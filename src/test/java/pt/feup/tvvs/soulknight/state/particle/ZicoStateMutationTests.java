@@ -19,13 +19,14 @@ public class ZicoStateMutationTests {
         Particle particle = mock(Particle.class);
         ParticleMenuController controller = mock(ParticleMenuController.class);
 
-        when(particle.getPosition()).thenReturn(new Position(10, 10));
-        when(controller.wrapPosition(anyInt(), anyInt())).thenAnswer(invocation -> new Position(invocation.getArgument(0), invocation.getArgument(1)));
+        when(particle.getPosition()).thenReturn(new Position(10.0, 10.0));
+        when(controller.wrapPosition(anyInt(), anyInt())).thenAnswer(invocation -> 
+            new Position(((Integer)invocation.getArgument(0)).doubleValue(), ((Integer)invocation.getArgument(1)).doubleValue()));
 
         Position newPosition = zicoState.move(particle, 1000, controller);
 
         // Check that the y position is incremented by 10 as specified
-        assertEquals(20, newPosition.y(), "Particle Y position should be increased by 10");
+        assertEquals(20.0, newPosition.y(), "Particle Y position should be increased by 10");
     }
 
     @Test
@@ -34,7 +35,7 @@ public class ZicoStateMutationTests {
         Particle particle = mock(Particle.class);
         ParticleMenuController controller = mock(ParticleMenuController.class);
 
-        when(particle.getPosition()).thenReturn(new Position(10, 10));
+        when(particle.getPosition()).thenReturn(new Position(10.0, 10.0));
         when(controller.wrapPosition(anyInt(), anyInt())).thenReturn(null);
 
         Position newPosition = zicoState.move(particle, 1000, controller);

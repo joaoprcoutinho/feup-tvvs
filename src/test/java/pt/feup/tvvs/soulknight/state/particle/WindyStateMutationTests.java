@@ -19,16 +19,17 @@ public class WindyStateMutationTests {
         Particle particle = mock(Particle.class);
         ParticleMenuController controller = mock(ParticleMenuController.class);
 
-        when(particle.getPosition()).thenReturn(new Position(10, 10));
+        when(particle.getPosition()).thenReturn(new Position(10.0, 10.0));
         when(controller.getWindAngle()).thenReturn(Math.PI / 4); // 45 degrees
         when(controller.getWindSpeed()).thenReturn(5.0);
-        when(controller.wrapPosition(anyInt(), anyInt())).thenAnswer(invocation -> new Position(invocation.getArgument(0), invocation.getArgument(1)));
+        when(controller.wrapPosition(anyInt(), anyInt())).thenAnswer(invocation -> 
+            new Position(((Integer)invocation.getArgument(0)).doubleValue(), ((Integer)invocation.getArgument(1)).doubleValue()));
 
         Position newPosition = windyState.move(particle, 1000, controller);
 
         // Check that the x and y positions have been updated according to wind speed and angle
-        double expectedX = 10 + (int) (5.0 * Math.cos(Math.PI / 4));
-        double expectedY = 10 + (int) (5.0 * Math.sin(Math.PI / 4));
+        double expectedX = 10.0 + (int) (5.0 * Math.cos(Math.PI / 4));
+        double expectedY = 10.0 + (int) (5.0 * Math.sin(Math.PI / 4));
 
         assertEquals(expectedX, newPosition.x(), "Particle X position should be updated according to wind angle and speed");
         assertEquals(expectedY, newPosition.y(), "Particle Y position should be updated according to wind angle and speed");
@@ -40,7 +41,7 @@ public class WindyStateMutationTests {
         Particle particle = mock(Particle.class);
         ParticleMenuController controller = mock(ParticleMenuController.class);
 
-        when(particle.getPosition()).thenReturn(new Position(10, 10));
+        when(particle.getPosition()).thenReturn(new Position(10.0, 10.0));
         when(controller.getWindAngle()).thenReturn(Math.PI / 4);
         when(controller.getWindSpeed()).thenReturn(5.0);
         when(controller.wrapPosition(anyInt(), anyInt())).thenReturn(null);

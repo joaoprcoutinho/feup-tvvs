@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: pt.feup.tvvs.soulknight.view.elements.knight.KnightViewerWhiteBoxTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.376 s -- in pt.feup.tvvs.soulknight.view.elements.knight.KnightViewerWhiteBoxTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.081 s -- in pt.feup.tvvs.soulknight.view.elements.knight.KnightViewerWhiteBoxTest

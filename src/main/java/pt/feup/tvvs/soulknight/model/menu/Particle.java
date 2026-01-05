@@ -13,6 +13,7 @@ public class Particle {
     public Particle(Position position, ParticleState state, TextColor.RGB color) {
         this.position = position;
         this.state = state;
+        this.color = color;
     }
 
     public Position getPosition() {

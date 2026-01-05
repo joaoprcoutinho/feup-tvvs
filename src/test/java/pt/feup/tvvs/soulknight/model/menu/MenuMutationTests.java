@@ -60,8 +60,11 @@ public class MenuMutationTests {
     }
 
     @Test
-    void isSelectedExit_shouldReturnTrueForExitOption() {
-        assertTrue(mainMenu.isSelectedExit(), "Exit option should be selected initially");
+    void isSelectedExit_shouldReturnTrueAfterNavigating() {
+        // Navigate to exit option (Start -> Settings -> Exit)
+        mainMenu.nextOption();
+        mainMenu.nextOption();
+        assertTrue(mainMenu.isSelectedExit(), "Exit option should be selected after navigating");
     }
 
     /* -------------------------------------------------

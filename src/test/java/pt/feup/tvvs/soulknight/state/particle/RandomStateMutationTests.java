@@ -21,15 +21,16 @@ public class RandomStateMutationTests {
         Particle particle = mock(Particle.class);
         ParticleMenuController controller = mock(ParticleMenuController.class);
 
-        when(particle.getPosition()).thenReturn(new Position(10, 10));
-        when(controller.wrapPosition(anyInt(), anyInt())).thenAnswer(invocation -> new Position(invocation.getArgument(0), invocation.getArgument(1)));
+        when(particle.getPosition()).thenReturn(new Position(10.0, 10.0));
+        when(controller.wrapPosition(anyInt(), anyInt())).thenAnswer(invocation -> 
+            new Position(((Integer)invocation.getArgument(0)).doubleValue(), ((Integer)invocation.getArgument(1)).doubleValue()));
 
         Position newPosition = randomState.move(particle, 1000, controller);
 
-        double deltaX = newPosition.x() - 10;
+        double deltaX = newPosition.x() - 10.0;
         assertTrue(deltaX >= -1 && deltaX <= 1, "Particle should move by -1, 0, or +1 on the x-axis");
 
-        double deltaY = newPosition.y() - 10;
+        double deltaY = newPosition.y() - 10.0;
         assertTrue(deltaY >= 1 && deltaY <= 3, "Particle should move by 1, 2, or 3 on the y-axis");
     }
 
@@ -39,12 +40,13 @@ public class RandomStateMutationTests {
         Particle particle = mock(Particle.class);
         ParticleMenuController controller = mock(ParticleMenuController.class);
 
-        when(particle.getPosition()).thenReturn(new Position(10, 10));
-        when(controller.wrapPosition(anyInt(), anyInt())).thenAnswer(invocation -> new Position(invocation.getArgument(0), invocation.getArgument(1)));
+        when(particle.getPosition()).thenReturn(new Position(10.0, 10.0));
+        when(controller.wrapPosition(anyInt(), anyInt())).thenAnswer(invocation -> 
+            new Position(((Integer)invocation.getArgument(0)).doubleValue(), ((Integer)invocation.getArgument(1)).doubleValue()));
 
         Position newPosition = randomState.move(particle, 1000, controller);
 
-        double deltaY = newPosition.y() - 10;
+        double deltaY = newPosition.y() - 10.0;
         assertTrue(deltaY >= 1 && deltaY <= 3, "Particle should move by 1, 2, or 3 on the y-axis");
     }
 
@@ -54,7 +56,7 @@ public class RandomStateMutationTests {
         Particle particle = mock(Particle.class);
         ParticleMenuController controller = mock(ParticleMenuController.class);
 
-        when(particle.getPosition()).thenReturn(new Position(10, 10));
+        when(particle.getPosition()).thenReturn(new Position(10.0, 10.0));
         when(controller.wrapPosition(anyInt(), anyInt())).thenReturn(null);
 
         Position newPosition = randomState.move(particle, 1000, controller);
