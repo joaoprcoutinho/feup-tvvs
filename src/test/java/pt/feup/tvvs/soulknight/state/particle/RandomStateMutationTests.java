@@ -35,6 +35,40 @@ public class RandomStateMutationTests {
     }
 
     @Test
+    void move_shouldNotMoveYByZero() {
+        // Test that Y movement is always at least 1 (random.nextInt(3) + 1)
+        RandomState randomState = new RandomState();
+        Particle particle = mock(Particle.class);
+        ParticleMenuController controller = mock(ParticleMenuController.class);
+
+        when(particle.getPosition()).thenReturn(new Position(10.0, 10.0));
+        when(controller.wrapPosition(anyInt(), anyInt())).thenAnswer(invocation -> 
+            new Position(((Integer)invocation.getArgument(0)).doubleValue(), ((Integer)invocation.getArgument(1)).doubleValue()));
+
+        Position newPosition = randomState.move(particle, 1000, controller);
+
+        // Y should always increase (y + random.nextInt(3) + 1), never be 10 or less
+        assertTrue(newPosition.y() > 10.0, "Y should always increase");
+    }
+
+    @Test
+    void move_shouldUseAdditionNotSubtraction() {
+        // Verify that mutations changing + to - are caught
+        RandomState randomState = new RandomState();
+        Particle particle = mock(Particle.class);
+        ParticleMenuController controller = mock(ParticleMenuController.class);
+
+        when(particle.getPosition()).thenReturn(new Position(10.0, 10.0));
+        when(controller.wrapPosition(anyInt(), anyInt())).thenAnswer(invocation -> 
+            new Position(((Integer)invocation.getArgument(0)).doubleValue(), ((Integer)invocation.getArgument(1)).doubleValue()));
+
+        Position newPosition = randomState.move(particle, 1000, controller);
+
+        // Y should be at least 11 (10 + 0 + 1), not 9 or less (would be subtraction)
+        assertTrue(newPosition.y() >= 11.0, "Y movement should use addition");
+    }
+
+    @Test
     void move_shouldHandleSubtractionInYMovement() {
         RandomState randomState = new RandomState();
         Particle particle = mock(Particle.class);

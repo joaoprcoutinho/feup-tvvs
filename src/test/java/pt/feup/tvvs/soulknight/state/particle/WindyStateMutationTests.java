@@ -36,6 +36,46 @@ public class WindyStateMutationTests {
     }
 
     @Test
+    void move_shouldUseCosinForX() {
+        // Verify cos is used for X, not sin
+        WindyState windyState = new WindyState();
+        Particle particle = mock(Particle.class);
+        ParticleMenuController controller = mock(ParticleMenuController.class);
+
+        when(particle.getPosition()).thenReturn(new Position(10.0, 10.0));
+        when(controller.getWindAngle()).thenReturn(0.0); // 0 degrees: cos=1, sin=0
+        when(controller.getWindSpeed()).thenReturn(5.0);
+        when(controller.wrapPosition(anyInt(), anyInt())).thenAnswer(invocation -> 
+            new Position(((Integer)invocation.getArgument(0)).doubleValue(), ((Integer)invocation.getArgument(1)).doubleValue()));
+
+        Position newPosition = windyState.move(particle, 1000, controller);
+
+        // At 0 degrees, X should move by 5, Y should not move
+        assertEquals(15.0, newPosition.x(), "X should move when angle is 0");
+        assertEquals(10.0, newPosition.y(), "Y should not move when angle is 0");
+    }
+
+    @Test
+    void move_shouldUseSineForY() {
+        // Verify sin is used for Y, not cos
+        WindyState windyState = new WindyState();
+        Particle particle = mock(Particle.class);
+        ParticleMenuController controller = mock(ParticleMenuController.class);
+
+        when(particle.getPosition()).thenReturn(new Position(10.0, 10.0));
+        when(controller.getWindAngle()).thenReturn(Math.PI / 2); // 90 degrees: cos=0, sin=1
+        when(controller.getWindSpeed()).thenReturn(5.0);
+        when(controller.wrapPosition(anyInt(), anyInt())).thenAnswer(invocation -> 
+            new Position(((Integer)invocation.getArgument(0)).doubleValue(), ((Integer)invocation.getArgument(1)).doubleValue()));
+
+        Position newPosition = windyState.move(particle, 1000, controller);
+
+        // At 90 degrees, Y should move by 5, X should not move
+        assertEquals(10.0, newPosition.x(), "X should not move when angle is 90");
+        assertEquals(15.0, newPosition.y(), "Y should move when angle is 90");
+    }
+
+    @Test
     void move_shouldHandleNullReturnFromWrapPosition() {
         WindyState windyState = new WindyState();
         Particle particle = mock(Particle.class);

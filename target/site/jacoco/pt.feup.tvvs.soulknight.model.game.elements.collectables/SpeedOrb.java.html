@@ -13,22 +13,22 @@ public class SpeedOrb extends Collectables{
 <span class="fc" id="L13">    }</span>
 
     public double getSpeed_boost() {
-<span class="nc" id="L16">        return speed_boost;</span>
+<span class="fc" id="L16">        return speed_boost;</span>
     }
 
     public void setSpeed_boost(double speed_boost) {
-<span class="nc" id="L20">        this.speed_boost = speed_boost;</span>
-<span class="nc" id="L21">    }</span>
+<span class="fc" id="L20">        this.speed_boost = speed_boost;</span>
+<span class="fc" id="L21">    }</span>
 
     @Override
     public void benefit(Knight knight){
-<span class="nc" id="L25">        knight.setMaxVelocity(new Vector(knight.getMaxVelocity().x()*speed_boost,</span>
-<span class="nc" id="L26">                knight.getMaxVelocity().y()));</span>
-<span class="nc" id="L27">    }</span>
+<span class="fc" id="L25">        knight.setMaxVelocity(new Vector(knight.getMaxVelocity().x()*speed_boost,</span>
+<span class="fc" id="L26">                knight.getMaxVelocity().y()));</span>
+<span class="fc" id="L27">    }</span>
 
     @Override
     public char getChar() {
-<span class="nc" id="L31">        return symbol;</span>
+<span class="fc" id="L31">        return symbol;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>

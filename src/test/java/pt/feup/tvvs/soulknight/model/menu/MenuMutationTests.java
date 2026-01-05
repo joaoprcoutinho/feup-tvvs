@@ -40,10 +40,43 @@ public class MenuMutationTests {
     }
 
     @Test
+    void nextOption_shouldWrapAroundToZero() {
+        // Navigate to last option
+        int numOptions = mainMenu.getNumberOptions();
+        for (int i = 0; i < numOptions; i++) {
+            mainMenu.nextOption();
+        }
+        // Should be back at first option (index 0)
+        assertTrue(mainMenu.isSelected(0), "Should wrap around to first option");
+    }
+
+    @Test
+    void nextOption_shouldIncrementCurrentIndex() {
+        assertTrue(mainMenu.isSelected(0), "Should start at index 0");
+        mainMenu.nextOption();
+        assertTrue(mainMenu.isSelected(1), "Should be at index 1 after nextOption");
+    }
+
+    @Test
     void previousOption_shouldCycleToPreviousOption() {
         mainMenu.previousOption();
         Option currentOption = mainMenu.getCurrentOption();
         assertNotNull(currentOption, "Current option should not be null after calling previousOption");
+    }
+
+    @Test
+    void previousOption_shouldWrapAroundToLast() {
+        // At index 0, calling previousOption should wrap to last
+        mainMenu.previousOption();
+        int lastIndex = mainMenu.getNumberOptions() - 1;
+        assertTrue(mainMenu.isSelected(lastIndex), "Should wrap around to last option");
+    }
+
+    @Test
+    void previousOption_shouldDecrementCurrentIndex() {
+        mainMenu.nextOption(); // Move to index 1
+        mainMenu.previousOption(); // Back to index 0
+        assertTrue(mainMenu.isSelected(0), "Should be back at index 0");
     }
 
     @Test
@@ -113,5 +146,49 @@ public class MenuMutationTests {
 
         List<Option> options = menuWithEmptyOptions.getOptions();
         assertTrue(options.isEmpty(), "Options list should be empty when createEntries returns empty list");
+    }
+
+    @Test
+    void setParticles_shouldUpdateParticlesList() {
+        List<Particle> newParticles = new ArrayList<>();
+        mainMenu.setParticles(newParticles);
+        assertEquals(newParticles, mainMenu.getParticles(), "Particles should be updated");
+    }
+
+    @Test
+    void getInGame_shouldReturnFalseInitially() {
+        assertFalse(mainMenu.getInGame(), "InGame should be false initially");
+    }
+
+    @Test
+    void setInGame_shouldUpdateInGameStatus() {
+        mainMenu.setInGame(true);
+        assertTrue(mainMenu.getInGame(), "InGame should be true after setting");
+    }
+
+    @Test
+    void setInGame_shouldToggleCorrectly() {
+        mainMenu.setInGame(true);
+        assertTrue(mainMenu.getInGame());
+        mainMenu.setInGame(false);
+        assertFalse(mainMenu.getInGame());
+    }
+
+    @Test
+    void getNumberOptions_shouldReturnCorrectCount() {
+        assertEquals(3, mainMenu.getNumberOptions(), "Should have 3 options");
+    }
+
+    @Test
+    void isSelected_shouldReturnTrueForCurrentOption() {
+        assertTrue(mainMenu.isSelected(0), "Option 0 should be selected initially");
+        mainMenu.nextOption();
+        assertTrue(mainMenu.isSelected(1), "Option 1 should be selected after nextOption");
+    }
+
+    @Test
+    void isSelected_shouldReturnFalseForNonCurrentOption() {
+        assertFalse(mainMenu.isSelected(1), "Option 1 should not be selected initially");
+        assertFalse(mainMenu.isSelected(2), "Option 2 should not be selected initially");
     }
 }

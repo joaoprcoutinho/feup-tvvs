@@ -44,7 +44,7 @@ public class PurpleMonster extends Enemies {
 <span class="fc" id="L44">            setVelocity(new Vector(-velocity.x(), 0));</span>
         }
 
-<span class="pc bpc" id="L47" title="1 of 4 branches missed.">        if (vx &gt; 0 &amp;&amp; getScene().collidesRight(new Position(x + vx, y + vy), knightSize)) {</span>
+<span class="fc bfc" id="L47" title="All 4 branches covered.">        if (vx &gt; 0 &amp;&amp; getScene().collidesRight(new Position(x + vx, y + vy), knightSize)) {</span>
 <span class="fc" id="L48">            vx = Math.min(vx - 1, 0);</span>
 <span class="fc" id="L49">            setVelocity(new Vector(-velocity.x(), 0));</span>
         }

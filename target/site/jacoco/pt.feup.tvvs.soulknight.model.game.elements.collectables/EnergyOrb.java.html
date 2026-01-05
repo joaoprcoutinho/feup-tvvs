@@ -13,21 +13,21 @@ public class EnergyOrb extends Collectables{
 <span class="fc" id="L13">    }</span>
 
     public int getEnergy() {
-<span class="nc" id="L16">        return energy;</span>
+<span class="fc" id="L16">        return energy;</span>
     }
 
     public void setEnergy(int energy) {
-<span class="nc" id="L20">        this.energy = energy;</span>
-<span class="nc" id="L21">    }</span>
+<span class="fc" id="L20">        this.energy = energy;</span>
+<span class="fc" id="L21">    }</span>
 
     @Override
     public void benefit(Knight knight){
-<span class="nc" id="L25">        knight.setEnergy(knight.getEnergy()+ this.energy);</span>
-<span class="nc" id="L26">    }</span>
+<span class="fc" id="L25">        knight.setEnergy(knight.getEnergy()+ this.energy);</span>
+<span class="fc" id="L26">    }</span>
 
     @Override
     public char getChar() {
-<span class="nc" id="L30">        return symbol;</span>
+<span class="fc" id="L30">        return symbol;</span>
     }
 
 }

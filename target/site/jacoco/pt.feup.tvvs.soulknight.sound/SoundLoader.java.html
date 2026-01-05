@@ -3,13 +3,13 @@
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.Clip;
 
-<span class="nc" id="L6">public class SoundLoader {</span>
+<span class="fc" id="L6">public class SoundLoader {</span>
     public Clip loadSound(AudioInputStream audioInput, Clip musicClip) throws Exception {
         try {
-<span class="nc" id="L9">            musicClip.open(audioInput);</span>
-<span class="nc" id="L10">            return musicClip;</span>
-<span class="nc" id="L11">        } catch (Exception e) {</span>
-<span class="nc" id="L12">            throw new Exception(&quot;Unable to load sound file!&quot;);</span>
+<span class="fc" id="L9">            musicClip.open(audioInput);</span>
+<span class="fc" id="L10">            return musicClip;</span>
+<span class="fc" id="L11">        } catch (Exception e) {</span>
+<span class="fc" id="L12">            throw new Exception(&quot;Unable to load sound file!&quot;);</span>
         }
     }
 }

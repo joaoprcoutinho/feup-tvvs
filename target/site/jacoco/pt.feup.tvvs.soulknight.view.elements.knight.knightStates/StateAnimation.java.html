@@ -17,13 +17,13 @@ public abstract class StateAnimation {
 <span class="fc" id="L17">    }</span>
 
     public int getFrames() {
-<span class="nc" id="L20">        return frames;</span>
+<span class="fc" id="L20">        return frames;</span>
     }
     public Class getState(){
 <span class="fc" id="L23">        return state;</span>
     }
     public PairList&lt;Sprite&gt; getAnimation() {
-<span class="nc" id="L26">        return animation;</span>
+<span class="fc" id="L26">        return animation;</span>
     }
 
     public void setFrames(int frames) {
@@ -39,9 +39,9 @@ public abstract class StateAnimation {
 <span class="fc" id="L39">    }</span>
 
     public Sprite getSprite(long tick, boolean facingRight) {
-<span class="pc bpc" id="L42" title="1 of 2 branches missed.">        if (frames == 0) return null;</span>
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        if (frames == 0) return null;</span>
 <span class="fc" id="L43">        int animationFrameTime = 30 / frames; // Assuming 30 ticks per second</span>
-<span class="pc bpc" id="L44" title="1 of 2 branches missed.">        List&lt;Sprite&gt; sprites = facingRight ? animation.getFirstList() : animation.getSecondList();</span>
+<span class="fc bfc" id="L44" title="All 2 branches covered.">        List&lt;Sprite&gt; sprites = facingRight ? animation.getFirstList() : animation.getSecondList();</span>
 <span class="fc" id="L45">        int frameIndex = (int) ((tick / animationFrameTime) % sprites.size());</span>
 <span class="fc" id="L46">        return sprites.get(frameIndex);</span>
     }

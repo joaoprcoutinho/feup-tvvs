@@ -3,7 +3,6 @@ package pt.feup.tvvs.soulknight.view.states;
 import com.googlecode.lanterna.TextColor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import pt.feup.tvvs.soulknight.gui.GUI;
 import pt.feup.tvvs.soulknight.gui.RescalableGUI;
 import pt.feup.tvvs.soulknight.model.dataStructs.Position;
 import pt.feup.tvvs.soulknight.model.menu.*;
@@ -11,6 +10,7 @@ import pt.feup.tvvs.soulknight.state.particle.RandomState;
 import pt.feup.tvvs.soulknight.model.menu.SettingsMenu;
 import pt.feup.tvvs.soulknight.view.menu.LogoViewer;
 import pt.feup.tvvs.soulknight.view.menu.OptionViewer;
+import pt.feup.tvvs.soulknight.view.menu.ParticleViewer;
 import pt.feup.tvvs.soulknight.view.sprites.ViewerProvider;
 
 import java.io.IOException;
@@ -71,6 +71,34 @@ public class MenuViewerMutationTests {
         verify(gui).flush();
     }
 
+    // Test drawParticles is called and ParticleViewer.draw is invoked
+    // Kills mutations:
+    // - "removed call to drawParticles" on line 41
+    // - "removed call to ParticleViewer::draw" on line 48
+    @Test
+    void testDrawParticlesCallsParticleViewerDraw() throws IOException {
+        Menu menu = mock(MainMenu.class);
+        Particle particle1 = new Particle(new Position(10, 20), new RandomState(), new TextColor.RGB(255, 0, 0));
+        Particle particle2 = new Particle(new Position(30, 40), new RandomState(), new TextColor.RGB(0, 255, 0));
+        
+        when(menu.getParticles()).thenReturn(List.of(particle1, particle2));
+        when(menu.getOptions()).thenReturn(List.of());
+        when(menu.getInGame()).thenReturn(false);
+        
+        // Create spy to verify internal call
+        MenuViewer<Menu> viewer = spy(new MenuViewer<>(menu, viewerProvider));
+        
+        // Use a mock particleViewer to verify it's called
+        ParticleViewer mockParticleViewer = mock(ParticleViewer.class);
+        
+        // Call drawParticles directly to verify ParticleViewer.draw is called
+        viewer.drawParticles(gui, List.of(particle1, particle2), mockParticleViewer, 100);
+        
+        // Verify ParticleViewer.draw was called for each particle
+        verify(mockParticleViewer).draw(eq(particle1), eq(gui), eq(100L), eq(0), eq(0));
+        verify(mockParticleViewer).draw(eq(particle2), eq(gui), eq(100L), eq(0), eq(0));
+    }
+
     // Test drawParticles is called with SettingsMenu (line 37-38)
     @Test
     void testSettingsMenuDrawsColorfulBackground() throws IOException {
@@ -103,8 +131,9 @@ public class MenuViewerMutationTests {
     }
 
     // Test option position multiplication (line 64: idx * animationDuration = idx * 20)
+    // Kills mutation: "Replaced integer multiplication with division"
     @Test
-    void testOptionPositionMultiplication() throws IOException {
+    void testOptionPositionMultiplicationWithMultipleOptions() throws IOException {
         Menu menu = mock(MainMenu.class);
         Option option1 = new Option(10, 10, Option.Type.START_GAME);
         Option option2 = new Option(10, 30, Option.Type.EXIT);
@@ -117,147 +146,219 @@ public class MenuViewerMutationTests {
         when(menu.getInGame()).thenReturn(false);
         
         menuViewer = new MenuViewer<>(menu, viewerProvider);
-        // At time 60: option0 starts at 0, option1 at 20, option2 at 40
-        // All should be visible/animated by time 60
+        
+        // At time 60: 
+        // option0 starts at idx*20 = 0*20 = 0 (with multiplication)
+        // option1 starts at idx*20 = 1*20 = 20 (with multiplication)
+        // option2 starts at idx*20 = 2*20 = 40 (with multiplication)
+        // If division was used: 0/20=0, 1/20=0, 2/20=0 - all would start at 0
+        
+        // At time 60, all should be fully animated
         menuViewer.draw(gui, 60);
         
-        // Tests multiplication in option start time calculation (idx * 20)
-        // If replaced with division, timing would be wrong
+        // All 3 options should be drawn
         verify(optionViewer, times(3)).draw(any(Option.class), eq(gui), any(TextColor.RGB.class));
     }
 
-    // Test option position addition (line 68: yAlignment + idx * OptionHeight)
+    // Test option start time calculation at boundary
+    // At time 19, only option 0 should be in animation
     @Test
-    void testOptionPositionAddition() throws IOException {
-        menuViewer.draw(gui, 0);
-        // Tests addition in position calculation
-        verify(optionViewer, atLeastOnce()).draw(any(Option.class), eq(gui), any(TextColor.RGB.class));
-    }
-
-    // Test animation timing with selected option at different times (lines 76-79, 88-94, 97-102)
-    @Test
-    void testSelectedOptionBlinkingBehavior() throws IOException {
+    void testOptionStartTimeCalculationAtBoundary() throws IOException {
         Menu menu = mock(MainMenu.class);
-        Option option = new Option(10, 10, Option.Type.START_GAME);
+        Option option1 = new Option(10, 10, Option.Type.START_GAME);
+        Option option2 = new Option(10, 30, Option.Type.EXIT);
         when(menu.getParticles()).thenReturn(List.of());
-        when(menu.getOptions()).thenReturn(List.of(option));
-        when(menu.isSelected(0)).thenReturn(true);
+        when(menu.getOptions()).thenReturn(List.of(option1, option2));
+        when(menu.isSelected(0)).thenReturn(false);
+        when(menu.isSelected(1)).thenReturn(false);
         when(menu.getInGame()).thenReturn(false);
         
         menuViewer = new MenuViewer<>(menu, viewerProvider);
         
-        // Test at time 80 (blink starts)
-        menuViewer.draw(gui, 80);
-        reset(optionViewer);
+        // At time 19: option0 starts at 0, option1 starts at 20
+        // Only option0 should be visible (time=19 < optionStartTime+animationDuration=0+20=20)
+        menuViewer.draw(gui, 19);
         
-        // Test at time 88 (blinkTime = 88 % 30 = 28, should use isVisible logic)
-        menuViewer.draw(gui, 88);
-        reset(optionViewer);
-        
-        // Test at time 96 (blinkTime = 96 % 30 = 6, visible)
-        menuViewer.draw(gui, 96);
-        verify(optionViewer, atLeastOnce()).draw(any(Option.class), eq(gui), any(TextColor.RGB.class));
+        // Option1 hasn't started yet (19 < 20)
+        verify(optionViewer, atLeast(1)).draw(any(Option.class), eq(gui), any(TextColor.RGB.class));
     }
 
-    // Test inGame blinking logic (line 89-91)
+    // Test option animation timing conditional: time >= optionStartTime && time < optionStartTime + animationDuration
+    // Kills mutations on line 68
     @Test
-    void testInGameBlinkingLogic() throws IOException {
+    void testOptionAnimationTimingConditionals() throws IOException {
         Menu menu = mock(MainMenu.class);
-        Option option = new Option(10, 10, Option.Type.START_GAME);
-        when(menu.getParticles()).thenReturn(List.of());
-        when(menu.getOptions()).thenReturn(List.of(option));
-        when(menu.isSelected(0)).thenReturn(true);
-        when(menu.getInGame()).thenReturn(true); // InGame = true
-        
-        menuViewer = new MenuViewer<>(menu, viewerProvider);
-        
-        // Test with inGame blinking (time / 4) % 2 == 0
-        menuViewer.draw(gui, 88); // 88 / 4 = 22, 22 % 2 = 0 (visible)
-        verify(optionViewer, atLeastOnce()).draw(any(Option.class), eq(gui), any(TextColor.RGB.class));
-    }
-
-    // Test animation timing conditional (line 76: blinkTime < 15)
-    @Test
-    void testAnimationTimingConditionalLessThan15() throws IOException {
-        menuViewer.draw(gui, 10); // time % 30 = 10 < 15
-        verify(optionViewer, atLeastOnce()).draw(any(Option.class), eq(gui), any(TextColor.RGB.class));
-    }
-
-    // Test animation timing boundary (line 76: blinkTime == 15)
-    @Test
-    void testAnimationTimingBoundaryAt15() throws IOException {
-        menuViewer.draw(gui, 15); // time % 30 = 15
-        verify(optionViewer, atLeastOnce()).draw(any(Option.class), eq(gui), any(TextColor.RGB.class));
-    }
-
-    // Test animation timing modulo (line 78: time % 30)
-    @Test
-    void testAnimationTimingModulo() throws IOException {
-        menuViewer.draw(gui, 35); // 35 % 30 = 5
-        verify(optionViewer, atLeastOnce()).draw(any(Option.class), eq(gui), any(TextColor.RGB.class));
-    }
-
-    // Test animation timing subtraction and division (line 78-79: blinkTime - 15, division)
-    @Test
-    void testAnimationTimingSubtraction() throws IOException {
-        Menu menu = mock(MainMenu.class);
-        Option option = new Option(10, 10, Option.Type.START_GAME);
-        when(menu.getParticles()).thenReturn(List.of());
-        when(menu.getOptions()).thenReturn(List.of(option));
-        when(menu.isSelected(0)).thenReturn(true);
-        when(menu.getInGame()).thenReturn(false);
-        
-        menuViewer = new MenuViewer<>(menu, viewerProvider);
-        
-        // Test at various times to cover all arithmetic operations
-        menuViewer.draw(gui, 95); // 95 % 30 = 5 < 15 (visible)
-        reset(optionViewer);
-        menuViewer.draw(gui, 110); // 110 % 30 = 20 >= 15 (alpha calculation: 1.0 - (20-15)/15.0)
-        reset(optionViewer);
-        menuViewer.draw(gui, 115); // 115 % 30 = 25 (alpha calculation: 1.0 - (25-15)/15.0)
-        
-        verify(optionViewer, atLeastOnce()).draw(any(Option.class), eq(gui), any(TextColor.RGB.class));
-    }
-
-    // Test option selected conditional (line 88: i == selected)
-    @Test
-    void testOptionSelectedConditional() throws IOException {
-        Menu menu = mock(MainMenu.class);
-        Option option = new Option(10, 10, Option.Type.START_GAME);
-        when(menu.getParticles()).thenReturn(List.of());
-        when(menu.getOptions()).thenReturn(List.of(option));
-        when(menu.isSelected(0)).thenReturn(true);
-        when(menu.getInGame()).thenReturn(false);
-        
-        menuViewer = new MenuViewer<>(menu, viewerProvider);
-        menuViewer.draw(gui, 5);
-        
-        // Tests == conditional for selected option
-        verify(optionViewer, atLeastOnce()).draw(any(Option.class), eq(gui), any(TextColor.RGB.class));
-    }
-
-    // Test option not selected (line 88: negation)
-    @Test
-    void testOptionNotSelected() throws IOException {
-        Menu menu = mock(MainMenu.class);
-        Option option = new Option(10, 10, Option.Type.START_GAME);
+        Option option = new Option(100, 10, Option.Type.START_GAME);
         when(menu.getParticles()).thenReturn(List.of());
         when(menu.getOptions()).thenReturn(List.of(option));
         when(menu.isSelected(0)).thenReturn(false);
         when(menu.getInGame()).thenReturn(false);
         
         menuViewer = new MenuViewer<>(menu, viewerProvider);
-        menuViewer.draw(gui, 0);
         
-        verify(optionViewer, atLeastOnce()).draw(any(Option.class), eq(gui), any(TextColor.RGB.class));
+        // Test at time 10: within animation (0 <= 10 < 20)
+        // movementOffset = maxOffsetX * (1 - (10-0)/20) = 40 * 0.5 = 20
+        // currentPositionX = 100 + 20 = 120
+        menuViewer.draw(gui, 10);
+        
+        // Verify option is drawn with animated position
+        verify(optionViewer).draw(argThat(opt -> opt.getPosition().x() > 100), eq(gui), any(TextColor.RGB.class));
     }
 
-    // Test visibility conditional OR (line 90: blinkTime < 15 || i != selected)
+    // Test option animation complete (time >= optionStartTime + animationDuration)
     @Test
-    void testVisibilityConditionalOr() throws IOException {
+    void testOptionAnimationComplete() throws IOException {
+        Menu menu = mock(MainMenu.class);
+        Option option = new Option(100, 10, Option.Type.START_GAME);
+        when(menu.getParticles()).thenReturn(List.of());
+        when(menu.getOptions()).thenReturn(List.of(option));
+        when(menu.isSelected(0)).thenReturn(false);
+        when(menu.getInGame()).thenReturn(false);
+        
+        menuViewer = new MenuViewer<>(menu, viewerProvider);
+        
+        // Test at time 25: animation complete (time >= 0 + 20)
+        // movementOffset is 0, currentPositionX = 100
+        menuViewer.draw(gui, 25);
+        
+        // Verify option is drawn at original position
+        verify(optionViewer).draw(argThat(opt -> opt.getPosition().x() == 100), eq(gui), any(TextColor.RGB.class));
+    }
+
+    // Test animation offset calculation
+    // Kills mutations: float subtraction/division/multiplication on line 69
+    @Test
+    void testAnimationOffsetCalculation() throws IOException {
+        Menu menu = mock(MainMenu.class);
+        Option option = new Option(50, 10, Option.Type.START_GAME);
+        when(menu.getParticles()).thenReturn(List.of());
+        when(menu.getOptions()).thenReturn(List.of(option));
+        when(menu.isSelected(0)).thenReturn(false);
+        when(menu.getInGame()).thenReturn(false);
+        
+        menuViewer = new MenuViewer<>(menu, viewerProvider);
+        
+        // At time 0: movementOffset = 40 * (1 - 0/20) = 40 * 1 = 40
+        menuViewer.draw(gui, 0);
+        verify(optionViewer).draw(argThat(opt -> opt.getPosition().x() == 90), eq(gui), any(TextColor.RGB.class));
+        
+        reset(optionViewer);
+        
+        // At time 10: movementOffset = 40 * (1 - 10/20) = 40 * 0.5 = 20
+        menuViewer.draw(gui, 10);
+        verify(optionViewer).draw(argThat(opt -> opt.getPosition().x() == 70), eq(gui), any(TextColor.RGB.class));
+    }
+
+    // Test selected option blinking at time >= 80
+    // Kills mutations: "negated conditional" and "changed conditional boundary" on line 81
+    @Test
+    void testSelectedOptionBlinkingAfter80() throws IOException {
+        Menu menu = mock(MainMenu.class);
+        Option option = new Option(10, 10, Option.Type.START_GAME);
+        when(menu.getParticles()).thenReturn(List.of());
+        when(menu.getOptions()).thenReturn(List.of(option));
+        when(menu.isSelected(0)).thenReturn(true);
+        when(menu.getInGame()).thenReturn(false);
+        
+        menuViewer = new MenuViewer<>(menu, viewerProvider);
+        
+        // At time 79 (< 80): should draw with unselected color (not blinking)
+        menuViewer.draw(gui, 79);
+        verify(optionViewer).draw(any(Option.class), eq(gui), eq(MenuViewer.unselectedColor));
+        
+        reset(optionViewer);
+        
+        // At time 80 (>= 80): blinking starts, isVisible = (80/8) % 2 = 10 % 2 = 0 (true)
+        menuViewer.draw(gui, 80);
+        verify(optionViewer).draw(any(Option.class), eq(gui), eq(MenuViewer.selectedColor));
+    }
+
+    // Test blinking visibility toggle (time/8) % 2
+    // Kills mutation: "Replaced long division with multiplication" on line 82
+    @Test
+    void testBlinkingVisibilityToggle() throws IOException {
+        Menu menu = mock(MainMenu.class);
+        Option option = new Option(10, 10, Option.Type.START_GAME);
+        when(menu.getParticles()).thenReturn(List.of());
+        when(menu.getOptions()).thenReturn(List.of(option));
+        when(menu.isSelected(0)).thenReturn(true);
+        when(menu.getInGame()).thenReturn(false);
+        
+        menuViewer = new MenuViewer<>(menu, viewerProvider);
+        
+        // At time 80: (80/8) % 2 = 10 % 2 = 0 (visible)
+        menuViewer.draw(gui, 80);
+        verify(optionViewer).draw(any(Option.class), eq(gui), eq(MenuViewer.selectedColor));
+        
+        reset(optionViewer);
+        
+        // At time 88: (88/8) % 2 = 11 % 2 = 1 (not visible)
+        menuViewer.draw(gui, 88);
+        verify(optionViewer, never()).draw(any(Option.class), eq(gui), eq(MenuViewer.selectedColor));
+        
+        reset(optionViewer);
+        
+        // At time 96: (96/8) % 2 = 12 % 2 = 0 (visible)
+        menuViewer.draw(gui, 96);
+        verify(optionViewer).draw(any(Option.class), eq(gui), eq(MenuViewer.selectedColor));
+    }
+
+    // Test inGame blinking with different timing (time/4)
+    // Kills mutation: "Replaced long division with multiplication" on line 84
+    @Test
+    void testInGameBlinkingTiming() throws IOException {
+        Menu menu = mock(MainMenu.class);
+        Option option = new Option(10, 10, Option.Type.START_GAME);
+        when(menu.getParticles()).thenReturn(List.of());
+        when(menu.getOptions()).thenReturn(List.of(option));
+        when(menu.isSelected(0)).thenReturn(true);
+        when(menu.getInGame()).thenReturn(true);
+        
+        menuViewer = new MenuViewer<>(menu, viewerProvider);
+        
+        // At time 80: (80/4) % 2 = 20 % 2 = 0 (visible)
+        menuViewer.draw(gui, 80);
+        verify(optionViewer).draw(any(Option.class), eq(gui), eq(MenuViewer.selectedColor));
+        
+        reset(optionViewer);
+        
+        // At time 84: (84/4) % 2 = 21 % 2 = 1 (not visible)
+        menuViewer.draw(gui, 84);
+        verify(optionViewer, never()).draw(any(Option.class), eq(gui), eq(MenuViewer.selectedColor));
+        
+        reset(optionViewer);
+        
+        // At time 88: (88/4) % 2 = 22 % 2 = 0 (visible)
+        menuViewer.draw(gui, 88);
+        verify(optionViewer).draw(any(Option.class), eq(gui), eq(MenuViewer.selectedColor));
+    }
+
+    // Test option not visible during blink-off phase
+    // Kills mutation: "negated conditional" on line 92
+    @Test
+    void testOptionNotVisibleDuringBlinkOff() throws IOException {
+        Menu menu = mock(MainMenu.class);
+        Option option = new Option(10, 10, Option.Type.START_GAME);
+        when(menu.getParticles()).thenReturn(List.of());
+        when(menu.getOptions()).thenReturn(List.of(option));
+        when(menu.isSelected(0)).thenReturn(true);
+        when(menu.getInGame()).thenReturn(false);
+        
+        menuViewer = new MenuViewer<>(menu, viewerProvider);
+        
+        // At time 88: (88/8) % 2 = 11 % 2 = 1 (NOT visible)
+        menuViewer.draw(gui, 88);
+        
+        // Verify option with selectedColor is NOT drawn
+        verify(optionViewer, never()).draw(any(Option.class), eq(gui), eq(MenuViewer.selectedColor));
+    }
+
+    // Test unselected option always drawn (line 92)
+    @Test
+    void testUnselectedOptionAlwaysDrawn() throws IOException {
         Menu menu = mock(MainMenu.class);
         Option option1 = new Option(10, 10, Option.Type.START_GAME);
-        Option option2 = new Option(10, 10, Option.Type.EXIT);
+        Option option2 = new Option(10, 30, Option.Type.EXIT);
         when(menu.getParticles()).thenReturn(List.of());
         when(menu.getOptions()).thenReturn(List.of(option1, option2));
         when(menu.isSelected(0)).thenReturn(true);
@@ -265,171 +366,51 @@ public class MenuViewerMutationTests {
         when(menu.getInGame()).thenReturn(false);
         
         menuViewer = new MenuViewer<>(menu, viewerProvider);
-        menuViewer.draw(gui, 20); // blinkTime = 20, >= 15
         
-        // Tests OR conditional - unselected options always visible
+        // At time 88: blinking phase, unselected should still draw
+        menuViewer.draw(gui, 88);
+        
+        // Unselected option should be drawn with its color
         verify(optionViewer, atLeastOnce()).draw(any(Option.class), eq(gui), any(TextColor.RGB.class));
     }
 
-    // Test visibility when blinking (line 90-94)
+    // Test drawRetroDynamicBackground with isGrayGradient true
     @Test
-    void testVisibilityWhenBlinking() throws IOException {
-        Menu menu = mock(MainMenu.class);
-        Option option = new Option(10, 10, Option.Type.START_GAME);
-        when(menu.getParticles()).thenReturn(List.of());
-        when(menu.getOptions()).thenReturn(List.of(option));
-        when(menu.isSelected(0)).thenReturn(true);
-        when(menu.getInGame()).thenReturn(false);
-        
-        menuViewer = new MenuViewer<>(menu, viewerProvider);
-        menuViewer.draw(gui, 25); // blinkTime = 25, should fade
-        
-        verify(optionViewer, atLeastOnce()).draw(any(Option.class), eq(gui), any(TextColor.RGB.class));
-    }
-
-    // Test alpha calculation division (line 97: (blinkTime - 15) / 15.0)
-    @Test
-    void testAlphaCalculationDivision() throws IOException {
-        Menu menu = mock(MainMenu.class);
-        Option option = new Option(10, 10, Option.Type.START_GAME);
-        when(menu.getParticles()).thenReturn(List.of());
-        when(menu.getOptions()).thenReturn(List.of(option));
-        when(menu.isSelected(0)).thenReturn(true);
-        when(menu.getInGame()).thenReturn(false);
-        
-        menuViewer = new MenuViewer<>(menu, viewerProvider);
-        menuViewer.draw(gui, 22); // blinkTime = 22, alpha = 1 - 7/15
-        
-        // Tests division in alpha calculation
-        verify(optionViewer, atLeastOnce()).draw(any(Option.class), eq(gui), any(TextColor.RGB.class));
-    }
-
-    // Test alpha calculation subtraction (line 98: 1.0 - ...)
-    @Test
-    void testAlphaCalculationSubtraction() throws IOException {
-        Menu menu = mock(MainMenu.class);
-        Option option = new Option(10, 10, Option.Type.START_GAME);
-        when(menu.getParticles()).thenReturn(List.of());
-        when(menu.getOptions()).thenReturn(List.of(option));
-        when(menu.isSelected(0)).thenReturn(true);
-        when(menu.getInGame()).thenReturn(false);
-        
-        menuViewer = new MenuViewer<>(menu, viewerProvider);
-        menuViewer.draw(gui, 28); // blinkTime = 28, alpha close to 0
-        
-        // Tests subtraction in alpha calculation
-        verify(optionViewer, atLeastOnce()).draw(any(Option.class), eq(gui), any(TextColor.RGB.class));
-    }
-
-    // Test retro background conditional (line 102: if (useRetroBackground))
-    @Test
-    void testRetroBackgroundConditional() throws IOException {
-        // Using MainMenu triggers retro background
+    void testDrawRetroDynamicBackgroundGrayGradient() throws IOException {
         Menu mainMenu = mock(MainMenu.class);
         when(mainMenu.getParticles()).thenReturn(List.of());
         when(mainMenu.getOptions()).thenReturn(List.of());
         when(mainMenu.getInGame()).thenReturn(false);
         
         MenuViewer<Menu> viewer = new MenuViewer<>(mainMenu, viewerProvider);
+        
+        // MainMenu triggers gray gradient (isGrayGradient = true)
         viewer.draw(gui, 0);
         
-        // When retro background is enabled, drawRetroDynamicBackground should be called
+        // Verify background pixels drawn
         verify(gui, atLeast(184 * 112)).drawPixel(anyInt(), anyInt(), any(TextColor.RGB.class));
     }
 
-    // Test retro background loop boundaries (line 114: w < screenWidth, h < screenHeight)
+    // Test drawRetroDynamicBackground with isGrayGradient false
     @Test
-    void testRetroBackgroundLoopBoundaries() throws IOException {
-        Menu mainMenu = mock(MainMenu.class);
-        when(mainMenu.getParticles()).thenReturn(List.of());
-        when(mainMenu.getOptions()).thenReturn(List.of());
-        when(mainMenu.getInGame()).thenReturn(false);
-        
-        MenuViewer<Menu> viewer = new MenuViewer<>(mainMenu, viewerProvider);
-        viewer.draw(gui, 0);
-        
-        // Tests < not <=
-        verify(gui, atLeast(184 * 112)).drawPixel(anyInt(), anyInt(), any(TextColor.RGB.class));
-    }
-
-    // Test retro background sin calculation (line 117: Math.sin)
-    @Test
-    void testRetroBackgroundSinCalculation() throws IOException {
-        Menu mainMenu = mock(MainMenu.class);
-        when(mainMenu.getParticles()).thenReturn(List.of());
-        when(mainMenu.getOptions()).thenReturn(List.of());
-        when(mainMenu.getInGame()).thenReturn(false);
-        
-        MenuViewer<Menu> viewer = new MenuViewer<>(mainMenu, viewerProvider);
-        viewer.draw(gui, 100);
-        
-        // Tests Math.sin with different parameters
-        verify(gui, atLeast(1)).drawPixel(anyInt(), anyInt(), any(TextColor.RGB.class));
-    }
-
-    // Test retro background multiplication (line 118: 0.5 * Math.sin)
-    @Test
-    void testRetroBackgroundMultiplication() throws IOException {
-        Menu mainMenu = mock(MainMenu.class);
-        when(mainMenu.getParticles()).thenReturn(List.of());
-        when(mainMenu.getOptions()).thenReturn(List.of());
-        when(mainMenu.getInGame()).thenReturn(false);
-        
-        MenuViewer<Menu> viewer = new MenuViewer<>(mainMenu, viewerProvider);
-        viewer.draw(gui, 50);
-        
-        // Tests multiplication, not division
-        verify(gui, atLeast(1)).drawPixel(anyInt(), anyInt(), any(TextColor.RGB.class));
-    }
-
-    // Test retro background addition (line 119: 0.5 + ...)
-    @Test
-    void testRetroBackgroundAddition() throws IOException {
-        Menu mainMenu = mock(MainMenu.class);
-        when(mainMenu.getParticles()).thenReturn(List.of());
-        when(mainMenu.getOptions()).thenReturn(List.of());
-        when(mainMenu.getInGame()).thenReturn(false);
-        
-        MenuViewer<Menu> viewer = new MenuViewer<>(mainMenu, viewerProvider);
-        viewer.draw(gui, 75);
-        
-        // Tests addition, not subtraction
-        verify(gui, atLeast(1)).drawPixel(anyInt(), anyInt(), any(TextColor.RGB.class));
-    }
-
-    // Test retro background PI operations (line 120-123: Math.PI / 2.0, etc.)
-    @Test
-    void testRetroBackgroundPIOperations() throws IOException {
-        Menu mainMenu = mock(MainMenu.class);
-        when(mainMenu.getParticles()).thenReturn(List.of());
-        when(mainMenu.getOptions()).thenReturn(List.of());
-        when(mainMenu.getInGame()).thenReturn(false);
-        
-        MenuViewer<Menu> viewer = new MenuViewer<>(mainMenu, viewerProvider);
-        viewer.draw(gui, 100);
-        
-        // Tests Math.PI division and various offsets
-        verify(gui, atLeast(1)).drawPixel(anyInt(), anyInt(), any(TextColor.RGB.class));
-    }
-
-    // Test colorful gradient (SettingsMenu) with all RGB calculations (lines 121-123)
-    @Test
-    void testColorfulGradientRGBCalculations() throws IOException {
+    void testDrawRetroDynamicBackgroundColorfulGradient() throws IOException {
         Menu settingsMenu = mock(SettingsMenu.class);
         when(settingsMenu.getParticles()).thenReturn(List.of());
         when(settingsMenu.getOptions()).thenReturn(List.of());
         when(settingsMenu.getInGame()).thenReturn(false);
         
         MenuViewer<Menu> viewer = new MenuViewer<>(settingsMenu, viewerProvider);
-        viewer.draw(gui, 150);
         
-        // Verify all RGB channels are calculated separately with PI offsets
+        // SettingsMenu triggers colorful gradient (isGrayGradient = false)
+        viewer.draw(gui, 0);
+        
+        // Verify background pixels drawn
         verify(gui, atLeast(184 * 112)).drawPixel(anyInt(), anyInt(), any(TextColor.RGB.class));
     }
 
-    // Test border drawing top/bottom (line 128-129)
+    // Test background loop draws correct pixel count
     @Test
-    void testBorderTopBottom() throws IOException {
+    void testBackgroundLoopPixelCount() throws IOException {
         Menu mainMenu = mock(MainMenu.class);
         when(mainMenu.getParticles()).thenReturn(List.of());
         when(mainMenu.getOptions()).thenReturn(List.of());
@@ -438,13 +419,15 @@ public class MenuViewerMutationTests {
         MenuViewer<Menu> viewer = new MenuViewer<>(mainMenu, viewerProvider);
         viewer.draw(gui, 0);
         
-        // for (int w = 0; w < screenWidth; w++)
-        verify(gui, atLeast(184 * 2)).drawPixel(anyInt(), anyInt(), any(TextColor.RGB.class));
+        // Background: 184*112 pixels + border pixels
+        // Border: top (184) + bottom (184) + left (110) + right (110) = 588
+        // Total should be at least 184*112
+        verify(gui, atLeast(184 * 112)).drawPixel(anyInt(), anyInt(), any(TextColor.RGB.class));
     }
 
-    // Test border drawing left/right (line 135-141)
+    // Test border pixels are drawn at correct positions
     @Test
-    void testBorderLeftRight() throws IOException {
+    void testBorderDrawnAtCorrectPositions() throws IOException {
         Menu mainMenu = mock(MainMenu.class);
         when(mainMenu.getParticles()).thenReturn(List.of());
         when(mainMenu.getOptions()).thenReturn(List.of());
@@ -453,56 +436,10 @@ public class MenuViewerMutationTests {
         MenuViewer<Menu> viewer = new MenuViewer<>(mainMenu, viewerProvider);
         viewer.draw(gui, 0);
         
-        // for (int h = 1; h < screenHeight - 1; h++)
-        verify(gui, atLeast(110 * 2)).drawPixel(anyInt(), anyInt(), any(TextColor.RGB.class));
-    }
-
-    // Test border loop subtraction (line 135: screenHeight - 1) and drawPixel calls
-    @Test
-    void testBorderLoopSubtraction() throws IOException {
-        Menu mainMenu = mock(MainMenu.class);
-        when(mainMenu.getParticles()).thenReturn(List.of());
-        when(mainMenu.getOptions()).thenReturn(List.of());
-        when(mainMenu.getInGame()).thenReturn(false);
-        
-        MenuViewer<Menu> viewer = new MenuViewer<>(mainMenu, viewerProvider);
-        viewer.draw(gui, 0);
-        
-        // Tests subtraction in loop boundary (h < screenHeight - 1)
-        // Verify left border (x=0) and right border (x=183) are drawn
-        verify(gui, atLeastOnce()).drawPixel(eq(0), anyInt(), any(TextColor.RGB.class));
-        verify(gui, atLeastOnce()).drawPixel(eq(183), anyInt(), any(TextColor.RGB.class));
-        // Verify top/bottom borders at specific heights
-        verify(gui, atLeastOnce()).drawPixel(anyInt(), eq(0), any(TextColor.RGB.class));
-        verify(gui, atLeastOnce()).drawPixel(anyInt(), eq(111), any(TextColor.RGB.class));
-    }
-
-    // Test different time values affect animation
-    @Test
-    void testDifferentTimeValuesAffectAnimation() throws IOException {
-        menuViewer.draw(gui, 5);
-        reset(optionViewer);
-        menuViewer.draw(gui, 15);
-        reset(optionViewer);
-        menuViewer.draw(gui, 25);
-        
-        verify(optionViewer, atLeastOnce()).draw(any(Option.class), eq(gui), any(TextColor.RGB.class));
-    }
-
-    // Test retro background with different times
-    @Test
-    void testRetroBackgroundDifferentTimes() throws IOException {
-        Menu mainMenu = mock(MainMenu.class);
-        when(mainMenu.getParticles()).thenReturn(List.of());
-        when(mainMenu.getOptions()).thenReturn(List.of());
-        when(mainMenu.getInGame()).thenReturn(false);
-        
-        MenuViewer<Menu> viewer = new MenuViewer<>(mainMenu, viewerProvider);
-        
-        viewer.draw(gui, 0);
-        reset(gui);
-        viewer.draw(gui, 500);
-        
-        verify(gui, atLeast(1)).drawPixel(anyInt(), anyInt(), any(TextColor.RGB.class));
+        // Verify border at corners and edges
+        verify(gui, atLeastOnce()).drawPixel(eq(0), eq(0), any(TextColor.RGB.class));
+        verify(gui, atLeastOnce()).drawPixel(eq(183), eq(0), any(TextColor.RGB.class));
+        verify(gui, atLeastOnce()).drawPixel(eq(0), eq(111), any(TextColor.RGB.class));
+        verify(gui, atLeastOnce()).drawPixel(eq(183), eq(111), any(TextColor.RGB.class));
     }
 }

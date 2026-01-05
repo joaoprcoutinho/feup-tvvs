@@ -11,26 +11,26 @@ import java.io.IOException;
     @Override
     public void draw(Particle model, GUI gui, long time, int offsetX, int offsetY) throws IOException {
         // Get the particle's base color
-<span class="nc" id="L14">        TextColor.RGB baseColor = model.getColor();</span>
-<span class="nc" id="L15">        double opacity = model.getOpacity();</span>
+<span class="fc" id="L14">        TextColor.RGB baseColor = model.getColor();</span>
+<span class="fc" id="L15">        double opacity = model.getOpacity();</span>
 
         // Ensure opacity stays within valid bounds [0, 1]
-<span class="nc" id="L18">        opacity = Math.max(0, Math.min(1, opacity));</span>
+<span class="fc" id="L18">        opacity = Math.max(0, Math.min(1, opacity));</span>
 
         // Calculate faded RGB values
-<span class="nc" id="L21">        int red = (int) (baseColor.getRed() * opacity);</span>
-<span class="nc" id="L22">        int green = (int) (baseColor.getGreen() * opacity);</span>
-<span class="nc" id="L23">        int blue = (int) (baseColor.getBlue() * opacity);</span>
+<span class="fc" id="L21">        int red = (int) (baseColor.getRed() * opacity);</span>
+<span class="fc" id="L22">        int green = (int) (baseColor.getGreen() * opacity);</span>
+<span class="fc" id="L23">        int blue = (int) (baseColor.getBlue() * opacity);</span>
 
         // Create the faded color
-<span class="nc" id="L26">        TextColor.RGB fadedColor = new TextColor.RGB(red, green, blue);</span>
+<span class="fc" id="L26">        TextColor.RGB fadedColor = new TextColor.RGB(red, green, blue);</span>
 
         // Draw the particle with the faded color
-<span class="nc" id="L29">        gui.drawPixel(</span>
-<span class="nc" id="L30">                (int) model.getPosition().x(),</span>
-<span class="nc" id="L31">                (int) model.getPosition().y(),</span>
+<span class="fc" id="L29">        gui.drawPixel(</span>
+<span class="fc" id="L30">                (int) model.getPosition().x(),</span>
+<span class="fc" id="L31">                (int) model.getPosition().y(),</span>
                 fadedColor
         );
-<span class="nc" id="L34">    }</span>
+<span class="fc" id="L34">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>

@@ -150,7 +150,7 @@ public class SceneLoader {
 <span class="fc bfc" id="L150" title="All 2 branches covered.">        for (int y = 0; y &lt; lines.size(); y++) {</span>
 <span class="fc" id="L151">            String line = lines.get(y);</span>
 <span class="fc bfc" id="L152" title="All 2 branches covered.">            for (int x = 0; x &lt; line.length(); x++) {</span>
-<span class="pc bpc" id="L153" title="1 of 4 branches missed.">                if (line.charAt(x) == 't' || line.charAt(x) == 'T')</span>
+<span class="fc bfc" id="L153" title="All 4 branches covered.">                if (line.charAt(x) == 't' || line.charAt(x) == 'T')</span>
 <span class="fc" id="L154">                    trees[y][x] = new Tree(x * TILE_SIZE, y * TILE_SIZE, line.charAt(x));</span>
                 else {
 <span class="fc" id="L156">                    trees[y][x] = null;</span>

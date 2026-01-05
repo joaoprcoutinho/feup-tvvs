@@ -40,6 +40,7 @@ pt/feup/tvvs/soulknight/model/game/elements/collectables/HealthOrbMutationTests.
 pt/feup/tvvs/soulknight/view/elements/knight/knightStates/StateAnimationWhiteBoxTest.class
 pt/feup/tvvs/soulknight/view/elements/knight/knightStates/MaxVelocityAnimationWhiteBoxTest.class
 pt/feup/tvvs/soulknight/model/game/elements/SpikeMutationTests.class
+pt/feup/tvvs/soulknight/view/elements/knight/knightStates/StateAnimationMutationTests$TestStateAnimation.class
 pt/feup/tvvs/soulknight/model/game/elements/ElementWhiteBoxTest.class
 pt/feup/tvvs/soulknight/model/game/elements/knight/AfterDashStateWhiteBoxTest.class
 pt/feup/tvvs/soulknight/sound/SoundLoaderMutationTests.class

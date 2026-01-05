@@ -1,9 +1,26 @@
 package pt.feup.tvvs.soulknight.model.game.elements;
             
 import org.junit.jupiter.api.Test;
-import static org.mockito.Mockito.*;
-import java.io.IOException;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TreeMutationTests {
-                        
+    
+    @Test
+    void getChar_shouldReturnSmallTree() {
+        Tree tree = new Tree(10, 20, 't');
+        assertEquals('t', tree.getChar());
+    }
+
+    @Test
+    void getChar_shouldReturnMediumTree() {
+        Tree tree = new Tree(15, 25, 'T');
+        assertEquals('T', tree.getChar());
+    }
+
+    @Test
+    void constructor_shouldSetPosition() {
+        Tree tree = new Tree(100, 200, 't');
+        assertEquals(100, tree.getPosition().x());
+        assertEquals(200, tree.getPosition().y());
+    }
 }

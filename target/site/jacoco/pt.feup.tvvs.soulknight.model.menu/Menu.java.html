@@ -26,18 +26,18 @@ public abstract class Menu {
 <span class="fc" id="L26">        return this.options.size();</span>
     }
     public void nextOption() {
-<span class="pc bpc" id="L29" title="1 of 2 branches missed.">        if (++currentOption &gt;= getNumberOptions())</span>
-<span class="nc" id="L30">            currentOption = 0;</span>
+<span class="fc bfc" id="L29" title="All 2 branches covered.">        if (++currentOption &gt;= getNumberOptions())</span>
+<span class="fc" id="L30">            currentOption = 0;</span>
 <span class="fc" id="L31">    }</span>
     public void previousOption() {
-<span class="pc bpc" id="L33" title="1 of 2 branches missed.">        if (--currentOption &lt; 0)</span>
+<span class="fc bfc" id="L33" title="All 2 branches covered.">        if (--currentOption &lt; 0)</span>
 <span class="fc" id="L34">            currentOption = getNumberOptions() - 1;</span>
 <span class="fc" id="L35">    }</span>
     public Option getCurrentOption() {
 <span class="fc" id="L37">        return options.get(currentOption);</span>
     }
     public boolean isSelected(int i) {
-<span class="pc bpc" id="L40" title="1 of 2 branches missed.">        return currentOption == i;</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        return currentOption == i;</span>
     }
     public boolean isSelectedExit() {
 <span class="fc" id="L43">        return isSelected(getNumberOptions() - 1);</span>
@@ -57,11 +57,11 @@ public abstract class Menu {
     public abstract List&lt;Particle&gt; createParticles();
 
     public Boolean getInGame() {
-<span class="nc" id="L60">        return inGame;</span>
+<span class="fc" id="L60">        return inGame;</span>
     }
 
     public void setInGame(Boolean inGame) {
-<span class="nc" id="L64">        this.inGame = inGame;</span>
-<span class="nc" id="L65">    }</span>
+<span class="fc" id="L64">        this.inGame = inGame;</span>
+<span class="fc" id="L65">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>
