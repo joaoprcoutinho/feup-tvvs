@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>SettingsMenu.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_1'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package pt.feup.tvvs.soulknight.model.menu;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_2'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_3'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import pt.feup.tvvs.soulknight.model.dataStructs.Position;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_4'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import pt.feup.tvvs.soulknight.state.particle.RandomState;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_5'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import com.googlecode.lanterna.TextColor;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_6'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_7'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.ArrayList;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_8'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.List;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_9'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.Random;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_10'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_11'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>public class SettingsMenu extends Menu{</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_12'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    private final int size = 100;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_13'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_14'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    protected List&#60;Option&#62; createEntries() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_15'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        Option resolution = new Option(30, 30, Option.Type.RESOLUTION);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_16'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        Option exit = new Option(30, 40, Option.Type.TO_MAIN_MENU);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_17'/>
+17
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_17'>1</a>
+<span>
+
+1. createEntries : replaced return value with Collections.emptyList for pt/feup/tvvs/soulknight/model/menu/SettingsMenu::createEntries &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return List.of(resolution, exit);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_18'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_19'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_20'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_21'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public List&#60;Particle&#62; createParticles() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_22'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        List&#60;Particle&#62; particles = new ArrayList&#60;&#62;();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_23'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        Random random = new Random();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_24'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        int width = 160; // Assuming screen width is 160</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_25'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        int height = 90; // Assuming screen height is 90</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_26'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_27'/>
+27
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_27'>2</a>
+<span>
+
+1. createParticles : changed conditional boundary &rarr; SURVIVED<br/>
+
+2. createParticles : negated conditional &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        for (int i = 0; i &#60; size; i++) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_28'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            int x = random.nextInt(width);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_29'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            int y = random.nextInt(height);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_30'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_31'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            // Calculate green intensity based on the x position, limiting the maximum value for calmer colors</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_32'/>
+32
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_32'>2</a>
+<span>
+
+1. createParticles : Replaced float multiplication with division &rarr; SURVIVED<br/>
+
+2. createParticles : Replaced float division with multiplication &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>            int greenIntensity = (int) ((x / (float) width) * 150); // Softer green intensity [0, 150]</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_33'/>
+33
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_33'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_34'/>
+34
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_34'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            // Introduce a subtle blue tint for calmness</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_35'/>
+35
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_35'>3</a>
+<span>
+
+1. createParticles : Replaced float multiplication with division &rarr; SURVIVED<br/>
+
+2. createParticles : Replaced float division with multiplication &rarr; KILLED<br/>
+
+3. createParticles : Replaced integer addition with subtraction &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>            int blueIntensity = 100 + (int) ((y / (float) height) * 50); // Shades of blue [100, 150]</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_36'/>
+36
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_36'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_37'/>
+37
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_37'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            // Create particle with a subdued green-blue tone</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_38'/>
+38
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_38'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            Particle new_particle = new Particle(</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_39'/>
+39
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_39'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                    new Position(x, y),</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_40'/>
+40
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_40'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                    new RandomState(),</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_41'/>
+41
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_41'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                    new TextColor.RGB(0, greenIntensity, blueIntensity) // Muted green-blue tones</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_42'/>
+42
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_42'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            );</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_43'/>
+43
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_43'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_44'/>
+44
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_44'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            particles.add(new_particle);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_45'/>
+45
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_45'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_46'/>
+46
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_46'>1</a>
+<span>
+
+1. createParticles : replaced return value with Collections.emptyList for pt/feup/tvvs/soulknight/model/menu/SettingsMenu::createParticles &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return particles;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_47'/>
+47
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_47'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5aeaee3_48'/>
+48
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_48'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5aeaee3_17'>17</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_17'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>createEntries<br/><b>Killed by : </b>pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests]/[method:createEntries_shouldReturnCorrectOptions()]</span></span> replaced return value with Collections.emptyList for pt/feup/tvvs/soulknight/model/menu/SettingsMenu::createEntries &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5aeaee3_27'>27</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_27'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>createParticles<br/><b>Killed by : </b>pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests]/[method:createParticles_shouldCreateParticles()]</span></span> negated conditional &rarr; KILLED</span>
+</div> <p class='SURVIVED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>createParticles<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=pt.feup.tvvs.soulknight.model.menu.SettingsMenu,-method=createParticles,-methodDesc=()Ljava/util/List;],-indexes=[29],-mutator=org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=pt.feup.tvvs.soulknight.model.menu.SettingsMenu,-method=createParticles,-methodDesc=()Ljava/util/List;],-indexes=[29],-mutator=org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=pt.feup.tvvs.soulknight.model.menu.SettingsMenu,-method=createParticles,-methodDesc=()Ljava/util/List;],-indexes=[29],-mutator=org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests]/[method:createEntries_shouldReturnCorrectOptions()]</li> <li>pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests]/[method:createParticles_shouldCreateParticles()]</li> <li>pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests]/[method:createEntries_shouldReturnEmptyList_whenNoOptions()]</li> <li>pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests]/[method:createParticles_shouldHaveCorrectColor()]</li> <li>pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests]/[method:createParticles_shouldHaveRandomPositions()]</li> <li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:constructor_shouldCreateSettingsMenuState()]</li> <li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:getModel_shouldNotReturnNull()]</li> <li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:testCreateControllerReturnsNonNull()]</li> <li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:getModel_shouldReturnSettingsMenu()]</li> <li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:constructor_shouldNotThrowException()]</li> <li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:testConstructorUsesProvidedModel()]</li> <li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:testCreateScreenViewerReturnsNonNull()]</li> <li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:testMultipleStatesAreIndependent()]</li> <li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:testModelIsStoredCorrectly()]</li> <li>pt.feup.tvvs.soulknight.controller.menu.OptionControllerWhiteBoxTest.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.controller.menu.OptionControllerWhiteBoxTest]/[method:testMoveSettingsSelect()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5aeaee3_32'>32</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_32'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>createParticles<br/><b>Killed by : </b>none</span></span> Replaced float multiplication with division &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=pt.feup.tvvs.soulknight.model.menu.SettingsMenu,-method=createParticles,-methodDesc=()Ljava/util/List;],-indexes=[50],-mutator=org.pitest.mutationtest.engine.gregor.mutators.MathMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=pt.feup.tvvs.soulknight.model.menu.SettingsMenu,-method=createParticles,-methodDesc=()Ljava/util/List;],-indexes=[50],-mutator=org.pitest.mutationtest.engine.gregor.mutators.MathMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=pt.feup.tvvs.soulknight.model.menu.SettingsMenu,-method=createParticles,-methodDesc=()Ljava/util/List;],-indexes=[50],-mutator=org.pitest.mutationtest.engine.gregor.mutators.MathMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests]/[method:createEntries_shouldReturnCorrectOptions()]</li> <li>pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests]/[method:createParticles_shouldCreateParticles()]</li> <li>pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests]/[method:createEntries_shouldReturnEmptyList_whenNoOptions()]</li> <li>pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests]/[method:createParticles_shouldHaveCorrectColor()]</li> <li>pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests]/[method:createParticles_shouldHaveRandomPositions()]</li> <li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:constructor_shouldCreateSettingsMenuState()]</li> <li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:getModel_shouldNotReturnNull()]</li> <li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:testCreateControllerReturnsNonNull()]</li> <li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:getModel_shouldReturnSettingsMenu()]</li> <li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:constructor_shouldNotThrowException()]</li> <li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:testConstructorUsesProvidedModel()]</li> <li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:testCreateScreenViewerReturnsNonNull()]</li> <li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:testMultipleStatesAreIndependent()]</li> <li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:testModelIsStoredCorrectly()]</li> <li>pt.feup.tvvs.soulknight.controller.menu.OptionControllerWhiteBoxTest.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.controller.menu.OptionControllerWhiteBoxTest]/[method:testMoveSettingsSelect()]</li> 
+</ul>
+</div></div> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>createParticles<br/><b>Killed by : </b>pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests]/[method:createEntries_shouldReturnCorrectOptions()]</span></span> Replaced float division with multiplication &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5aeaee3_35'>35</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_35'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>createParticles<br/><b>Killed by : </b>pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests]/[method:createEntries_shouldReturnCorrectOptions()]</span></span> Replaced float division with multiplication &rarr; KILLED</span>
+</div> <p class='SURVIVED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>createParticles<br/><b>Killed by : </b>none</span></span> Replaced float multiplication with division &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=pt.feup.tvvs.soulknight.model.menu.SettingsMenu,-method=createParticles,-methodDesc=()Ljava/util/List;],-indexes=[62],-mutator=org.pitest.mutationtest.engine.gregor.mutators.MathMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=pt.feup.tvvs.soulknight.model.menu.SettingsMenu,-method=createParticles,-methodDesc=()Ljava/util/List;],-indexes=[62],-mutator=org.pitest.mutationtest.engine.gregor.mutators.MathMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=pt.feup.tvvs.soulknight.model.menu.SettingsMenu,-method=createParticles,-methodDesc=()Ljava/util/List;],-indexes=[62],-mutator=org.pitest.mutationtest.engine.gregor.mutators.MathMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests]/[method:createEntries_shouldReturnCorrectOptions()]</li> <li>pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests]/[method:createParticles_shouldCreateParticles()]</li> <li>pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests]/[method:createEntries_shouldReturnEmptyList_whenNoOptions()]</li> <li>pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests]/[method:createParticles_shouldHaveCorrectColor()]</li> <li>pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests]/[method:createParticles_shouldHaveRandomPositions()]</li> <li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:constructor_shouldCreateSettingsMenuState()]</li> <li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:getModel_shouldNotReturnNull()]</li> <li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:testCreateControllerReturnsNonNull()]</li> <li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:getModel_shouldReturnSettingsMenu()]</li> <li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:constructor_shouldNotThrowException()]</li> <li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:testConstructorUsesProvidedModel()]</li> <li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:testCreateScreenViewerReturnsNonNull()]</li> <li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:testMultipleStatesAreIndependent()]</li> <li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:testModelIsStoredCorrectly()]</li> <li>pt.feup.tvvs.soulknight.controller.menu.OptionControllerWhiteBoxTest.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.controller.menu.OptionControllerWhiteBoxTest]/[method:testMoveSettingsSelect()]</li> 
+</ul>
+</div></div> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>createParticles<br/><b>Killed by : </b>pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests]/[method:createParticles_shouldHaveCorrectColor()]</span></span> Replaced integer addition with subtraction &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5aeaee3_46'>46</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5aeaee3_46'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>createParticles<br/><b>Killed by : </b>pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests]/[method:createParticles_shouldCreateParticles()]</span></span> replaced return value with Collections.emptyList for pt/feup/tvvs/soulknight/model/menu/SettingsMenu::createParticles &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+
+<li class='mutator'>CONDITIONALS_BOUNDARY</li>
+
+<li class='mutator'>EMPTY_RETURNS</li>
+
+<li class='mutator'>FALSE_RETURNS</li>
+
+<li class='mutator'>INCREMENTS</li>
+
+<li class='mutator'>INVERT_NEGS</li>
+
+<li class='mutator'>MATH</li>
+
+<li class='mutator'>NEGATE_CONDITIONALS</li>
+
+<li class='mutator'>NULL_RETURNS</li>
+
+<li class='mutator'>PRIMITIVE_RETURNS</li>
+
+<li class='mutator'>TRUE_RETURNS</li>
+
+<li class='mutator'>VOID_METHOD_CALLS</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests]/[method:createEntries_shouldReturnCorrectOptions()] (1 ms)</li><li>pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests]/[method:createParticles_shouldCreateParticles()] (2 ms)</li><li>pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests]/[method:createEntries_shouldReturnEmptyList_whenNoOptions()] (2 ms)</li><li>pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests]/[method:createParticles_shouldHaveCorrectColor()] (2 ms)</li><li>pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.model.menu.SettingsMenuMutationTests]/[method:createParticles_shouldHaveRandomPositions()] (6 ms)</li><li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:constructor_shouldCreateSettingsMenuState()] (151 ms)</li><li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:getModel_shouldNotReturnNull()] (153 ms)</li><li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:testCreateControllerReturnsNonNull()] (155 ms)</li><li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:getModel_shouldReturnSettingsMenu()] (156 ms)</li><li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:constructor_shouldNotThrowException()] (161 ms)</li><li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:testConstructorUsesProvidedModel()] (161 ms)</li><li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:testCreateScreenViewerReturnsNonNull()] (163 ms)</li><li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:testMultipleStatesAreIndependent()] (306 ms)</li><li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:testModelIsStoredCorrectly()] (316 ms)</li><li>pt.feup.tvvs.soulknight.controller.menu.OptionControllerWhiteBoxTest.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.controller.menu.OptionControllerWhiteBoxTest]/[method:testMoveSettingsSelect()] (479 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='https://pitest.org'>PIT</a> 1.20.3
+
+</body>
+</html>

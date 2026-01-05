@@ -5,9 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class RescalableGUIMutationTests {
 
-    // Test that getWidth returns correct value (kills "replaced int return with 0" mutation)
     @Test
-    void testResolutionScaleGetWidthReturnsCorrectValue() {
+    public void testResolutionScaleGetWidthReturnsCorrectValue() {
         RescalableGUI.ResolutionScale scale = RescalableGUI.ResolutionScale.WXGA;
         
         int width = scale.getWidth();
@@ -16,9 +15,8 @@ public class RescalableGUIMutationTests {
         assertNotEquals(0, width, "Width should not be 0");
     }
 
-    // Test that getHeight returns correct value (kills "replaced int return with 0" mutation)
     @Test
-    void testResolutionScaleGetHeightReturnsCorrectValue() {
+    public void testResolutionScaleGetHeightReturnsCorrectValue() {
         RescalableGUI.ResolutionScale scale = RescalableGUI.ResolutionScale.WXGA;
         
         int height = scale.getHeight();
@@ -27,9 +25,8 @@ public class RescalableGUIMutationTests {
         assertNotEquals(0, height, "Height should not be 0");
     }
 
-    // Test width and height together
     @Test
-    void testResolutionScaleDimensionsAreCorrect() {
+    public void testResolutionScaleDimensionsAreCorrect() {
         RescalableGUI.ResolutionScale scale = RescalableGUI.ResolutionScale.WXGA;
         
         assertTrue(scale.getWidth() > 0, "Width must be positive");
@@ -38,14 +35,13 @@ public class RescalableGUIMutationTests {
         assertEquals(720, scale.getHeight());
     }
 
-    // Test that width and height are different from zero
     @Test
-    void testResolutionScaleWidthIsNotZero() {
+    public void testResolutionScaleWidthIsNotZero() {
         assertTrue(RescalableGUI.ResolutionScale.WXGA.getWidth() != 0);
     }
 
     @Test
-    void testResolutionScaleHeightIsNotZero() {
+    public void testResolutionScaleHeightIsNotZero() {
         assertTrue(RescalableGUI.ResolutionScale.WXGA.getHeight() != 0);
     }
 }

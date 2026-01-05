@@ -18,60 +18,60 @@ public class EnergyOrbMutationTests {
     }
 
     @Test
-    void constructor_shouldSetEnergyValue() {
+    public void constructor_shouldSetEnergyValue() {
         assertEquals(10, energyOrb.getEnergy());
     }
 
     @Test
-    void constructor_shouldSetSymbol() {
+    public void constructor_shouldSetSymbol() {
         assertEquals('e', energyOrb.getChar());
     }
 
     @Test
-    void setEnergy_shouldUpdateEnergyValue() {
+    public void setEnergy_shouldUpdateEnergyValue() {
         energyOrb.setEnergy(20);
         assertEquals(20, energyOrb.getEnergy());
     }
 
     @Test
-    void setEnergy_shouldHandleZero() {
+    public void setEnergy_shouldHandleZero() {
         energyOrb.setEnergy(0);
         assertEquals(0, energyOrb.getEnergy());
     }
 
     @Test
-    void setEnergy_shouldHandleNegative() {
+    public void setEnergy_shouldHandleNegative() {
         energyOrb.setEnergy(-5);
         assertEquals(-5, energyOrb.getEnergy());
     }
 
     @Test
-    void benefit_shouldAddEnergyToKnight() {
+    public void benefit_shouldAddEnergyToKnight() {
         when(knight.getEnergy()).thenReturn(50);
         energyOrb.benefit(knight);
-        verify(knight).setEnergy(60); // 50 + 10
+        verify(knight).setEnergy(60);
     }
 
     @Test
-    void benefit_shouldAddCorrectAmountWhenEnergyChanged() {
+    public void benefit_shouldAddCorrectAmountWhenEnergyChanged() {
         energyOrb.setEnergy(15);
         when(knight.getEnergy()).thenReturn(30);
         energyOrb.benefit(knight);
-        verify(knight).setEnergy(45); // 30 + 15
+        verify(knight).setEnergy(45);
     }
 
     @Test
-    void benefit_shouldHandleZeroEnergy() {
+    public void benefit_shouldHandleZeroEnergy() {
         energyOrb.setEnergy(0);
         when(knight.getEnergy()).thenReturn(50);
         energyOrb.benefit(knight);
-        verify(knight).setEnergy(50); // 50 + 0
+        verify(knight).setEnergy(50);
     }
 
     @Test
-    void benefit_shouldNotSubtractEnergy() {
+    public void benefit_shouldNotSubtractEnergy() {
         when(knight.getEnergy()).thenReturn(100);
         energyOrb.benefit(knight);
-        verify(knight).setEnergy(110); // Should add, not subtract
+        verify(knight).setEnergy(110);
     }
 }

@@ -16,22 +16,18 @@ public class CreditsMutationTests {
         player = mock(Knight.class);
     }
 
-    // Test score calculation: energy - deaths (subtraction, not addition)
     @Test
-    void testScoreCalculationSubtractsDeaths() {
+    public void testScoreCalculationSubtractsDeaths() {
         when(player.getEnergy()).thenReturn(100);
         when(player.getNumberOfDeaths()).thenReturn(5);
         when(player.getBirthTime()).thenReturn(System.currentTimeMillis() - 10000);
         
         credits = new Credits(player);
-        
-        // Score = 100 - 5 = 95 (tests subtraction operator)
         assertEquals(95, credits.getScore());
     }
 
-    // Test score with zero deaths
     @Test
-    void testScoreWithZeroDeaths() {
+    public void testScoreWithZeroDeaths() {
         when(player.getEnergy()).thenReturn(100);
         when(player.getNumberOfDeaths()).thenReturn(0);
         when(player.getBirthTime()).thenReturn(System.currentTimeMillis() - 10000);
@@ -41,9 +37,8 @@ public class CreditsMutationTests {
         assertEquals(100, credits.getScore());
     }
 
-    // Test score with more deaths than energy (negative score)
     @Test
-    void testScoreWithMoreDeathsThanEnergy() {
+    public void testScoreWithMoreDeathsThanEnergy() {
         when(player.getEnergy()).thenReturn(10);
         when(player.getNumberOfDeaths()).thenReturn(20);
         when(player.getBirthTime()).thenReturn(System.currentTimeMillis() - 10000);
@@ -53,9 +48,8 @@ public class CreditsMutationTests {
         assertEquals(-10, credits.getScore());
     }
 
-    // Test deaths getter returns actual value
     @Test
-    void testGetDeathsReturnsActualValue() {
+    public void testGetDeathsReturnsActualValue() {
         when(player.getEnergy()).thenReturn(100);
         when(player.getNumberOfDeaths()).thenReturn(7);
         when(player.getBirthTime()).thenReturn(System.currentTimeMillis() - 10000);
@@ -65,40 +59,32 @@ public class CreditsMutationTests {
         assertEquals(7, credits.getDeaths());
     }
 
-    // Test seconds calculation using modulo 60
     @Test
-    void testSecondsCalculationModulo() {
+    public void testSecondsCalculationModulo() {
         when(player.getEnergy()).thenReturn(100);
         when(player.getNumberOfDeaths()).thenReturn(0);
-        // 125 seconds = 2 minutes and 5 seconds
         when(player.getBirthTime()).thenReturn(System.currentTimeMillis() - 125000);
         
         credits = new Credits(player);
         
-        // Seconds = (125000 / 1000) % 60 = 125 % 60 = 5
         assertEquals(5, credits.getSeconds());
     }
 
-    // Test minutes calculation using division
     @Test
-    void testMinutesCalculationDivision() {
+    public void testMinutesCalculationDivision() {
         when(player.getEnergy()).thenReturn(100);
         when(player.getNumberOfDeaths()).thenReturn(0);
-        // 125 seconds = 2 minutes and 5 seconds
         when(player.getBirthTime()).thenReturn(System.currentTimeMillis() - 125000);
         
         credits = new Credits(player);
         
-        // Minutes = (125000 / 1000) / 60 = 125 / 60 = 2
         assertEquals(2, credits.getMinutes());
     }
 
-    // Test seconds at boundary (exactly 60 seconds)
     @Test
-    void testSecondsAtSixtySecondsBoundary() {
+    public void testSecondsAtSixtySecondsBoundary() {
         when(player.getEnergy()).thenReturn(100);
         when(player.getNumberOfDeaths()).thenReturn(0);
-        // Exactly 60 seconds = 1 minute, 0 seconds
         when(player.getBirthTime()).thenReturn(System.currentTimeMillis() - 60000);
         
         credits = new Credits(player);
@@ -107,9 +93,8 @@ public class CreditsMutationTests {
         assertEquals(1, credits.getMinutes());
     }
 
-    // Test time calculation with duration subtraction
     @Test
-    void testDurationSubtraction() {
+    public void testDurationSubtraction() {
         when(player.getEnergy()).thenReturn(100);
         when(player.getNumberOfDeaths()).thenReturn(0);
         long currentTime = System.currentTimeMillis();
@@ -118,14 +103,12 @@ public class CreditsMutationTests {
         
         credits = new Credits(player);
         
-        // 90 seconds = 1 minute, 30 seconds
         assertEquals(30, credits.getSeconds());
         assertEquals(1, credits.getMinutes());
     }
 
-    // Test setScore mutates the score field
     @Test
-    void testSetScoreActuallyChangesScore() {
+    public void testSetScoreActuallyChangesScore() {
         when(player.getEnergy()).thenReturn(100);
         when(player.getNumberOfDeaths()).thenReturn(0);
         when(player.getBirthTime()).thenReturn(System.currentTimeMillis() - 10000);
@@ -139,9 +122,8 @@ public class CreditsMutationTests {
         assertNotEquals(originalScore, credits.getScore());
     }
 
-    // Test getScore returns actual score value
     @Test
-    void testGetScoreReturnsActualValue() {
+    public void testGetScoreReturnsActualValue() {
         when(player.getEnergy()).thenReturn(50);
         when(player.getNumberOfDeaths()).thenReturn(10);
         when(player.getBirthTime()).thenReturn(System.currentTimeMillis() - 10000);
@@ -152,9 +134,8 @@ public class CreditsMutationTests {
         assertEquals(40, score);
     }
 
-    // Test messages initialization
     @Test
-    void testMessagesArrayInitialization() {
+    public void testMessagesArrayInitialization() {
         when(player.getEnergy()).thenReturn(100);
         when(player.getNumberOfDeaths()).thenReturn(0);
         when(player.getBirthTime()).thenReturn(System.currentTimeMillis() - 10000);
@@ -167,9 +148,8 @@ public class CreditsMutationTests {
         assertEquals("Game Over!", messages[0]);
     }
 
-    // Test names array initialization
     @Test
-    void testNamesArrayInitialization() {
+    public void testNamesArrayInitialization() {
         when(player.getEnergy()).thenReturn(100);
         when(player.getNumberOfDeaths()).thenReturn(0);
         when(player.getBirthTime()).thenReturn(System.currentTimeMillis() - 10000);
@@ -185,9 +165,8 @@ public class CreditsMutationTests {
         assertEquals("Joao Santos", names[3]);
     }
 
-    // Test setMessages changes the messages array
     @Test
-    void testSetMessagesChangesArray() {
+    public void testSetMessagesChangesArray() {
         when(player.getEnergy()).thenReturn(100);
         when(player.getNumberOfDeaths()).thenReturn(0);
         when(player.getBirthTime()).thenReturn(System.currentTimeMillis() - 10000);
@@ -200,9 +179,8 @@ public class CreditsMutationTests {
         assertArrayEquals(newMessages, credits.getMessages());
     }
 
-    // Test setNames changes the names array
     @Test
-    void testSetNamesChangesArray() {
+    public void testSetNamesChangesArray() {
         when(player.getEnergy()).thenReturn(100);
         when(player.getNumberOfDeaths()).thenReturn(0);
         when(player.getBirthTime()).thenReturn(System.currentTimeMillis() - 10000);
@@ -215,12 +193,10 @@ public class CreditsMutationTests {
         assertArrayEquals(newNames, credits.getNames());
     }
 
-    // Test seconds calculation with large duration
     @Test
-    void testSecondsWithLargeDuration() {
+    public void testSecondsWithLargeDuration() {
         when(player.getEnergy()).thenReturn(100);
         when(player.getNumberOfDeaths()).thenReturn(0);
-        // 305 seconds = 5 minutes and 5 seconds
         when(player.getBirthTime()).thenReturn(System.currentTimeMillis() - 305000);
         
         credits = new Credits(player);
@@ -229,17 +205,14 @@ public class CreditsMutationTests {
         assertEquals(5, credits.getMinutes());
     }
 
-    // Test time calculation verifies both divisions are used
     @Test
-    void testTimeCalculationUsesCorrectDivisions() {
+    public void testTimeCalculationUsesCorrectDivisions() {
         when(player.getEnergy()).thenReturn(100);
         when(player.getNumberOfDeaths()).thenReturn(0);
-        // 3665 seconds = 61 minutes, 5 seconds
         when(player.getBirthTime()).thenReturn(System.currentTimeMillis() - 3665000);
         
         credits = new Credits(player);
         
-        // Tests both: (duration / 1000) % 60 and (duration / 1000) / 60
         assertEquals(5, credits.getSeconds());
         assertEquals(61, credits.getMinutes());
     }

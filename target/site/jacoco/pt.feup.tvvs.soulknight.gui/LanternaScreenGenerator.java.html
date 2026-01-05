@@ -19,46 +19,46 @@ public class LanternaScreenGenerator implements ScreenGenerator {
     private final TerminalSize terminalSize;
     private final Rectangle defaultBounds;
 
-<span class="nc" id="L22">    public LanternaScreenGenerator(DefaultTerminalFactory terminalFactory, TerminalSize terminalSize, Rectangle defaultBounds) {</span>
-<span class="nc" id="L23">        this.terminalFactory = terminalFactory;</span>
-<span class="nc" id="L24">        this.terminalSize = terminalSize;</span>
-<span class="nc" id="L25">        this.defaultBounds = defaultBounds;</span>
-<span class="nc" id="L26">        terminalFactory.setForceAWTOverSwing(true);</span>
-<span class="nc" id="L27">        terminalFactory.setInitialTerminalSize(terminalSize);</span>
-<span class="nc" id="L28">    }</span>
+<span class="fc" id="L22">    public LanternaScreenGenerator(DefaultTerminalFactory terminalFactory, TerminalSize terminalSize, Rectangle defaultBounds) {</span>
+<span class="fc" id="L23">        this.terminalFactory = terminalFactory;</span>
+<span class="fc" id="L24">        this.terminalSize = terminalSize;</span>
+<span class="fc" id="L25">        this.defaultBounds = defaultBounds;</span>
+<span class="fc" id="L26">        terminalFactory.setForceAWTOverSwing(true);</span>
+<span class="fc" id="L27">        terminalFactory.setInitialTerminalSize(terminalSize);</span>
+<span class="fc" id="L28">    }</span>
 
     @Override
     public Screen createScreen(RescalableGUI.ResolutionScale resolutionScale, String title, KeyListener keyListener)
             throws IOException, URISyntaxException, FontFormatException {
-<span class="nc" id="L33">        Rectangle terminalBounds = getTerminalBounds(resolutionScale);</span>
-<span class="nc" id="L34">        int fontSize = getBestFontSize(terminalBounds);</span>
-<span class="nc" id="L35">        AWTTerminalFontConfiguration fontConfig = loadFont(fontSize);</span>
-<span class="nc" id="L36">        terminalFactory.setTerminalEmulatorFontConfiguration(fontConfig);</span>
-<span class="nc" id="L37">        TerminalScreen screen = terminalFactory.createScreen();</span>
-<span class="nc" id="L38">        AWTTerminalFrame terminal = (AWTTerminalFrame) screen.getTerminal();</span>
-<span class="nc" id="L39">        terminal.getComponent(0).addKeyListener(keyListener);</span>
-<span class="nc" id="L40">        terminal.setTitle(title);</span>
-<span class="nc" id="L41">        return screen;</span>
+<span class="fc" id="L33">        Rectangle terminalBounds = getTerminalBounds(resolutionScale);</span>
+<span class="fc" id="L34">        int fontSize = getBestFontSize(terminalBounds);</span>
+<span class="fc" id="L35">        AWTTerminalFontConfiguration fontConfig = loadFont(fontSize);</span>
+<span class="fc" id="L36">        terminalFactory.setTerminalEmulatorFontConfiguration(fontConfig);</span>
+<span class="fc" id="L37">        TerminalScreen screen = terminalFactory.createScreen();</span>
+<span class="fc" id="L38">        AWTTerminalFrame terminal = (AWTTerminalFrame) screen.getTerminal();</span>
+<span class="fc" id="L39">        terminal.getComponent(0).addKeyListener(keyListener);</span>
+<span class="fc" id="L40">        terminal.setTitle(title);</span>
+<span class="fc" id="L41">        return screen;</span>
     }
 
     private AWTTerminalFontConfiguration loadFont(int fontSize) throws URISyntaxException, IOException, FontFormatException {
         //URL resource = getClass().getClassLoader().getResource(&quot;fonts/pixel.ttf&quot;);
-<span class="nc" id="L46">        InputStream resource = getClass().getClassLoader().getResourceAsStream(&quot;fonts/pixel.ttf&quot;);</span>
+<span class="fc" id="L46">        InputStream resource = getClass().getClassLoader().getResourceAsStream(&quot;fonts/pixel.ttf&quot;);</span>
         //File fontFile = new File(Objects.requireNonNull(resource).toURI());
         //Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile).deriveFont(Font.PLAIN, fontSize);
-<span class="nc" id="L49">        Font font = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(resource)).deriveFont(Font.PLAIN, fontSize);</span>
-<span class="nc" id="L50">        return AWTTerminalFontConfiguration.newInstance(font);</span>
+<span class="fc" id="L49">        Font font = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(resource)).deriveFont(Font.PLAIN, fontSize);</span>
+<span class="fc" id="L50">        return AWTTerminalFontConfiguration.newInstance(font);</span>
     }
 
     private int getBestFontSize(Rectangle terminalBounds) {
-<span class="nc" id="L54">        double maxFontWidth = terminalBounds.getWidth() / terminalSize.getColumns();</span>
-<span class="nc" id="L55">        double maxFontHeight = terminalBounds.getHeight() / terminalSize.getRows();</span>
-<span class="nc" id="L56">        return (int) Math.min(maxFontWidth, maxFontHeight);</span>
+<span class="fc" id="L54">        double maxFontWidth = terminalBounds.getWidth() / terminalSize.getColumns();</span>
+<span class="fc" id="L55">        double maxFontHeight = terminalBounds.getHeight() / terminalSize.getRows();</span>
+<span class="fc" id="L56">        return (int) Math.min(maxFontWidth, maxFontHeight);</span>
     }
 
     private Rectangle getTerminalBounds(RescalableGUI.ResolutionScale resolutionScale) {
-<span class="nc bnc" id="L60" title="All 2 branches missed.">        if (resolutionScale == null)</span>
-<span class="nc" id="L61">            return defaultBounds;</span>
+<span class="pc bpc" id="L60" title="1 of 2 branches missed.">        if (resolutionScale == null)</span>
+<span class="fc" id="L61">            return defaultBounds;</span>
 <span class="nc" id="L62">        return new Rectangle(resolutionScale.getWidth(), resolutionScale.getHeight());</span>
     }
 

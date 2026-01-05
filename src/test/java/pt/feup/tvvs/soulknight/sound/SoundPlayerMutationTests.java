@@ -18,30 +18,30 @@ public class SoundPlayerMutationTests {
     }
 
     @Test
-    void constructor_shouldSetSound() {
-        assertEquals(clip, soundPlayer.getSound(), "Constructor should set the clip");
+    public void constructor_shouldSetSound() {
+        assertEquals(clip, soundPlayer.getSound());
     }
 
     @Test
-    void start_shouldSetMicrosecondPositionToZero() {
+    public void start_shouldSetMicrosecondPositionToZero() {
         soundPlayer.start();
         verify(clip).setMicrosecondPosition(0);
     }
 
     @Test
-    void start_shouldCallStart() {
+    public void start_shouldCallStart() {
         soundPlayer.start();
         verify(clip).start();
     }
 
     @Test
-    void start_shouldLoopContinuously() {
+    public void start_shouldLoopContinuously() {
         soundPlayer.start();
         verify(clip).loop(Clip.LOOP_CONTINUOUSLY);
     }
 
     @Test
-    void start_shouldCallMethodsInCorrectOrder() {
+    public void start_shouldCallMethodsInCorrectOrder() {
         soundPlayer.start();
         var inOrder = inOrder(clip);
         inOrder.verify(clip).setMicrosecondPosition(0);
@@ -50,20 +50,20 @@ public class SoundPlayerMutationTests {
     }
 
     @Test
-    void stop_shouldCallStopOnClip() {
+    public void stop_shouldCallStopOnClip() {
         soundPlayer.stop();
         verify(clip).stop();
     }
 
     @Test
-    void setSound_shouldUpdateClip() {
+    public void setSound_shouldUpdateClip() {
         Clip newClip = mock(Clip.class);
         soundPlayer.setSound(newClip);
-        assertEquals(newClip, soundPlayer.getSound(), "Should update to new clip");
+        assertEquals(newClip, soundPlayer.getSound());
     }
 
     @Test
-    void getSound_shouldReturnCurrentClip() {
-        assertEquals(clip, soundPlayer.getSound(), "Should return current clip");
+    public void getSound_shouldReturnCurrentClip() {
+        assertEquals(clip, soundPlayer.getSound());
     }
 }

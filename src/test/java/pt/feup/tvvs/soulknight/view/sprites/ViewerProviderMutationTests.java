@@ -18,75 +18,63 @@ public class ViewerProviderMutationTests {
         provider = new ViewerProvider(spriteLoader);
     }
 
-    // Test getParticleViewer returns actual viewer
     @Test
-    void testGetParticleViewerReturnsActualViewer() {
+    public void testGetParticleViewerReturnsActualViewer() {
         assertNotNull(provider.getParticleViewer());
     }
 
-    // Test getPlayerViewer returns actual viewer
     @Test
-    void testGetPlayerViewerReturnsActualViewer() {
+    public void testGetPlayerViewerReturnsActualViewer() {
         assertNotNull(provider.getPlayerViewer());
     }
 
-    // Test getSpikeViewer returns actual viewer
     @Test
-    void testGetSpikeViewerReturnsActualViewer() {
+    public void testGetSpikeViewerReturnsActualViewer() {
         assertNotNull(provider.getSpikeViewer());
     }
 
-    // Test getTreeViewer returns actual viewer
     @Test
-    void testGetTreeViewerReturnsActualViewer() {
+    public void testGetTreeViewerReturnsActualViewer() {
         assertNotNull(provider.getTreeViewer());
     }
 
-    // Test getOrbViewer returns actual viewer
     @Test
-    void testGetOrbViewerReturnsActualViewer() {
+    public void testGetOrbViewerReturnsActualViewer() {
         assertNotNull(provider.getOrbViewer());
     }
 
-    // Test getRockViewer returns actual viewer
     @Test
-    void testGetRockViewerReturnsActualViewer() {
+    public void testGetRockViewerReturnsActualViewer() {
         assertNotNull(provider.getRockViewer());
     }
 
-    // Test getTileViewer returns actual viewer
     @Test
-    void testGetTileViewerReturnsActualViewer() {
+    public void testGetTileViewerReturnsActualViewer() {
         assertNotNull(provider.getTileViewer());
     }
 
-    // Test getTextViewer returns actual viewer
     @Test
-    void testGetTextViewerReturnsActualViewer() {
+    public void testGetTextViewerReturnsActualViewer() {
         assertNotNull(provider.getTextViewer());
     }
 
-    // Test getEntryViewer returns actual viewer
     @Test
-    void testGetEntryViewerReturnsActualViewer() {
+    public void testGetEntryViewerReturnsActualViewer() {
         assertNotNull(provider.getEntryViewer());
     }
 
-    // Test getLogoViewer returns actual viewer
     @Test
-    void testGetLogoViewerReturnsActualViewer() {
+    public void testGetLogoViewerReturnsActualViewer() {
         assertNotNull(provider.getLogoViewer());
     }
 
-    // Test getMonsterViewer returns actual viewer
     @Test
-    void testGetMonsterViewerReturnsActualViewer() {
+    public void testGetMonsterViewerReturnsActualViewer() {
         assertNotNull(provider.getMonsterViewer());
     }
 
-    // Test that all viewers are initialized in constructor
     @Test
-    void testAllViewersInitializedInConstructor() {
+    public void testAllViewersInitializedInConstructor() {
         assertNotNull(provider.getParticleViewer());
         assertNotNull(provider.getPlayerViewer());
         assertNotNull(provider.getSpikeViewer());
@@ -100,9 +88,8 @@ public class ViewerProviderMutationTests {
         assertNotNull(provider.getLogoViewer());
     }
 
-    // Test that getters return same instance on multiple calls
     @Test
-    void testGettersReturnSameInstance() {
+    public void testGettersReturnSameInstance() {
         assertSame(provider.getParticleViewer(), provider.getParticleViewer());
         assertSame(provider.getPlayerViewer(), provider.getPlayerViewer());
         assertSame(provider.getSpikeViewer(), provider.getSpikeViewer());

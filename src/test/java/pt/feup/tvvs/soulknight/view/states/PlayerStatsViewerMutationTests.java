@@ -32,74 +32,54 @@ public class PlayerStatsViewerMutationTests {
         when(gui.getFPS()).thenReturn(60);
     }
 
-    // Test that textViewer.draw is called for HP (kills VoidMethodCall mutation on line 24)
     @Test
-    void testDrawPlayerStatsCallsDrawForHP() throws IOException {
+    public void testDrawPlayerStatsCallsDrawForHP() throws IOException {
         PlayerStatsViewer.drawPlayerStats(gui, 0, scene, textViewer);
-
         verify(textViewer).draw(eq("hp 100"), eq(4.0), eq(8.0), any(TextColor.RGB.class), eq(gui));
     }
 
-    // Test that textViewer.draw is called for FPS (kills VoidMethodCall mutation on line 25)
     @Test
-    void testDrawPlayerStatsCallsDrawForFPS() throws IOException {
+    public void testDrawPlayerStatsCallsDrawForFPS() throws IOException {
         PlayerStatsViewer.drawPlayerStats(gui, 0, scene, textViewer);
-
         verify(textViewer).draw(eq("fps 60"), eq(4.0), eq(16.0), any(TextColor.RGB.class), eq(gui));
     }
 
-    // Test that textViewer.draw is called for Orbs (kills VoidMethodCall mutation on line 26)
     @Test
-    void testDrawPlayerStatsCallsDrawForOrbs() throws IOException {
+    public void testDrawPlayerStatsCallsDrawForOrbs() throws IOException {
         PlayerStatsViewer.drawPlayerStats(gui, 0, scene, textViewer);
-
         verify(textViewer).draw(eq("Orbs 5"), eq(160.0), eq(8.0), any(TextColor.RGB.class), eq(gui));
     }
 
-    // Test all three draw calls are made
     @Test
-    void testDrawPlayerStatsCallsAllDrawMethods() throws IOException {
+    public void testDrawPlayerStatsCallsAllDrawMethods() throws IOException {
         PlayerStatsViewer.drawPlayerStats(gui, 0, scene, textViewer);
-
-        // Verify all 3 textViewer.draw calls are made
         verify(textViewer, times(3)).draw(anyString(), anyDouble(), anyDouble(), any(TextColor.RGB.class), eq(gui));
     }
 
-    // Test with different HP values
     @Test
-    void testDrawPlayerStatsWithDifferentHP() throws IOException {
+    public void testDrawPlayerStatsWithDifferentHP() throws IOException {
         when(player.getHP()).thenReturn(50);
-
         PlayerStatsViewer.drawPlayerStats(gui, 0, scene, textViewer);
-
         verify(textViewer).draw(eq("hp 50"), eq(4.0), eq(8.0), any(TextColor.RGB.class), eq(gui));
     }
 
-    // Test with different FPS values
     @Test
-    void testDrawPlayerStatsWithDifferentFPS() throws IOException {
+    public void testDrawPlayerStatsWithDifferentFPS() throws IOException {
         when(gui.getFPS()).thenReturn(30);
-
         PlayerStatsViewer.drawPlayerStats(gui, 0, scene, textViewer);
-
         verify(textViewer).draw(eq("fps 30"), eq(4.0), eq(16.0), any(TextColor.RGB.class), eq(gui));
     }
 
-    // Test with different Orbs values
     @Test
-    void testDrawPlayerStatsWithDifferentOrbs() throws IOException {
+    public void testDrawPlayerStatsWithDifferentOrbs() throws IOException {
         when(player.getOrbs()).thenReturn(10);
-
         PlayerStatsViewer.drawPlayerStats(gui, 0, scene, textViewer);
-
         verify(textViewer).draw(eq("Orbs 10"), eq(160.0), eq(8.0), any(TextColor.RGB.class), eq(gui));
     }
 
-    // Test that scene.getPlayer() is called
     @Test
-    void testDrawPlayerStatsGetsPlayer() throws IOException {
+    public void testDrawPlayerStatsGetsPlayer() throws IOException {
         PlayerStatsViewer.drawPlayerStats(gui, 0, scene, textViewer);
-
         verify(scene).getPlayer();
     }
 }

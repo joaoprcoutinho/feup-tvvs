@@ -29,7 +29,7 @@ public class TreeViewerMutationTests {
     }
 
     @Test
-    void draw_shouldUseSmallTreeSprite() throws IOException {
+    public void draw_shouldUseSmallTreeSprite() throws IOException {
         TreeViewer viewer = new TreeViewer(spriteLoader);
         Tree tree = mock(Tree.class);
         when(tree.getChar()).thenReturn('t');
@@ -41,7 +41,7 @@ public class TreeViewerMutationTests {
     }
 
     @Test
-    void draw_shouldUseMediumTreeSprite() throws IOException {
+    public void draw_shouldUseMediumTreeSprite() throws IOException {
         TreeViewer viewer = new TreeViewer(spriteLoader);
         Tree tree = mock(Tree.class);
         when(tree.getChar()).thenReturn('T');
@@ -53,7 +53,7 @@ public class TreeViewerMutationTests {
     }
 
     @Test
-    void draw_shouldUseCorrectXPosition() throws IOException {
+    public void draw_shouldUseCorrectXPosition() throws IOException {
         TreeViewer viewer = new TreeViewer(spriteLoader);
         Tree tree = mock(Tree.class);
         when(tree.getChar()).thenReturn('t');
@@ -65,7 +65,7 @@ public class TreeViewerMutationTests {
     }
 
     @Test
-    void draw_shouldUseCorrectYPosition() throws IOException {
+    public void draw_shouldUseCorrectYPosition() throws IOException {
         TreeViewer viewer = new TreeViewer(spriteLoader);
         Tree tree = mock(Tree.class);
         when(tree.getChar()).thenReturn('t');

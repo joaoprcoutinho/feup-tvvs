@@ -4,16 +4,16 @@ Soul Knight,pt.feup.tvvs.soulknight.model.game.elements.collectables,Collectable
 Soul Knight,pt.feup.tvvs.soulknight.model.game.elements.collectables,OrbFactory,3,28,0,4,1,5,1,4,1,1
 Soul Knight,pt.feup.tvvs.soulknight.model.game.elements.collectables,EnergyOrb,0,29,0,0,0,10,0,5,0,5
 Soul Knight,pt.feup.tvvs.soulknight.model.game.elements.collectables,HealthOrb,0,29,0,0,0,10,0,5,0,5
-Soul Knight,pt.feup.tvvs.soulknight.gui,GUI.ACTION,0,104,0,0,0,1,0,1,0,1
-Soul Knight,pt.feup.tvvs.soulknight.gui,LanternaScreenGenerator,121,0,2,0,27,0,8,0,7,0
+Soul Knight,pt.feup.tvvs.soulknight.gui,GUI.ACTION,0,63,0,0,0,1,0,1,0,1
+Soul Knight,pt.feup.tvvs.soulknight.gui,LanternaScreenGenerator,16,105,1,1,3,24,3,5,2,5
 Soul Knight,pt.feup.tvvs.soulknight.gui,BufferedImageGUI,0,146,0,8,0,31,0,18,0,14
 Soul Knight,pt.feup.tvvs.soulknight.gui,LanternaGUI.new KeyAdapter() {...},0,48,0,4,0,9,0,5,0,3
 Soul Knight,pt.feup.tvvs.soulknight.gui,LanternaGUI,0,269,0,22,0,73,0,35,0,20
-Soul Knight,pt.feup.tvvs.soulknight.gui,RescalableGUI.ResolutionScale,0,33,0,0,0,8,0,4,0,4
+Soul Knight,pt.feup.tvvs.soulknight.gui,RescalableGUI.ResolutionScale,0,28,0,0,0,8,0,4,0,4
 Soul Knight,pt.feup.tvvs.soulknight.view.text,GameTextViewer,10,191,2,16,2,36,2,14,0,7
 Soul Knight,pt.feup.tvvs.soulknight.view.text,GameTextViewer.CharPosition,0,15,0,0,0,6,0,3,0,3
 Soul Knight,pt.feup.tvvs.soulknight.view.elements.tile,TileViewer,0,55,0,0,0,9,0,2,0,2
-Soul Knight,pt.feup.tvvs.soulknight.view.menu,LogoViewer,7,8,0,0,2,3,1,1,1,1
+Soul Knight,pt.feup.tvvs.soulknight.view.menu,LogoViewer,0,15,0,0,0,5,0,2,0,2
 Soul Knight,pt.feup.tvvs.soulknight.view.menu,ParticleViewer,0,16,0,0,0,3,0,2,0,2
 Soul Knight,pt.feup.tvvs.soulknight.view.menu,OptionViewer,1,89,2,8,0,23,2,8,0,3
 Soul Knight,pt.feup.tvvs.soulknight.view.elements.collectables,OrbViewer,0,64,0,2,0,11,0,3,0,2
@@ -23,13 +23,13 @@ Soul Knight,pt.feup.tvvs.soulknight.controller.credits,CreditsController,0,18,0,
 Soul Knight,pt.feup.tvvs.soulknight.view.sprites,Sprite,4,88,1,7,0,19,1,9,0,6
 Soul Knight,pt.feup.tvvs.soulknight.view.sprites,GameSpriteLoader,0,28,0,2,0,6,0,3,0,2
 Soul Knight,pt.feup.tvvs.soulknight.view.sprites,ViewerProvider,0,101,0,0,0,24,0,12,0,12
+Soul Knight,pt.feup.tvvs.soulknight.model.game.scene,SceneLoader,5,702,4,72,1,105,4,49,0,15
+Soul Knight,pt.feup.tvvs.soulknight.model.game.scene,Scene,0,583,0,36,0,106,0,62,0,44
 Soul Knight,pt.feup.tvvs.soulknight.state,CreditsState,0,20,0,0,0,4,0,3,0,3
 Soul Knight,pt.feup.tvvs.soulknight.state,GameState,0,38,0,0,0,5,0,3,0,3
 Soul Knight,pt.feup.tvvs.soulknight.state,MainMenuState,0,32,0,0,0,7,0,3,0,3
 Soul Knight,pt.feup.tvvs.soulknight.state,SettingsMenuState,0,32,0,0,0,7,0,3,0,3
-Soul Knight,pt.feup.tvvs.soulknight.state,State,15,21,0,0,4,6,1,2,1,2
-Soul Knight,pt.feup.tvvs.soulknight.model.game.scene,SceneLoader,5,702,4,72,1,105,4,49,0,15
-Soul Knight,pt.feup.tvvs.soulknight.model.game.scene,Scene,0,583,0,36,0,106,0,62,0,44
+Soul Knight,pt.feup.tvvs.soulknight.state,State,0,36,0,0,0,10,0,3,0,3
 Soul Knight,pt.feup.tvvs.soulknight.sound,MenuSoundPlayer,0,29,0,0,0,12,0,5,0,5
 Soul Knight,pt.feup.tvvs.soulknight.sound,SoundLoader,0,14,0,0,0,5,0,2,0,2
 Soul Knight,pt.feup.tvvs.soulknight.model.dataStructs,Vector,0,44,0,8,0,10,0,8,0,4
@@ -69,7 +69,7 @@ Soul Knight,pt.feup.tvvs.soulknight.model.game.elements.enemies,Enemies,0,37,0,0
 Soul Knight,pt.feup.tvvs.soulknight.model.game.elements.enemies,GhostMonster,0,149,0,8,0,27,0,12,0,8
 Soul Knight,pt.feup.tvvs.soulknight.model.menu,MainMenu,0,103,0,2,0,16,0,4,0,3
 Soul Knight,pt.feup.tvvs.soulknight.model.menu,SettingsMenu,0,97,0,2,0,17,0,4,0,3
-Soul Knight,pt.feup.tvvs.soulknight.model.menu,Option.Type,0,54,0,0,0,1,0,1,0,1
+Soul Knight,pt.feup.tvvs.soulknight.model.menu,Option.Type,0,33,0,0,0,1,0,1,0,1
 Soul Knight,pt.feup.tvvs.soulknight.model.menu,Option,0,21,0,0,0,6,0,3,0,3
 Soul Knight,pt.feup.tvvs.soulknight.model.menu,Particle,4,29,0,0,2,12,1,6,1,6
 Soul Knight,pt.feup.tvvs.soulknight.model.menu,Menu,0,99,0,6,0,25,0,16,0,13
@@ -94,7 +94,7 @@ Soul Knight,pt.feup.tvvs.soulknight.model.credits,Credits,0,97,0,0,0,28,0,10,0,1
 Soul Knight,pt.feup.tvvs.soulknight.view.elements.spike,SpikeViewer,0,55,0,0,0,9,0,2,0,2
 Soul Knight,pt.feup.tvvs.soulknight.view.elements.knight,KnightViewer,0,169,1,9,0,29,1,7,0,3
 Soul Knight,pt.feup.tvvs.soulknight.view.elements.particle,ParticleViewer,0,55,0,0,0,12,0,2,0,2
-Soul Knight,pt.feup.tvvs.soulknight,Game,184,0,8,0,50,0,13,0,9,0
+Soul Knight,pt.feup.tvvs.soulknight,Game,23,161,0,8,8,42,5,8,5,4
 Soul Knight,pt.feup.tvvs.soulknight.view.elements.knight.knightStates,StateAnimation,0,65,0,4,0,18,0,10,0,8
 Soul Knight,pt.feup.tvvs.soulknight.view.elements.knight.knightStates,FallingAnimation,0,52,0,2,0,11,0,3,0,2
 Soul Knight,pt.feup.tvvs.soulknight.view.elements.knight.knightStates,RunningAnimation,0,52,0,2,0,11,0,3,0,2

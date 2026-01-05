@@ -32,7 +32,7 @@ public class TileViewerMutationTests {
     }
 
     @Test
-    void draw_shouldUseMetalSprite() throws IOException {
+    public void draw_shouldUseMetalSprite() throws IOException {
         TileViewer viewer = new TileViewer(spriteLoader);
         Tile tile = mock(Tile.class);
         when(tile.getCharacter()).thenReturn('M');
@@ -44,7 +44,7 @@ public class TileViewerMutationTests {
     }
 
     @Test
-    void draw_shouldUseGrassSprite() throws IOException {
+    public void draw_shouldUseGrassSprite() throws IOException {
         TileViewer viewer = new TileViewer(spriteLoader);
         Tile tile = mock(Tile.class);
         when(tile.getCharacter()).thenReturn('G');
@@ -56,7 +56,7 @@ public class TileViewerMutationTests {
     }
 
     @Test
-    void draw_shouldUseLavaSprite() throws IOException {
+    public void draw_shouldUseLavaSprite() throws IOException {
         TileViewer viewer = new TileViewer(spriteLoader);
         Tile tile = mock(Tile.class);
         when(tile.getCharacter()).thenReturn('L');
@@ -68,7 +68,7 @@ public class TileViewerMutationTests {
     }
 
     @Test
-    void draw_shouldUseCorrectXPosition() throws IOException {
+    public void draw_shouldUseCorrectXPosition() throws IOException {
         TileViewer viewer = new TileViewer(spriteLoader);
         Tile tile = mock(Tile.class);
         when(tile.getCharacter()).thenReturn('M');
@@ -80,7 +80,7 @@ public class TileViewerMutationTests {
     }
 
     @Test
-    void draw_shouldUseCorrectYPosition() throws IOException {
+    public void draw_shouldUseCorrectYPosition() throws IOException {
         TileViewer viewer = new TileViewer(spriteLoader);
         Tile tile = mock(Tile.class);
         when(tile.getCharacter()).thenReturn('M');

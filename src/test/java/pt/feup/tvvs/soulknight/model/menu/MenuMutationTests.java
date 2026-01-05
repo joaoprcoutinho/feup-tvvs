@@ -18,125 +18,109 @@ public class MenuMutationTests {
 
     @BeforeEach
     void setUp() {
-        // Initialize MainMenu before each test
         mainMenu = new MainMenu();
     }
 
-    /* -------------------------------------------------
-     * Test Menu Option Handling
-     * ------------------------------------------------- */
     @Test
-    void getOptions_shouldReturnNonEmptyList() {
+    public void getOptions_shouldReturnNonEmptyList() {
         List<Option> options = mainMenu.getOptions();
         assertNotNull(options);
-        assertTrue(options.size() > 0, "Options list should not be empty");
+        assertTrue(options.size() > 0);
     }
 
     @Test
-    void nextOption_shouldCycleToNextOption() {
+    public void nextOption_shouldCycleToNextOption() {
         mainMenu.nextOption();
         Option currentOption = mainMenu.getCurrentOption();
-        assertNotNull(currentOption, "Current option should not be null after calling nextOption");
+        assertNotNull(currentOption);
     }
 
     @Test
-    void nextOption_shouldWrapAroundToZero() {
-        // Navigate to last option
+    public void nextOption_shouldWrapAroundToZero() {
         int numOptions = mainMenu.getNumberOptions();
         for (int i = 0; i < numOptions; i++) {
             mainMenu.nextOption();
         }
-        // Should be back at first option (index 0)
-        assertTrue(mainMenu.isSelected(0), "Should wrap around to first option");
+        assertTrue(mainMenu.isSelected(0));
     }
 
     @Test
-    void nextOption_shouldIncrementCurrentIndex() {
-        assertTrue(mainMenu.isSelected(0), "Should start at index 0");
+    public void nextOption_shouldIncrementCurrentIndex() {
+        assertTrue(mainMenu.isSelected(0));
         mainMenu.nextOption();
-        assertTrue(mainMenu.isSelected(1), "Should be at index 1 after nextOption");
+        assertTrue(mainMenu.isSelected(1));
     }
 
     @Test
-    void previousOption_shouldCycleToPreviousOption() {
+    public void previousOption_shouldCycleToPreviousOption() {
         mainMenu.previousOption();
         Option currentOption = mainMenu.getCurrentOption();
-        assertNotNull(currentOption, "Current option should not be null after calling previousOption");
+        assertNotNull(currentOption);
     }
 
     @Test
-    void previousOption_shouldWrapAroundToLast() {
-        // At index 0, calling previousOption should wrap to last
+    public void previousOption_shouldWrapAroundToLast() {
         mainMenu.previousOption();
         int lastIndex = mainMenu.getNumberOptions() - 1;
-        assertTrue(mainMenu.isSelected(lastIndex), "Should wrap around to last option");
+        assertTrue(mainMenu.isSelected(lastIndex));
     }
 
     @Test
-    void previousOption_shouldDecrementCurrentIndex() {
-        mainMenu.nextOption(); // Move to index 1
-        mainMenu.previousOption(); // Back to index 0
-        assertTrue(mainMenu.isSelected(0), "Should be back at index 0");
+    public void previousOption_shouldDecrementCurrentIndex() {
+        mainMenu.nextOption();
+        mainMenu.previousOption();
+        assertTrue(mainMenu.isSelected(0));
     }
 
     @Test
-    void getCurrentOption_shouldReturnCorrectOption() {
+    public void getCurrentOption_shouldReturnCorrectOption() {
         Option currentOption = mainMenu.getCurrentOption();
-        assertNotNull(currentOption, "Current option should not be null");
-        // Ensure that the current option is a valid option
-        assertTrue(mainMenu.getOptions().contains(currentOption), "Current option should be in the options list");
+        assertNotNull(currentOption);
+        assertTrue(mainMenu.getOptions().contains(currentOption));
     }
 
     @Test
-    void isSelectedStart_shouldReturnTrueForStartOption() {
-        assertTrue(mainMenu.isSelectedStart(), "Start option should be selected initially");
+    public void isSelectedStart_shouldReturnTrueForStartOption() {
+        assertTrue(mainMenu.isSelectedStart());
     }
 
     @Test
-    void isSelectedExit_shouldReturnTrueAfterNavigating() {
-        // Navigate to exit option (Start -> Settings -> Exit)
+    public void isSelectedExit_shouldReturnTrueAfterNavigating() {
         mainMenu.nextOption();
         mainMenu.nextOption();
-        assertTrue(mainMenu.isSelectedExit(), "Exit option should be selected after navigating");
+        assertTrue(mainMenu.isSelectedExit());
     }
 
-    /* -------------------------------------------------
-     * Test Particle Creation
-     * ------------------------------------------------- */
     @Test
-    void createParticles_shouldCreateParticles() {
+    public void createParticles_shouldCreateParticles() {
         List<Particle> particles = mainMenu.createParticles();
-        assertNotNull(particles, "Particles list should not be null");
-        assertTrue(particles.size() > 0, "Particles list should not be empty");
+        assertNotNull(particles);
+        assertTrue(particles.size() > 0);
     }
 
     @Test
-    void createParticles_shouldHaveCorrectColor() {
+    public void createParticles_shouldHaveCorrectColor() {
         List<Particle> particles = mainMenu.createParticles();
         for (Particle particle : particles) {
-            TextColor.RGB color = (TextColor.RGB) particle.getColor();
-            // Verify if the green component of the color is within valid range [0, 255]
-            assertTrue(color.getGreen() >= 0 && color.getGreen() <= 255, "Green color component should be within the range [0, 255]");
+            TextColor.RGB color = particle.getColor();
+            assertTrue(color.getGreen() >= 0 && color.getGreen() <= 255);
         }
     }
 
     @Test
-    void createEntries_shouldCreateCorrectOptions() {
+    public void createEntries_shouldCreateCorrectOptions() {
         List<Option> entries = mainMenu.createEntries();
-        assertNotNull(entries, "Entries list should not be null");
-        assertTrue(entries.size() > 0, "Entries list should not be empty");
-        assertEquals(3, entries.size(), "There should be 3 options (Start, Settings, Exit)");
+        assertNotNull(entries);
+        assertTrue(entries.size() > 0);
+        assertEquals(3, entries.size());
     }
 
-    /* -------------------------------------------------
-     * Test Edge Cases and Coverage
-     * ------------------------------------------------- */
     @Test
-    void getOptions_shouldReturnEmptyList_whenCreateEntriesReturnsEmpty() {
+    public void getOptions_shouldReturnEmptyList_whenCreateEntriesReturnsEmpty() {
         MainMenu menuWithEmptyOptions = new MainMenu() {
             @Override
             protected List<Option> createEntries() {
-                return List.of(); // Returning an empty list for options
+                return List.of();
             }
             @Override
             public List<Particle> createParticles() {
@@ -145,29 +129,29 @@ public class MenuMutationTests {
         };
 
         List<Option> options = menuWithEmptyOptions.getOptions();
-        assertTrue(options.isEmpty(), "Options list should be empty when createEntries returns empty list");
+        assertTrue(options.isEmpty());
     }
 
     @Test
-    void setParticles_shouldUpdateParticlesList() {
+    public void setParticles_shouldUpdateParticlesList() {
         List<Particle> newParticles = new ArrayList<>();
         mainMenu.setParticles(newParticles);
-        assertEquals(newParticles, mainMenu.getParticles(), "Particles should be updated");
+        assertEquals(newParticles, mainMenu.getParticles());
     }
 
     @Test
-    void getInGame_shouldReturnFalseInitially() {
-        assertFalse(mainMenu.getInGame(), "InGame should be false initially");
+    public void getInGame_shouldReturnFalseInitially() {
+        assertFalse(mainMenu.getInGame());
     }
 
     @Test
-    void setInGame_shouldUpdateInGameStatus() {
+    public void setInGame_shouldUpdateInGameStatus() {
         mainMenu.setInGame(true);
-        assertTrue(mainMenu.getInGame(), "InGame should be true after setting");
+        assertTrue(mainMenu.getInGame());
     }
 
     @Test
-    void setInGame_shouldToggleCorrectly() {
+    public void setInGame_shouldToggleCorrectly() {
         mainMenu.setInGame(true);
         assertTrue(mainMenu.getInGame());
         mainMenu.setInGame(false);
@@ -175,20 +159,20 @@ public class MenuMutationTests {
     }
 
     @Test
-    void getNumberOptions_shouldReturnCorrectCount() {
-        assertEquals(3, mainMenu.getNumberOptions(), "Should have 3 options");
+    public void getNumberOptions_shouldReturnCorrectCount() {
+        assertEquals(3, mainMenu.getNumberOptions());
     }
 
     @Test
-    void isSelected_shouldReturnTrueForCurrentOption() {
-        assertTrue(mainMenu.isSelected(0), "Option 0 should be selected initially");
+    public void isSelected_shouldReturnTrueForCurrentOption() {
+        assertTrue(mainMenu.isSelected(0));
         mainMenu.nextOption();
-        assertTrue(mainMenu.isSelected(1), "Option 1 should be selected after nextOption");
+        assertTrue(mainMenu.isSelected(1));
     }
 
     @Test
-    void isSelected_shouldReturnFalseForNonCurrentOption() {
-        assertFalse(mainMenu.isSelected(1), "Option 1 should not be selected initially");
-        assertFalse(mainMenu.isSelected(2), "Option 2 should not be selected initially");
+    public void isSelected_shouldReturnFalseForNonCurrentOption() {
+        assertFalse(mainMenu.isSelected(1));
+        assertFalse(mainMenu.isSelected(2));
     }
 }

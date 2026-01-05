@@ -30,38 +30,38 @@ public class Game {
     private final MenuSoundPlayer menuSoundPlayer;
     private final SpriteLoader spriteLoader;
 
-<span class="nc" id="L33">    private long fpsLastUpdate = System.currentTimeMillis();</span>
-<span class="nc" id="L34">    private int frames = 0;</span>
-<span class="nc" id="L35">    private int currentFps = 0;</span>
+<span class="fc" id="L33">    private long fpsLastUpdate = System.currentTimeMillis();</span>
+<span class="fc" id="L34">    private int frames = 0;</span>
+<span class="fc" id="L35">    private int currentFps = 0;</span>
 
     private final LanternaGUI gui;
     private State&lt;?&gt; state;
 
-<span class="nc" id="L40">    private Game() throws Exception {</span>
-<span class="nc" id="L41">        ScreenGenerator screenCreator = new LanternaScreenGenerator(</span>
+<span class="fc" id="L40">    private Game() throws Exception {</span>
+<span class="fc" id="L41">        ScreenGenerator screenCreator = new LanternaScreenGenerator(</span>
                 new DefaultTerminalFactory(),
                 new TerminalSize(PIXEL_WIDTH, PIXEL_HEIGHT),
-<span class="nc" id="L44">                GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds()</span>
+<span class="fc" id="L44">                GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds()</span>
         );
-<span class="nc" id="L46">        this.gui = new LanternaGUI(screenCreator, &quot;Soul Knight&quot;);</span>
-<span class="nc" id="L47">        this.menuSoundPlayer = new MenuSoundPlayer(new SoundLoader().loadSound(AudioSystem</span>
-<span class="nc" id="L48">                .getAudioInputStream(Objects.requireNonNull(getClass().getClassLoader().getResource(&quot;sound/demo.wav&quot;))), AudioSystem.getClip()));</span>
-<span class="nc" id="L49">        this.spriteLoader = new GameSpriteLoader();</span>
-<span class="nc" id="L50">        this.state = new MainMenuState(new MainMenu(), spriteLoader);</span>
-<span class="nc" id="L51">    }</span>
+<span class="fc" id="L46">        this.gui = new LanternaGUI(screenCreator, &quot;Soul Knight&quot;);</span>
+<span class="fc" id="L47">        this.menuSoundPlayer = new MenuSoundPlayer(new SoundLoader().loadSound(AudioSystem</span>
+<span class="fc" id="L48">                .getAudioInputStream(Objects.requireNonNull(getClass().getClassLoader().getResource(&quot;sound/demo.wav&quot;))), AudioSystem.getClip()));</span>
+<span class="fc" id="L49">        this.spriteLoader = new GameSpriteLoader();</span>
+<span class="fc" id="L50">        this.state = new MainMenuState(new MainMenu(), spriteLoader);</span>
+<span class="fc" id="L51">    }</span>
 
     public static void main(String[] args) {
-<span class="nc" id="L54">        Logger logger = Logger.getLogger(Game.class.getName());</span>
+<span class="fc" id="L54">        Logger logger = Logger.getLogger(Game.class.getName());</span>
         try {
-<span class="nc" id="L56">            new Game().start();</span>
+<span class="fc" id="L56">            new Game().start();</span>
 <span class="nc" id="L57">        } catch (Exception e) {</span>
 <span class="nc" id="L58">            logger.log(Level.INFO, &quot;An error occurred while running Game.start()&quot;, e);</span>
-<span class="nc" id="L59">        }</span>
-<span class="nc" id="L60">    }</span>
+<span class="fc" id="L59">        }</span>
+<span class="fc" id="L60">    }</span>
 
     public void setState(State&lt;?&gt; state) {
-<span class="nc" id="L63">        this.state = state;</span>
-<span class="nc" id="L64">    }</span>
+<span class="fc" id="L63">        this.state = state;</span>
+<span class="fc" id="L64">    }</span>
 
     public RescalableGUI.ResolutionScale getResolution() {
 <span class="nc" id="L67">        return gui.getResolutionScale();</span>
@@ -80,41 +80,41 @@ public class Game {
     }
 
     private void start() throws IOException, InterruptedException, URISyntaxException, FontFormatException {
-<span class="nc" id="L83">        int FPS = 30;</span>
-<span class="nc" id="L84">        int frameTime = 1000 / FPS;</span>
-<span class="nc" id="L85">        int tick = 0;</span>
+<span class="fc" id="L83">        int FPS = 30;</span>
+<span class="fc" id="L84">        int frameTime = 1000 / FPS;</span>
+<span class="fc" id="L85">        int tick = 0;</span>
 
-<span class="nc" id="L87">        Thread.sleep(100);</span>
-<span class="nc" id="L88">        menuSoundPlayer.start();</span>
-<span class="nc bnc" id="L89" title="All 2 branches missed.">        while (this.state != null) {    // Game loop</span>
-<span class="nc" id="L90">            long startTime = System.currentTimeMillis();</span>
+<span class="fc" id="L87">        Thread.sleep(100);</span>
+<span class="fc" id="L88">        menuSoundPlayer.start();</span>
+<span class="fc bfc" id="L89" title="All 2 branches covered.">        while (this.state != null) {    // Game loop</span>
+<span class="fc" id="L90">            long startTime = System.currentTimeMillis();</span>
 
-<span class="nc bnc" id="L92" title="All 2 branches missed.">            if (tick == 0) {</span>
-<span class="nc" id="L93">                Thread.sleep(100);</span>
+<span class="fc bfc" id="L92" title="All 2 branches covered.">            if (tick == 0) {</span>
+<span class="fc" id="L93">                Thread.sleep(100);</span>
             }
 
-<span class="nc" id="L96">            state.move(this, gui, tick);</span>
+<span class="fc" id="L96">            state.move(this, gui, tick);</span>
 
             // Update the FPS counter
-<span class="nc" id="L99">            frames++;</span>
-<span class="nc" id="L100">            long currentTime = System.currentTimeMillis();</span>
-<span class="nc bnc" id="L101" title="All 2 branches missed.">            if (currentTime - fpsLastUpdate &gt;= 1000) {</span>
-<span class="nc" id="L102">                currentFps = frames;</span>
-<span class="nc" id="L103">                frames = 0;</span>
-<span class="nc" id="L104">                fpsLastUpdate = currentTime;</span>
+<span class="fc" id="L99">            frames++;</span>
+<span class="fc" id="L100">            long currentTime = System.currentTimeMillis();</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">            if (currentTime - fpsLastUpdate &gt;= 1000) {</span>
+<span class="fc" id="L102">                currentFps = frames;</span>
+<span class="fc" id="L103">                frames = 0;</span>
+<span class="fc" id="L104">                fpsLastUpdate = currentTime;</span>
             }
 
-<span class="nc" id="L107">            gui.setFPS(currentFps);</span>
+<span class="fc" id="L107">            gui.setFPS(currentFps);</span>
 
-<span class="nc" id="L109">            long elapsedTime = System.currentTimeMillis() - startTime;</span>
-<span class="nc" id="L110">            long sleepTime = frameTime - elapsedTime;</span>
+<span class="fc" id="L109">            long elapsedTime = System.currentTimeMillis() - startTime;</span>
+<span class="fc" id="L110">            long sleepTime = frameTime - elapsedTime;</span>
 
-<span class="nc bnc" id="L112" title="All 2 branches missed.">            if (sleepTime &gt; 0) Thread.sleep(sleepTime);</span>
-<span class="nc" id="L113">            tick++;</span>
-<span class="nc" id="L114">        }</span>
+<span class="fc bfc" id="L112" title="All 2 branches covered.">            if (sleepTime &gt; 0) Thread.sleep(sleepTime);</span>
+<span class="fc" id="L113">            tick++;</span>
+<span class="fc" id="L114">        }</span>
 
-<span class="nc" id="L116">        gui.close();</span>
-<span class="nc" id="L117">    }</span>
+<span class="fc" id="L116">        gui.close();</span>
+<span class="fc" id="L117">    }</span>
 
 
     public Object getGUI() {

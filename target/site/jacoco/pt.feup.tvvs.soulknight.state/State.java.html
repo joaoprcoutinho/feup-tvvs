@@ -29,9 +29,9 @@ public abstract class State&lt;T&gt; {
     }
 
     public void move(Game game, GUI gui, long time) throws IOException, URISyntaxException, FontFormatException {
-<span class="nc" id="L32">        GUI.ACTION action = gui.getACTION();</span>
-<span class="nc" id="L33">        controller.move(game, action, time);</span>
-<span class="nc" id="L34">        screenViewer.draw(gui, time);</span>
-<span class="nc" id="L35">    }</span>
+<span class="fc" id="L32">        GUI.ACTION action = gui.getACTION();</span>
+<span class="fc" id="L33">        controller.move(game, action, time);</span>
+<span class="fc" id="L34">        screenViewer.draw(gui, time);</span>
+<span class="fc" id="L35">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>

@@ -34,7 +34,7 @@ public class ParticleControllerWhiteBoxTest {
     }
 
     @Test
-    void TestMove() throws IOException {
+    public void TestMove() throws IOException {
         controller.move(game, GUI.ACTION.DOWN, 5);
         verify(particle, times(5)).setScene(scene);
         verify(particle, times(5)).setPosition(new Position(1,1));

@@ -17,17 +17,13 @@ import static org.mockito.Mockito.*;
 
 public class MonsterViewerMutationTests {
 
-    /* -------------------------------------------------
-     * Constructor mutation (loop boundary)
-     * ------------------------------------------------- */
     @Test
-    void constructor_shouldLoadTwoSwordMonsterSprites() throws IOException {
+    public void constructor_shouldLoadTwoSwordMonsterSprites() throws IOException {
         SpriteLoader loader = mock(SpriteLoader.class);
         when(loader.get(anyString())).thenReturn(mock(Sprite.class));
 
         MonsterViewer viewer = new MonsterViewer(loader);
 
-        // indirectly validate size via getSpriteForAnimation
         Sprite s1 = mock(Sprite.class);
         Sprite s2 = mock(Sprite.class);
 
@@ -38,11 +34,8 @@ public class MonsterViewerMutationTests {
         assertTrue(sprites.contains(result));
     }
 
-    /* -------------------------------------------------
-     * Sword monster ('E')
-     * ------------------------------------------------- */
     @Test
-    void draw_shouldDrawSwordMonsterWithCorrectOffset() throws IOException {
+    public void draw_shouldDrawSwordMonsterWithCorrectOffset() throws IOException {
         Sprite sprite = mock(Sprite.class);
         SpriteLoader loader = mock(SpriteLoader.class);
         when(loader.get(anyString())).thenReturn(sprite);
@@ -55,14 +48,11 @@ public class MonsterViewerMutationTests {
 
         viewer.draw(enemy, gui, 0L, 0, 0);
 
-        verify(sprite).draw(gui, 26, 40); // x - 4
+        verify(sprite).draw(gui, 26, 40);
     }
 
-    /* -------------------------------------------------
-     * Ghost monster ('m')
-     * ------------------------------------------------- */
     @Test
-    void draw_shouldDrawGhostMonsterWithCorrectOffset() throws IOException {
+    public void draw_shouldDrawGhostMonsterWithCorrectOffset() throws IOException {
         Sprite sprite = mock(Sprite.class);
         SpriteLoader loader = mock(SpriteLoader.class);
         when(loader.get(anyString())).thenReturn(sprite);
@@ -75,15 +65,12 @@ public class MonsterViewerMutationTests {
 
         viewer.draw(enemy, gui, 0L, 0, 0);
 
-        verify(sprite).draw(gui, 26, 34); // x - 4, y - 6
+        verify(sprite).draw(gui, 26, 34);
         verify(gui).drawHitBox(eq(30), eq(40), eq(4), eq(4), any());
     }
 
-    /* -------------------------------------------------
-     * Purple monster ('l')
-     * ------------------------------------------------- */
     @Test
-    void draw_shouldDrawPurpleMonsterWithCorrectOffset() throws IOException {
+    public void draw_shouldDrawPurpleMonsterWithCorrectOffset() throws IOException {
         Sprite sprite = mock(Sprite.class);
         SpriteLoader loader = mock(SpriteLoader.class);
         when(loader.get(anyString())).thenReturn(sprite);
@@ -96,23 +83,17 @@ public class MonsterViewerMutationTests {
 
         viewer.draw(enemy, gui, 0L, 0, 0);
 
-        verify(sprite).draw(gui, 26, 39); // x - 4, y - 1
+        verify(sprite).draw(gui, 26, 39);
     }
 
-    /* -------------------------------------------------
-     * getSpriteForAnimation mutation
-     * ------------------------------------------------- */
     @Test
-    void getSpriteForAnimation_shouldReturnCorrectFrame() throws IOException {
+    public void getSpriteForAnimation_shouldReturnCorrectFrame() throws IOException {
         MonsterViewer viewer = new MonsterViewer(mock(SpriteLoader.class));
 
         Sprite s0 = mock(Sprite.class);
         Sprite s1 = mock(Sprite.class);
 
         List<Sprite> sprites = List.of(s0, s1);
-
-        // animationFPS = 6 → frameTime = 5
-        // tick = 5 → frameIndex = (5 / 5) % 2 = 1
         Sprite result = viewer.getSpriteForAnimation(sprites, 5);
 
         assertSame(s1, result);

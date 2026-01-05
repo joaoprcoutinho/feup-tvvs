@@ -9,10 +9,6 @@ import pt.feup.tvvs.soulknight.model.game.scene.Scene;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-/**
- * Mutation tests for the abstract Enemies class.
- * Uses concrete implementations (SwordMonster, PurpleMonster, GhostMonster) to test.
- */
 public class EnemiesMutationTests {
 
     private Scene mockScene;
@@ -26,59 +22,53 @@ public class EnemiesMutationTests {
         when(mockScene.collidesRight(any(), any())).thenReturn(false);
     }
 
-    // ========== Constructor Tests ==========
-
     @Test
-    void testConstructorSetsPosition() {
+    public void testConstructorSetsPosition() {
         SwordMonster enemy = new SwordMonster(100, 50, 10, mockScene, 20, new Position(8, 8), 'E');
         Position pos = enemy.getPosition();
         
-        assertEquals(100, pos.x(), "X position should be set correctly");
-        assertEquals(50, pos.y(), "Y position should be set correctly");
+        assertEquals(100, pos.x());
+        assertEquals(50, pos.y());
     }
 
     @Test
-    void testConstructorSetsScene() {
+    public void testConstructorSetsScene() {
         SwordMonster enemy = new SwordMonster(100, 50, 10, mockScene, 20, new Position(8, 8), 'E');
         
-        assertSame(mockScene, enemy.getScene(), "Scene should be set correctly");
+        assertSame(mockScene, enemy.getScene());
         assertNotNull(enemy.getScene());
     }
 
     @Test
-    void testConstructorSetsDamage() {
+    public void testConstructorSetsDamage() {
         SwordMonster enemy = new SwordMonster(100, 50, 10, mockScene, 25, new Position(8, 8), 'E');
         
-        assertEquals(25, enemy.getDamage(), "Damage should be set correctly");
+        assertEquals(25, enemy.getDamage());
         assertNotEquals(0, enemy.getDamage());
     }
 
     @Test
-    void testConstructorSetsSize() {
+    public void testConstructorSetsSize() {
         Position size = new Position(8, 8);
         SwordMonster enemy = new SwordMonster(100, 50, 10, mockScene, 20, size, 'E');
         
-        assertNotNull(enemy.getSize(), "Size should be set");
-        assertEquals(8, enemy.getSize().x(), "Size X should be 8");
-        assertEquals(8, enemy.getSize().y(), "Size Y should be 8");
+        assertNotNull(enemy.getSize());
+        assertEquals(8, enemy.getSize().x());
+        assertEquals(8, enemy.getSize().y());
     }
 
     @Test
-    void testConstructorSetsDefaultVelocity() {
-        // Enemies constructor sets velocity to (1.5, 1.5)
-        // But SwordMonster overrides to (1, 0)
+    public void testConstructorSetsDefaultVelocity() {
         SwordMonster sword = new SwordMonster(100, 50, 10, mockScene, 20, new Position(8, 8), 'E');
         Vector velocity = sword.getVelocity();
         
-        assertNotNull(velocity, "Velocity should be initialized");
-        assertEquals(1.0, velocity.x(), 0.01, "SwordMonster velocity X should be 1");
-        assertEquals(0.0, velocity.y(), 0.01, "SwordMonster velocity Y should be 0");
+        assertNotNull(velocity);
+        assertEquals(1.0, velocity.x(), 0.01);
+        assertEquals(0.0, velocity.y(), 0.01);
     }
 
-    // ========== Velocity Tests ==========
-
     @Test
-    void testSetVelocity() {
+    public void testSetVelocity() {
         SwordMonster enemy = new SwordMonster(100, 50, 10, mockScene, 20, new Position(8, 8), 'E');
         Vector newVelocity = new Vector(3.5, 2.0);
         
@@ -89,7 +79,7 @@ public class EnemiesMutationTests {
     }
 
     @Test
-    void testSetVelocityNegative() {
+    public void testSetVelocityNegative() {
         SwordMonster enemy = new SwordMonster(100, 50, 10, mockScene, 20, new Position(8, 8), 'E');
         Vector negativeVelocity = new Vector(-2.5, -1.5);
         
@@ -100,7 +90,7 @@ public class EnemiesMutationTests {
     }
 
     @Test
-    void testSetVelocityZero() {
+    public void testSetVelocityZero() {
         SwordMonster enemy = new SwordMonster(100, 50, 10, mockScene, 20, new Position(8, 8), 'E');
         Vector zeroVelocity = new Vector(0, 0);
         
@@ -111,7 +101,7 @@ public class EnemiesMutationTests {
     }
 
     @Test
-    void testGetVelocityReturnsSetValue() {
+    public void testGetVelocityReturnsSetValue() {
         SwordMonster enemy = new SwordMonster(100, 50, 10, mockScene, 20, new Position(8, 8), 'E');
         Vector velocity = new Vector(5.5, 3.3);
         enemy.setVelocity(velocity);
@@ -121,10 +111,8 @@ public class EnemiesMutationTests {
         assertEquals(velocity.y(), retrieved.y(), 0.01);
     }
 
-    // ========== Scene Tests ==========
-
     @Test
-    void testGetSceneReturnsCorrectScene() {
+    public void testGetSceneReturnsCorrectScene() {
         Scene scene1 = mock(Scene.class);
         Scene scene2 = mock(Scene.class);
         when(scene1.getWidth()).thenReturn(100);
@@ -138,10 +126,8 @@ public class EnemiesMutationTests {
         assertNotSame(enemy1.getScene(), enemy2.getScene());
     }
 
-    // ========== Damage Tests ==========
-
     @Test
-    void testGetDamageReturnsCorrectValue() {
+    public void testGetDamageReturnsCorrectValue() {
         SwordMonster enemy1 = new SwordMonster(0, 0, 10, mockScene, 10, new Position(8, 8), 'E');
         SwordMonster enemy2 = new SwordMonster(0, 0, 10, mockScene, 25, new Position(8, 8), 'E');
         SwordMonster enemy3 = new SwordMonster(0, 0, 10, mockScene, 50, new Position(8, 8), 'E');
@@ -152,21 +138,19 @@ public class EnemiesMutationTests {
     }
 
     @Test
-    void testDamageIsPositive() {
+    public void testDamageIsPositive() {
         SwordMonster enemy = new SwordMonster(0, 0, 10, mockScene, 20, new Position(8, 8), 'E');
-        assertTrue(enemy.getDamage() > 0, "Damage should be positive");
+        assertTrue(enemy.getDamage() > 0);
     }
 
     @Test
-    void testDamageNotZero() {
+    public void testDamageNotZero() {
         SwordMonster enemy = new SwordMonster(0, 0, 10, mockScene, 15, new Position(8, 8), 'E');
-        assertNotEquals(0, enemy.getDamage(), "Damage should not be zero");
+        assertNotEquals(0, enemy.getDamage());
     }
 
-    // ========== Size Tests ==========
-
     @Test
-    void testGetSizeReturnsCorrectDimensions() {
+    public void testGetSizeReturnsCorrectDimensions() {
         Position size = new Position(12, 14);
         SwordMonster enemy = new SwordMonster(0, 0, 10, mockScene, 20, size, 'E');
         
@@ -175,13 +159,13 @@ public class EnemiesMutationTests {
     }
 
     @Test
-    void testGetSizeNotNull() {
+    public void testGetSizeNotNull() {
         SwordMonster enemy = new SwordMonster(0, 0, 10, mockScene, 20, new Position(8, 8), 'E');
         assertNotNull(enemy.getSize());
     }
 
     @Test
-    void testDifferentEnemySizes() {
+    public void testDifferentEnemySizes() {
         Position smallSize = new Position(2, 2);
         Position mediumSize = new Position(8, 8);
         Position largeSize = new Position(16, 16);
@@ -194,23 +178,16 @@ public class EnemiesMutationTests {
         assertTrue(medium.getSize().x() < large.getSize().x());
     }
 
-    // ========== Default Velocity Value Tests ==========
-
     @Test
-    void testDefaultVelocityComponents() {
-        // The base Enemies class sets velocity to (1.5, 1.5)
-        // Subclasses may override this
+    public void testDefaultVelocityComponents() {
         PurpleMonster purple = new PurpleMonster(0, 0, 25, mockScene, 5, new Position(8, 9), 'l');
         
-        // PurpleMonster sets velocity to (-1.5, 0)
         assertEquals(-1.5, purple.getVelocity().x(), 0.01);
         assertEquals(0, purple.getVelocity().y(), 0.01);
     }
 
-    // ========== getChar Abstract Method Tests ==========
-
     @Test
-    void testGetCharReturnsSymbol() {
+    public void testGetCharReturnsSymbol() {
         SwordMonster sword = new SwordMonster(0, 0, 10, mockScene, 20, new Position(8, 8), 'E');
         PurpleMonster purple = new PurpleMonster(0, 0, 25, mockScene, 5, new Position(8, 9), 'l');
         GhostMonster ghost = new GhostMonster(0, 0, 1, mockScene, 10, new Position(2, 2), 'm');
@@ -221,46 +198,38 @@ public class EnemiesMutationTests {
     }
 
     @Test
-    void testGetCharCustomSymbol() {
+    public void testGetCharCustomSymbol() {
         SwordMonster enemy = new SwordMonster(0, 0, 10, mockScene, 20, new Position(8, 8), 'X');
         assertEquals('X', enemy.getChar());
     }
 
-    // ========== Position Boundary Tests ==========
-
     @Test
-    void testEnemyAtOrigin() {
+    public void testEnemyAtOrigin() {
         SwordMonster enemy = new SwordMonster(0, 0, 10, mockScene, 20, new Position(8, 8), 'E');
         assertEquals(0, enemy.getPosition().x());
         assertEquals(0, enemy.getPosition().y());
     }
 
     @Test
-    void testEnemyAtLargeCoordinates() {
+    public void testEnemyAtLargeCoordinates() {
         SwordMonster enemy = new SwordMonster(1000, 500, 10, mockScene, 20, new Position(8, 8), 'E');
         assertEquals(1000, enemy.getPosition().x());
         assertEquals(500, enemy.getPosition().y());
     }
 
     @Test
-    void testEnemyNegativeCoordinates() {
-        // Game might use negative coordinates for off-screen enemies
+    public void testEnemyNegativeCoordinates() {
         SwordMonster enemy = new SwordMonster(-10, -5, 10, mockScene, 20, new Position(8, 8), 'E');
         assertEquals(-10, enemy.getPosition().x());
         assertEquals(-5, enemy.getPosition().y());
     }
 
-    // ========== Multiple Instance Tests ==========
-
     @Test
-    void testMultipleEnemiesIndependent() {
+    public void testMultipleEnemiesIndependent() {
         SwordMonster enemy1 = new SwordMonster(10, 20, 10, mockScene, 15, new Position(8, 8), 'A');
         SwordMonster enemy2 = new SwordMonster(30, 40, 10, mockScene, 25, new Position(8, 8), 'B');
         
-        // Modify enemy1
         enemy1.setVelocity(new Vector(5, 5));
-        
-        // enemy2 should be unchanged
         assertNotEquals(enemy1.getVelocity().x(), enemy2.getVelocity().x());
         assertNotEquals(enemy1.getPosition().x(), enemy2.getPosition().x());
         assertNotEquals(enemy1.getDamage(), enemy2.getDamage());

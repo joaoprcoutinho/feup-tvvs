@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>ScreenViewer.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4f8186a5_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4f8186a5_1'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package pt.feup.tvvs.soulknight.view.states;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4f8186a5_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4f8186a5_2'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4f8186a5_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4f8186a5_3'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import pt.feup.tvvs.soulknight.gui.GUI;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4f8186a5_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4f8186a5_4'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4f8186a5_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4f8186a5_5'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.io.IOException;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4f8186a5_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4f8186a5_6'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4f8186a5_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4f8186a5_7'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>public abstract class ScreenViewer&#60;T&#62; {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4f8186a5_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4f8186a5_8'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private final T model;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4f8186a5_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4f8186a5_9'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4f8186a5_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4f8186a5_10'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    public ScreenViewer(T model) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4f8186a5_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4f8186a5_11'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.model = model;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4f8186a5_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4f8186a5_12'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4f8186a5_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4f8186a5_13'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4f8186a5_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4f8186a5_14'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public T getModel() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4f8186a5_15'/>
+15
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4f8186a5_15'>1</a>
+<span>
+
+1. getModel : replaced return value with null for pt/feup/tvvs/soulknight/view/states/ScreenViewer::getModel &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return model;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4f8186a5_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4f8186a5_16'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4f8186a5_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4f8186a5_17'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4f8186a5_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4f8186a5_18'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public abstract void draw(GUI gui, long time) throws IOException;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4f8186a5_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4f8186a5_19'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@4f8186a5_15'>15</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@4f8186a5_15'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getModel<br/><b>Killed by : </b>pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests]/[method:testOptionPositionMultiplicationWithMultipleOptions()]</span></span> replaced return value with null for pt/feup/tvvs/soulknight/view/states/ScreenViewer::getModel &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+
+<li class='mutator'>CONDITIONALS_BOUNDARY</li>
+
+<li class='mutator'>EMPTY_RETURNS</li>
+
+<li class='mutator'>FALSE_RETURNS</li>
+
+<li class='mutator'>INCREMENTS</li>
+
+<li class='mutator'>INVERT_NEGS</li>
+
+<li class='mutator'>MATH</li>
+
+<li class='mutator'>NEGATE_CONDITIONALS</li>
+
+<li class='mutator'>NULL_RETURNS</li>
+
+<li class='mutator'>PRIMITIVE_RETURNS</li>
+
+<li class='mutator'>TRUE_RETURNS</li>
+
+<li class='mutator'>VOID_METHOD_CALLS</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests]/[method:testOptionPositionMultiplicationWithMultipleOptions()] (109 ms)</li><li>pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests]/[method:testOptionAnimationTimingConditionals()] (111 ms)</li><li>pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests]/[method:testDrawMessagesPositionAddition()] (110 ms)</li><li>pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests]/[method:testDrawRetroDynamicBackgroundColorfulGradient()] (116 ms)</li><li>pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests]/[method:testDrawMessagesSpacingMultiplication()] (109 ms)</li><li>pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests]/[method:testParticlePositionMultiplication()] (115 ms)</li><li>pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests]/[method:testSettingsMenuDrawsColorfulBackground()] (118 ms)</li><li>pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests]/[method:testOptionNotVisibleDuringBlinkOff()] (115 ms)</li><li>pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests]/[method:testOptionStartTimeCalculationAtBoundary()] (117 ms)</li><li>pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests]/[method:testDrawRetroDynamicBackgroundGrayGradient()] (123 ms)</li><li>pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests]/[method:testOptionAnimationComplete()] (122 ms)</li><li>pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests]/[method:testDrawPixelCalledForBackground()] (121 ms)</li><li>pt.feup.tvvs.soulknight.view.states.MenuViewerWhiteBoxTest.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.MenuViewerWhiteBoxTest]/[method:testDrawAfterAnimation()] (128 ms)</li><li>pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests]/[method:testUnselectedOptionAlwaysDrawn()] (126 ms)</li><li>pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests]/[method:testBackgroundSqrtInDistance()] (127 ms)</li><li>pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests]/[method:testDrawCallsAllMethods()] (120 ms)</li><li>pt.feup.tvvs.soulknight.view.states.MenuViewerWhiteBoxTest.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.MenuViewerWhiteBoxTest]/[method:testDrawAfterAnimationisSelected80isVisible()] (131 ms)</li><li>pt.feup.tvvs.soulknight.view.states.MenuViewerWhiteBoxTest.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.MenuViewerWhiteBoxTest]/[method:testDrawSettings()] (136 ms)</li><li>pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests]/[method:testDrawNamesPositionAddition()] (130 ms)</li><li>pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests]/[method:testBorderTopBottom()] (131 ms)</li><li>pt.feup.tvvs.soulknight.view.states.MenuViewerWhiteBoxTest.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.MenuViewerWhiteBoxTest]/[method:testDrawAfterAnimationisSelected()] (134 ms)</li><li>pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests]/[method:testBackgroundLoopPixelCount()] (136 ms)</li><li>pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests]/[method:testDrawNamesSpacingMultiplication()] (129 ms)</li><li>pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests]/[method:testBorderDrawnAtCorrectPositions()] (134 ms)</li><li>pt.feup.tvvs.soulknight.view.states.MenuViewerWhiteBoxTest.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.MenuViewerWhiteBoxTest]/[method:testDrawAfterAnimationisSelected80()] (136 ms)</li><li>pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests]/[method:draw_shouldDrawLogoParticlesOptionsAndBackground()] (136 ms)</li><li>pt.feup.tvvs.soulknight.view.states.MenuViewerWhiteBoxTest.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.MenuViewerWhiteBoxTest]/[method:testDraw()] (139 ms)</li><li>pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests]/[method:testBorderLoopBoundaries()] (136 ms)</li><li>pt.feup.tvvs.soulknight.view.states.MenuViewerWhiteBoxTest.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.MenuViewerWhiteBoxTest]/[method:testDrawDuringAnimation()] (139 ms)</li><li>pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests]/[method:testBackgroundGreenCalculation()] (137 ms)</li><li>pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests]/[method:testBackgroundDistanceSubtraction()] (137 ms)</li><li>pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests]/[method:testBackgroundGrayCalculationAddition()] (139 ms)</li><li>pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests]/[method:testBackgroundPowCalculation()] (139 ms)</li><li>pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests]/[method:testBackgroundBlueCalculation()] (140 ms)</li><li>pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests]/[method:testBorderLeftRight()] (142 ms)</li><li>pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests]/[method:testBackgroundDistanceCalculation()] (143 ms)</li><li>pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests]/[method:testBackgroundRedCalculation()] (148 ms)</li><li>pt.feup.tvvs.soulknight.view.states.CreditsViewerWhiteBoxTest.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.CreditsViewerWhiteBoxTest]/[method:testDraw()] (151 ms)</li><li>pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests]/[method:testDrawParticlesCalled()] (154 ms)</li><li>pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests]/[method:testDrawPixelCalledForBorder()] (154 ms)</li><li>pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests]/[method:testBackgroundLoopBoundaries()] (162 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testDrawCallsDrawElementsForMonsters()] (152 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testDrawCallsFlushMethod()] (161 ms)</li><li>pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests]/[method:testKnightDrawn()] (162 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testDynamicElementsUseActualTime()] (160 ms)</li><li>pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests]/[method:testNullElementsSkipped()] (161 ms)</li><li>pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests]/[method:testTilesDrawn()] (163 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testDrawCallsDrawElementsForParticles()] (164 ms)</li><li>pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests]/[method:testParticleElementsDrawn()] (165 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testDrawElementCallsViewerDraw()] (164 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testDrawElementsForSpikesIsCalled()] (165 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testDrawCallsDrawElementsForDashParticles()] (166 ms)</li><li>pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests]/[method:testPixelCount()] (166 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testDrawCallsDrawElementsForJumpParticles()] (166 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testAfterEffectFactorSubtracts20()] (168 ms)</li><li>pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests]/[method:testAfterEffectNotActiveAtBoundary()] (168 ms)</li><li>pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests]/[method:testAfterEffectFactorAtEnd()] (169 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testDrawCallsDrawElementsForOrbs()] (170 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testDrawElementsCallsForEachOnList()] (168 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testGradientLoopIteratesFullWidth()] (170 ms)</li><li>pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests]/[method:testPiDividedByThreeInGreen()] (171 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testDrawCallsDrawElementsForDoubleJumpParticles()] (172 ms)</li><li>pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests]/[method:testAfterEffectFactorAtStart()] (171 ms)</li><li>pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests]/[method:testTwoPiDividedByThreeInBlue()] (174 ms)</li><li>pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests]/[method:testAfterEffectFactorAtMiddle()] (174 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testAfterEffectFactorCalculation()] (174 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testDrawCallsDynamicGradientBackground()] (175 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testDrawCallsDrawElementsForTrees()] (175 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testAfterEffectFactorDividesBy40()] (175 ms)</li><li>pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests]/[method:testAfterEffectActiveAtEnd()] (176 ms)</li><li>pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests]/[method:testBaseRed2WithPiOffset()] (178 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testDrawCallsDrawElementsForRocks()] (177 ms)</li><li>pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests]/[method:testFlashActiveConditionAtBoundary()] (177 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testNormalGradientAt799()] (178 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testAllStaticElementsAreDrawnWithTimeZero()] (175 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testNormalGradientAt800()] (180 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testNormalGradientTimePeriod()] (178 ms)</li><li>pt.feup.tvvs.soulknight.view.states.GameViewerWhiteBoxTest.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.GameViewerWhiteBoxTest]/[method:testDrawFlashActive()] (179 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testFlashBoundaryExactly20()] (179 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testBaseColorCalculationsWithSinFunction()] (181 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testFlashBoundaryExactly19()] (182 ms)</li><li>pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests]/[method:testInterpolationX()] (181 ms)</li><li>pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests]/[method:testNormalGradientBackground()] (181 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testChangeRate004IsMultiplied()] (183 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testPositionConversionToInt()] (182 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testDrawElementsForOrbsIsCalled()] (182 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testDrawCallsDrawElementsForTiles()] (184 ms)</li><li>pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests]/[method:testAfterEffectActiveAtStart()] (184 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testDrawCallsDrawElementsForRespawnParticles()] (184 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testFlashDrawsWhitePixel()] (186 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testWidthLoopIncrement()] (184 ms)</li><li>pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests]/[method:testColorReduction()] (184 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testDrawPixelCalledForEveryPosition()] (186 ms)</li><li>pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests]/[method:draw_shouldRenderAllElementsAndFlush()] (186 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testBaseColor2UsesAdditionalPiOffset()] (187 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testSinFunctionWithPiOffset()] (186 ms)</li><li>pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests]/[method:testTimeModuloOperation()] (186 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testColorBlendingUsesOneMinusInterpolation()] (187 ms)</li><li>pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests]/[method:testAfterEffectBlendCalculation()] (187 ms)</li><li>pt.feup.tvvs.soulknight.view.states.GameViewerWhiteBoxTest.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.GameViewerWhiteBoxTest]/[method:testDraw()] (189 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testWidthConditionLessThan240()] (190 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testHeightConditionLessThan120()] (190 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testDrawCallsPlayerStatsViewer()] (191 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testInterpolationXCalculationAtMiddle()] (192 ms)</li><li>pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests]/[method:testFlashNotActiveAtBoundary()] (190 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testGradientLoopIteratesFullHeight()] (191 ms)</li><li>pt.feup.tvvs.soulknight.view.states.GameViewerWhiteBoxTest.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.GameViewerWhiteBoxTest]/[method:testDrawAfterEffectActive()] (191 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testAfterEffectActiveTimePeriod()] (191 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testInterpolationAtZeroWidth()] (193 ms)</li><li>pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests]/[method:testLoopBoundaries()] (192 ms)</li><li>pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests]/[method:testTimeModuloOperation819()] (194 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testFlashActiveTimePeriod()] (195 ms)</li><li>pt.feup.tvvs.soulknight.view.states.GameViewerWhiteBoxTest.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.GameViewerWhiteBoxTest]/[method:testDrawWithNull()] (195 ms)</li><li>pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests]/[method:testFlashCycleRepeat()] (196 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testSubtractionInAfterEffectCalculation()] (202 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testInterpolationAtMaxWidth()] (202 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testMultiplicationInGrayscaleReduction()] (202 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testDrawHandlesIOExceptionGracefully()] (202 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testPiOffsetsAreAdded()] (205 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testInterpolationDividesByHeightMinus1()] (207 ms)</li><li>pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests]/[method:testSelectedOptionBlinkingAfter80()] (227 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testBaseColorCalculationsWithPositiveSin()] (211 ms)</li><li>pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests]/[method:testAnimationOffsetCalculation()] (231 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testHeightLoopIncrement()] (217 ms)</li><li>pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests]/[method:testColorInterpolation()] (222 ms)</li><li>pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests]/[method:testBackgroundSinMultiplication()] (240 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testBaseColor64IsAddedNotSubtracted()] (229 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testPlayerStatsViewerDrawsPlayerInfo()] (230 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testInterpolationDividesByWidthMinus1()] (235 ms)</li><li>pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests]/[method:testTimeBasedAnimation()] (262 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testGradientInterpolationCalculations()] (246 ms)</li><li>pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.CreditsViewerMutationTests]/[method:testDifferentTimesProduceDifferentColors()] (272 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testDrawElementsForRocksIsCalled()] (256 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testGrayscaleReductionInNormalGradient()] (261 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testDrawCallsDrawElementForKnight()] (263 ms)</li><li>pt.feup.tvvs.soulknight.view.states.MenuViewerWhiteBoxTest.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.MenuViewerWhiteBoxTest]/[method:testDrawFirstOptionStartTime()] (312 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testGradientMathematicalOperations()] (310 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testBoundaryConditionsForFlash()] (321 ms)</li><li>pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests]/[method:testInGameBlinkingTiming()] (339 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testBoundaryConditionsForAfterEffect()] (326 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testColorInterpolationWithDifferentTimes()] (350 ms)</li><li>pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests]/[method:testChangeRateMultiplication()] (352 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testAfterEffectFactorUsesCorrectSubtraction()] (355 ms)</li><li>pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests]/[method:testBaseRed1AtTimeZero()] (367 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testMultipleFlashCycles()] (377 ms)</li><li>pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.GameViewerMutationTests]/[method:testMonsterDrawn()] (382 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testAllParticleTypesAreDrawn()] (406 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testDrawElementsForDashParticlesIsCalled()] (423 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testDrawCallsClsMethod()] (427 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testModulusOperationInFlashDetection()] (426 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testAfterEffectBoundaryExactly59()] (464 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testInterpolationAtZeroHeight()] (480 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testDrawCallsDrawElementsForSpikes()] (487 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testAfterEffectBoundaryExactly60()] (489 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testInterpolationAtMaxHeight()] (498 ms)</li><li>pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.states.MenuViewerMutationTests]/[method:testBlinkingVisibilityToggle()] (521 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testDrawElementWithNullElement()] (508 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testDrawElementsForRespawnParticlesIsCalled()] (509 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testDrawElementsForTreesIsCalled()] (510 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testPlayerStatsViewerIsCalledAndDrawsText()] (524 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testInterpolationYCalculationAtMiddle()] (528 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testAfterEffectBlending()] (530 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testColorInterpolationUsesCorrectFormula()] (538 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testDrawElementsForJumpParticlesIsCalled()] (547 ms)</li><li>pt.feup.tvvs.soulknight.model.game.scene.SceneMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.model.game.scene.SceneMutationTests]/[method:testDrawNamesSpacingAndBoundaries()] (571 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testCoefficient63IsMultipliedNotDivided()] (568 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testAfterEffectBlendingFormula()] (587 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testDrawPixelsCalledInAllModes()] (598 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testNormalGradientCondition()] (641 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testModuloOperationCycles()] (666 ms)</li><li>pt.feup.tvvs.soulknight.model.game.scene.SceneMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.model.game.scene.SceneMutationTests]/[method:testDrawMessagesSpacingAndBoundaries()] (719 ms)</li><li>pt.feup.tvvs.soulknight.model.game.scene.SceneMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.model.game.scene.SceneMutationTests]/[method:testDraw_CallsAllDrawMethods()] (860 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testFlashActiveConditionLessThan20()] (945 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testColorComponentsStayInValidRange()] (1023 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testGrayscaleReductionMultipliesBy06()] (1144 ms)</li><li>pt.feup.tvvs.soulknight.state.GameStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.GameStateMutationTests]/[method:testAfterEffectConditionRange()] (1511 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='https://pitest.org'>PIT</a> 1.20.3
+
+</body>
+</html>

@@ -50,26 +50,21 @@ public class SceneControllerMutationTests {
         controller = new SceneController(scene, playerController, particleController, enemieController);
     }
 
-    // Test 3 * (getModel().getSceneID() + 1) multiplication
-    // Kills mutation: "Replaced integer multiplication with division"
     @Test
-    void testOrbRequirementMultiplication() throws IOException {
+    public void testOrbRequirementMultiplication() throws IOException {
         when(scene.isAtEndPosition()).thenReturn(true);
         when(scene.getSceneID()).thenReturn(0);
-        // 3 * (0 + 1) = 3 orbs needed for level 0
         when(knight.getOrbs()).thenReturn(3);
 
         controller.move(game, GUI.ACTION.UP, 0);
 
-        // Should transition to next level
         verify(game).setState(any());
     }
 
     @Test
-    void testOrbRequirementLevel1() throws IOException {
+    public void testOrbRequirementLevel1() throws IOException {
         when(scene.isAtEndPosition()).thenReturn(true);
         when(scene.getSceneID()).thenReturn(1);
-        // 3 * (1 + 1) = 6 orbs needed for level 1
         when(knight.getOrbs()).thenReturn(6);
 
         controller.move(game, GUI.ACTION.UP, 0);
@@ -77,10 +72,8 @@ public class SceneControllerMutationTests {
         verify(game).setState(any());
     }
 
-    // Test collectOrbs is called
-    // Kills mutation: "removed call to Scene::collectOrbs"
     @Test
-    void testCollectOrbsCalled() throws IOException {
+    public void testCollectOrbsCalled() throws IOException {
         Collectables[][] orbs = new Collectables[1][1];
         when(scene.getOrbs()).thenReturn(orbs);
 
@@ -89,96 +82,72 @@ public class SceneControllerMutationTests {
         verify(scene).collectOrbs(orbs);
     }
 
-    // Test collideMonsters is called
-    // Kills mutation: "removed call to Scene::collideMonsters"
     @Test
-    void testCollideMonstersCalled() throws IOException {
+    public void testCollideMonstersCalled() throws IOException {
         Enemies enemy = mock(Enemies.class);
         List<Enemies> monsters = List.of(enemy);
         when(scene.getMonsters()).thenReturn(monsters);
 
         controller.move(game, GUI.ACTION.UP, 0);
-
         verify(scene).collideMonsters(monsters);
     }
 
-    // Test playerController.move is called
     @Test
-    void testPlayerControllerMoveCalled() throws IOException {
+    public void testPlayerControllerMoveCalled() throws IOException {
         controller.move(game, GUI.ACTION.UP, 100);
-
         verify(playerController).move(game, GUI.ACTION.UP, 100);
     }
 
-    // Test particleController.move is called
     @Test
-    void testParticleControllerMoveCalled() throws IOException {
+    public void testParticleControllerMoveCalled() throws IOException {
         controller.move(game, GUI.ACTION.UP, 100);
-
         verify(particleController).move(game, GUI.ACTION.UP, 100);
     }
 
-    // Test enemieController.move is called
     @Test
-    void testEnemieControllerMoveCalled() throws IOException {
+    public void testEnemieControllerMoveCalled() throws IOException {
         controller.move(game, GUI.ACTION.UP, 100);
-
         verify(enemieController).move(game, GUI.ACTION.UP, 100);
     }
 
-    // Test QUIT action changes state to MainMenuState
     @Test
-    void testQuitActionChangesState() throws IOException {
+    public void testQuitActionChangesState() throws IOException {
         controller.move(game, GUI.ACTION.QUIT, 0);
-
         verify(game).setState(any());
         verify(playerController, never()).move(any(), any(), anyLong());
     }
 
-    // Test transition to credits when last level completed
     @Test
-    void testTransitionToCreditsOnLastLevel() throws IOException {
+    public void testTransitionToCreditsOnLastLevel() throws IOException {
         when(scene.isAtEndPosition()).thenReturn(true);
-        when(scene.getSceneID()).thenReturn(2); // Last level (0-indexed)
+        when(scene.getSceneID()).thenReturn(2);
         when(game.getNumberOfLevels()).thenReturn(3);
-        // 3 * (2 + 1) = 9 orbs needed
         when(knight.getOrbs()).thenReturn(9);
-
         controller.move(game, GUI.ACTION.UP, 0);
-
         verify(game).setState(any());
     }
 
-    // Test not at end position - no level transition
     @Test
-    void testNotAtEndPosition() throws IOException {
+    public void testNotAtEndPosition() throws IOException {
         when(scene.isAtEndPosition()).thenReturn(false);
         when(knight.getOrbs()).thenReturn(3);
-
         controller.move(game, GUI.ACTION.UP, 0);
-
-        // Should process normal game logic
         verify(scene).collectOrbs(any());
         verify(scene).collideMonsters(any());
     }
 
-    // Test insufficient orbs - no level transition
     @Test
-    void testInsufficientOrbs() throws IOException {
+    public void testInsufficientOrbs() throws IOException {
         when(scene.isAtEndPosition()).thenReturn(true);
         when(scene.getSceneID()).thenReturn(0);
         when(knight.getOrbs()).thenReturn(2); // Need 3
-
         controller.move(game, GUI.ACTION.UP, 0);
-
-        // Should process normal game logic
         verify(scene).collectOrbs(any());
         verify(scene).collideMonsters(any());
     }
 
-    // Test getModel returns scene
     @Test
-    void testGetModelReturnsScene() {
+    public void testGetModelReturnsScene() {
         assertEquals(scene, controller.getModel());
     }
 }

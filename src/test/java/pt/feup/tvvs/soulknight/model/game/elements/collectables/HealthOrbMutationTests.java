@@ -18,60 +18,60 @@ public class HealthOrbMutationTests {
     }
 
     @Test
-    void constructor_shouldSetHealthValue() {
+    public void constructor_shouldSetHealthValue() {
         assertEquals(25, healthOrb.getHealth());
     }
 
     @Test
-    void constructor_shouldSetSymbol() {
+    public void constructor_shouldSetSymbol() {
         assertEquals('h', healthOrb.getChar());
     }
 
     @Test
-    void setHealth_shouldUpdateHealthValue() {
+    public void setHealth_shouldUpdateHealthValue() {
         healthOrb.setHealth(50);
         assertEquals(50, healthOrb.getHealth());
     }
 
     @Test
-    void setHealth_shouldHandleZero() {
+    public void setHealth_shouldHandleZero() {
         healthOrb.setHealth(0);
         assertEquals(0, healthOrb.getHealth());
     }
 
     @Test
-    void setHealth_shouldHandleNegative() {
+    public void setHealth_shouldHandleNegative() {
         healthOrb.setHealth(-10);
         assertEquals(-10, healthOrb.getHealth());
     }
 
     @Test
-    void benefit_shouldAddHealthToKnight() {
+    public void benefit_shouldAddHealthToKnight() {
         when(knight.getHP()).thenReturn(50);
         healthOrb.benefit(knight);
-        verify(knight).setHP(75); // 50 + 25
+        verify(knight).setHP(75);
     }
 
     @Test
-    void benefit_shouldAddCorrectAmountWhenHealthChanged() {
+    public void benefit_shouldAddCorrectAmountWhenHealthChanged() {
         healthOrb.setHealth(30);
         when(knight.getHP()).thenReturn(40);
         healthOrb.benefit(knight);
-        verify(knight).setHP(70); // 40 + 30
+        verify(knight).setHP(70);
     }
 
     @Test
-    void benefit_shouldHandleZeroHealth() {
+    public void benefit_shouldHandleZeroHealth() {
         healthOrb.setHealth(0);
         when(knight.getHP()).thenReturn(50);
         healthOrb.benefit(knight);
-        verify(knight).setHP(50); // 50 + 0
+        verify(knight).setHP(50);
     }
 
     @Test
-    void benefit_shouldNotSubtractHealth() {
+    public void benefit_shouldNotSubtractHealth() {
         when(knight.getHP()).thenReturn(100);
         healthOrb.benefit(knight);
-        verify(knight).setHP(125); // Should add, not subtract
+        verify(knight).setHP(125);
     }
 }

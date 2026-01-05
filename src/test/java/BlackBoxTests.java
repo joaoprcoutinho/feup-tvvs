@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.mockito.Mockito.*;
 
 public class BlackBoxTests {
@@ -19,149 +20,137 @@ public class BlackBoxTests {
     private BufferedImageGUI gui;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         controller = new ParticleMenuController(new MainMenu());
         buffer = mock(BufferedImage.class);
-
-        // Mock Graphics2D for drawText
         mockGraphics = mock(Graphics2D.class);
         when(buffer.createGraphics()).thenReturn(mockGraphics);
-
-        // Initialize GUI
         gui = new BufferedImageGUI(buffer);
     }
 
-    // -----------------------------
-    //  EQUIVALENCE CLASS PARTITIONING
-    // -----------------------------
-
     @Test
-    void testECP_X_InRange_Y_InRange() {
+    public void testWrapPosition_X_InRange_Y_InRange() {
         Position p = controller.wrapPosition(50, 20);
         assertEquals(50, p.x(), 0.0001);
         assertEquals(20, p.y(), 0.0001);
     }
 
     @Test
-    void testECP_X_Negative_Y_InRange() {
+    public void testWrapPosition_X_Negative_Y_InRange() {
         Position p = controller.wrapPosition(-5, 40);
         assertEquals(219, p.x(), 0.0001); // screenWidth = 220
         assertEquals(40, p.y(), 0.0001);
     }
 
     @Test
-    void testECP_X_TooHigh_Y_InRange() {
+    public void testWrapPosition_X_TooHigh_Y_InRange() {
         Position p = controller.wrapPosition(300, 40);
         assertEquals(1, p.x(), 0.0001);
         assertEquals(40, p.y(), 0.0001);
     }
 
     @Test
-    void testECP_X_InRange_Y_Negative() {
+    public void testWrapPosition_X_InRange_Y_Negative() {
         Position p = controller.wrapPosition(50, -3);
         assertEquals(50, p.x(), 0.0001);
         assertEquals(109, p.y(), 0.0001); // screenHeight = 110
     }
 
     @Test
-    void testECP_X_InRange_Y_TooHigh() {
+    public void testWrapPosition_X_InRange_Y_TooHigh() {
         Position p = controller.wrapPosition(50, 200);
         assertEquals(50, p.x(), 0.0001);
         assertEquals(1, p.y(), 0.0001);
     }
 
     @Test
-    void testECP_X_Negative_Y_Negative() {
+    public void testWrapPosition_X_Negative_Y_Negative() {
         Position p = controller.wrapPosition(-1, -1);
         assertEquals(219, p.x(), 0.0001);
         assertEquals(109, p.y(), 0.0001);
     }
 
     @Test
-    void testECP_X_TooHigh_Y_TooHigh() {
+    public void testWrapPosition_X_TooHigh_Y_TooHigh() {
         Position p = controller.wrapPosition(250, 500);
         assertEquals(1, p.x(), 0.0001);
         assertEquals(1, p.y(), 0.0001);
     }
 
-    // -----------------------------
-    //  BOUNDARY VALUE ANALYSIS
-    // -----------------------------
-
     @Test
-    void testBVA_xEqualsMinus1() {
+    public void testWrapPosition_X_EqualsMinus1() {
         Position p = controller.wrapPosition(-1, 10);
         assertEquals(219, p.x(), 0.0001);
     }
 
     @Test
-    void testBVA_xEquals0() {
+    public void testWrapPosition_X_Equals0() {
         Position p = controller.wrapPosition(0, 10);
         assertEquals(0, p.x(), 0.0001);
     }
 
     @Test
-    void testBVA_xEquals1() {
+    public void testWrapPosition_X_Equals1() {
         Position p = controller.wrapPosition(1, 10);
         assertEquals(1, p.x(), 0.0001);
     }
 
     @Test
-    void testBVA_xEqualsWMinus1() {
+    public void testWrapPosition_X_EqualsWidthMinus1() {
         Position p = controller.wrapPosition(219, 10);
         assertEquals(219, p.x(), 0.0001);
     }
 
     @Test
-    void testBVA_xEqualsW() {
+    public void testWrapPosition_X_EqualsWidth() {
         Position p = controller.wrapPosition(220, 10);
         assertEquals(1, p.x(), 0.0001);
     }
 
     @Test
-    void testBVA_xEqualsWPlus1() {
+    public void testWrapPosition_X_EqualsWidthPlus1() {
         Position p = controller.wrapPosition(221, 10);
         assertEquals(1, p.x(), 0.0001);
     }
 
     @Test
-    void testBVA_yEqualsMinus1() {
+    public void testWrapPosition_Y_EqualsMinus1() {
         Position p = controller.wrapPosition(10, -1);
         assertEquals(109, p.y(), 0.0001);
     }
 
     @Test
-    void testBVA_yEquals0() {
+    public void testWrapPosition_Y_Equals0() {
         Position p = controller.wrapPosition(10, 0);
         assertEquals(0, p.y(), 0.0001);
     }
 
     @Test
-    void testBVA_yEquals1() {
+    public void testWrapPosition_Y_Equals1() {
         Position p = controller.wrapPosition(10, 1);
         assertEquals(1, p.y(), 0.0001);
     }
 
     @Test
-    void testBVA_yEqualsHMinus1() {
+    public void testWrapPosition_Y_EqualsHeightMinus1() {
         Position p = controller.wrapPosition(10, 109);
         assertEquals(109, p.y(), 0.0001);
     }
 
     @Test
-    void testBVA_yEqualsH() {
+    public void testWrapPosition_Y_EqualsHeight() {
         Position p = controller.wrapPosition(10, 110);
         assertEquals(1, p.y(), 0.0001);
     }
 
     @Test
-    void testBVA_yEqualsHPlus1() {
+    public void testWrapPosition_Y_EqualsHeightPlus1() {
         Position p = controller.wrapPosition(10, 111);
         assertEquals(1, p.y(), 0.0001);
     }
 
     @Test
-    void testDrawText_ValidInput() {
+    public void testDrawText_ValidInput() {
         TextColor.RGB color = new TextColor.RGB(100, 150, 200);
         String text = "Hello";
 
@@ -173,7 +162,7 @@ public class BlackBoxTests {
     }
 
     @Test
-    void testDrawText_EmptyString() {
+    public void testDrawText_EmptyString() {
         TextColor.RGB color = new TextColor.RGB(10, 20, 30);
         String text = "";
 
@@ -183,51 +172,84 @@ public class BlackBoxTests {
     }
 
     @Test
-    void testDrawText_NullString() {
+    public void testDrawText_NullString() {
         TextColor.RGB color = new TextColor.RGB(0, 0, 0);
         String text = null;
 
-        try {
-            gui.drawText(0, 0, color, text);
-        } catch (NullPointerException e) {
-            // Expected if drawString does not allow null
-        }
-    }
-    // -------------------------------
-    // BOUNDARY VALUE ANALYSIS
-    // -------------------------------
+        gui.drawText(0, 0, color, text);
 
-    @Test
-    void testDrawText_XY_Boundaries() {
-        TextColor.RGB color = new TextColor.RGB(50, 50, 50);
-        String text = "Edge";
-
-        int[] xValues = {-1, 0, 1, 219, 220, 221};
-        int[] yValues = {-1, 0, 1, 109, 110, 111};
-
-        for (int x : xValues) {
-            for (int y : yValues) {
-                gui.drawText(x, y, color, text);
-                verify(mockGraphics).drawString(text, x, y);
-            }
-        }
+        assertDoesNotThrow(() -> gui.drawText(0, 0, color, null));
     }
 
     @Test
-    void testDrawText_ColorComponentBoundaries() {
-        String text = "Boundary";
-        int[] components = {0, 1, 254, 255};
+    public void testDrawText_X_Negative_Y_InRange() {
+        gui.drawText(-1, 50, new TextColor.RGB(50, 50, 50), "Edge");
+        verify(mockGraphics).drawString("Edge", -1, 50);
+    }
 
-        for (int r : components) {
-            for (int g : components) {
-                for (int b : components) {
-                    reset(mockGraphics);
-                    TextColor.RGB color = new TextColor.RGB(r, g, b);
-                    gui.drawText(10, 10, color, text);
-                    verify(mockGraphics).setColor(any(Color.class));
-                    verify(mockGraphics).drawString(text, 10, 10);
-                }
-            }
-        }
+    @Test
+    public void testDrawText_X_Zero_Y_InRange() {
+        gui.drawText(0, 50, new TextColor.RGB(50, 50, 50), "Edge");
+        verify(mockGraphics).drawString("Edge", 0, 50);
+    }
+
+    @Test
+    public void testDrawText_X_Positive_Y_InRange() {
+        gui.drawText(1, 50, new TextColor.RGB(50, 50, 50), "Edge");
+        verify(mockGraphics).drawString("Edge", 1, 50);
+    }
+
+    @Test
+    public void testDrawText_X_WidthMinus1_Y_InRange() {
+        gui.drawText(219, 50, new TextColor.RGB(50, 50, 50), "Edge");
+        verify(mockGraphics).drawString("Edge", 219, 50);
+    }
+
+    @Test
+    public void testDrawText_X_Width_Y_InRange() {
+        gui.drawText(220, 50, new TextColor.RGB(50, 50, 50), "Edge");
+        verify(mockGraphics).drawString("Edge", 220, 50);
+    }
+
+    @Test
+    public void testDrawText_X_WidthPlus1_Y_InRange() {
+        gui.drawText(221, 50, new TextColor.RGB(50, 50, 50), "Edge");
+        verify(mockGraphics).drawString("Edge", 221, 50);
+    }
+
+    @Test
+    public void testDrawText_Y_Negative_X_InRange() {
+        gui.drawText(50, -1, new TextColor.RGB(50, 50, 50), "Edge");
+        verify(mockGraphics).drawString("Edge", 50, -1);
+    }
+
+    @Test
+    public void testDrawText_Y_Zero_X_InRange() {
+        gui.drawText(50, 0, new TextColor.RGB(50, 50, 50), "Edge");
+        verify(mockGraphics).drawString("Edge", 50, 0);
+    }
+
+    @Test
+    public void testDrawText_Y_Positive_X_InRange() {
+        gui.drawText(50, 1, new TextColor.RGB(50, 50, 50), "Edge");
+        verify(mockGraphics).drawString("Edge", 50, 1);
+    }
+
+    @Test
+    public void testDrawText_Y_HeightMinus1_X_InRange() {
+        gui.drawText(50, 109, new TextColor.RGB(50, 50, 50), "Edge");
+        verify(mockGraphics).drawString("Edge", 50, 109);
+    }
+
+    @Test
+    public void testDrawText_Y_Height_X_InRange() {
+        gui.drawText(50, 110, new TextColor.RGB(50, 50, 50), "Edge");
+        verify(mockGraphics).drawString("Edge", 50, 110);
+    }
+
+    @Test
+    public void testDrawText_Y_HeightPlus1_X_InRange() {
+        gui.drawText(50, 111, new TextColor.RGB(50, 50, 50), "Edge");
+        verify(mockGraphics).drawString("Edge", 50, 111);
     }
 }

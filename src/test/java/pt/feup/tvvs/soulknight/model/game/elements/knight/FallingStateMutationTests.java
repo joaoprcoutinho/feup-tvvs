@@ -25,32 +25,25 @@ public class FallingStateMutationTests {
     void setUp() {
         MockitoAnnotations.openMocks(this);
 
-        // Create knight with default values
         knight = new Knight(10, 20, 50, 1.0f, 100);
         knight.setScene(mockScene);
-
-        // Set initial falling velocity
         knight.setVelocity(new Vector(0, 2.0));
-
-        // Reset jump counter for double jump tests
         knight.setJumpCounter(0);
 
         fallingState = new FallingState(knight);
     }
 
-    /** Kills mutants in moveKnightLeft/moveKnightRight acceleration direction (lines 25, 33 in KnightState) */
     @Test
-    void moveLeftAndRight_AppliesCorrectAccelerationDirection() {
+    public void moveLeftAndRight_AppliesCorrectAccelerationDirection() {
         Vector left = fallingState.moveKnightLeft();
-        assertTrue(left.x() < 0, "Moving left should decrease X velocity");
+        assertTrue(left.x() < 0);
 
         Vector right = fallingState.moveKnightRight();
-        assertTrue(right.x() > 0, "Moving right should increase X velocity");
+        assertTrue(right.x() > 0);
     }
 
-    /** Kills conditional boundary mutant in limitVelocity: if (Math.abs(vx) < 0.2) (line 43) */
     @Test
-    void limitVelocity_SnapsSmallXVelocityToZero() {
+    public void limitVelocity_SnapsSmallXVelocityToZero() {
         Vector input = new Vector(0.19, 3.0);
         Vector limited = fallingState.limitVelocity(input);
         assertEquals(0.0, limited.x(), 0.0001);
@@ -60,25 +53,22 @@ public class FallingStateMutationTests {
         assertEquals(0.21, limited.x(), 0.0001);
     }
 
-    /** Kills multiple mutants in applyCollisions loops (boundaries, additions, negations) */
     @Test
-    void applyCollisions_ResolvesAllDirectionsProperly() {
-        // Mock collisions in all directions
+    public void applyCollisions_ResolvesAllDirectionsProperly() {
         when(mockScene.collidesDown(any(), any())).thenReturn(true);
         when(mockScene.collidesUp(any(), any())).thenReturn(true);
         when(mockScene.collidesLeft(any(), any())).thenReturn(true);
         when(mockScene.collidesRight(any(), any())).thenReturn(true);
 
-        Vector velocity = new Vector(5, 5); // strong movement in all directions
+        Vector velocity = new Vector(5, 5);
         Vector resolved = fallingState.applyCollisions(velocity);
 
-        assertEquals(0.0, resolved.x(), "Should stop horizontal on collision");
-        assertEquals(0.0, resolved.y(), "Should stop vertical on collision");
+        assertEquals(0.0, resolved.x());
+        assertEquals(0.0, resolved.y());
     }
 
-    /** Kills boundary mutants in getNextGroundState velocity checks (lines 69, 71, 72) */
     @Test
-    void getNextGroundState_CoversAllVelocityThresholds() {
+    public void getNextGroundState_CoversAllVelocityThresholds() {
         knight.setVelocity(new Vector(0, 0));
         assertTrue(fallingState.getNextGroundState() instanceof IdleState);
 
@@ -89,9 +79,8 @@ public class FallingStateMutationTests {
         assertFalse(fallingState.getNextGroundState() instanceof RunningState);
     }
 
-    /** Kills mutants in getNextOnAirState (boundary and negation) */
     @Test
-    void getNextOnAirState_DistinguishesJumpVsFall() {
+    public void getNextOnAirState_DistinguishesJumpVsFall() {
         knight.setVelocity(new Vector(0, -1.0));
         assertTrue(fallingState.getNextOnAirState() instanceof JumpState);
 
@@ -99,73 +88,60 @@ public class FallingStateMutationTests {
         assertTrue(fallingState.getNextOnAirState() instanceof FallingState);
     }
 
-    /** Kills jump condition boundaries in FallingState.jump() (lines 12, 13, 41) */
     @Test
-    void jump_OnlyAllowsDoubleJumpInSmallYVelocityWindow() {
-        // Just after landing: small positive Y velocity
+    public void jump_OnlyAllowsDoubleJumpInSmallYVelocityWindow() {
         knight.setVelocity(new Vector(0, 0.5));
         knight.setJumpCounter(1);
 
         Vector result = fallingState.jump();
-        assertTrue(result.y() < 0); // should jump upward
+        assertTrue(result.y() < 0);
         assertEquals(2, knight.getJumpCounter());
 
-        // Too fast downward → no double jump
         knight.setVelocity(new Vector(0, 2.0));
         knight.setJumpCounter(1);
         Vector noJump = fallingState.jump();
-        assertEquals(2.0, noJump.y(), 0.1); // velocity unchanged
+        assertEquals(2.0, noJump.y(), 0.1);
     }
 
-    /** Kills tickParticles call in updateVelocity (line 39) */
     @Test
-    void updateVelocity_AlwaysCallsTickParticles() {
+    public void updateVelocity_AlwaysCallsTickParticles() {
         fallingState.updateVelocity(new Vector(0, 0));
 
-        // Verify tickParticles was called (we can spy on the state)
         KnightState spyState = Mockito.spy(fallingState);
         spyState.updateVelocity(new Vector(0, 0));
         verify(spyState, atLeastOnce()).tickParticles();
     }
 
-    /** Kills conditional boundaries in updateVelocity gravity application (line 41) */
     @Test
-    void updateVelocity_AppliesDifferentGravityBasedOnYVelocity() {
+    public void updateVelocity_AppliesDifferentGravityBasedOnYVelocity() {
         double gravity = 1.0;
         when(mockScene.getGravity()).thenReturn(gravity);
 
-        // Low fall speed → lighter gravity
         knight.setVelocity(new Vector(0, 0.4));
         Vector lightGravity = fallingState.updateVelocity(new Vector(0, 0));
         assertEquals(0.09999999999999998, lightGravity.y() - 0.4, 0.1);
 
-        // High fall speed → heavier gravity
         knight.setVelocity(new Vector(0, 0.6));
         Vector heavyGravity = fallingState.updateVelocity(new Vector(0, 0));
         assertEquals(gravity * 1.15, heavyGravity.y() - 0.6, 0.1);
     }
 
-    /** Kills particles timer reset call (line 67) */
     @Test
-    void getNextState_ResetsParticlesTimerWhenZero() {
-        // Set timer to 0 via reflection or multiple ticks
+    public void getNextState_ResetsParticlesTimerWhenZero() {
         for (int i = 0; i < 101; i++) {
             fallingState.tickParticles();
         }
 
-        fallingState.getNextState(); // triggers reset
+        fallingState.getNextState();
 
         assertEquals(-1, fallingState.getParticlesTimer());
     }
 
-    /** Kills return value null mutants in getNextState branches (lines 70, 72, 74) */
     @Test
-    void getNextState_ReturnsDifferentStatesBasedOnConditions() {
-        // Over max X velocity → DashState
+    public void getNextState_ReturnsDifferentStatesBasedOnConditions() {
         knight.setVelocity(new Vector(2.1, 0));
         assertTrue(fallingState.getNextState() instanceof DashState);
 
-        // On ground → some ground state
         knight.setVelocity(new Vector(0, 0));
         when(mockScene.collidesDown(any(), any())).thenReturn(true);
         KnightState groundState = fallingState.getNextState();
@@ -173,7 +149,6 @@ public class FallingStateMutationTests {
                 groundState instanceof WalkingState ||
                 groundState instanceof RunningState);
 
-        // Double jump used → stays in air state
         knight.setJumpCounter(2);
         knight.setVelocity(new Vector(0, 1.0));
         when(mockScene.collidesDown(any(), any())).thenReturn(false);
@@ -181,9 +156,8 @@ public class FallingStateMutationTests {
                 fallingState.getNextState() instanceof JumpState);
     }
 
-    /** Ensures dash respects facing direction (kills negation mutant line 31) */
     @Test
-    void dash_RespectsFacingDirection() {
+    public void dash_RespectsFacingDirection() {
         knight.setFacingRight(true);
         Vector dashRight = fallingState.dash();
         assertTrue(dashRight.x() > 0);

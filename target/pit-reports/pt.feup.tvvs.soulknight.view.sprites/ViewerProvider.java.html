@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>ViewerProvider.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_1'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package pt.feup.tvvs.soulknight.view.sprites;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_2'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_3'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import pt.feup.tvvs.soulknight.view.elements.particle.ParticleViewer;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_4'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import pt.feup.tvvs.soulknight.view.elements.spike.SpikeViewer;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_5'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import pt.feup.tvvs.soulknight.view.elements.collectables.OrbViewer;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_6'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import pt.feup.tvvs.soulknight.view.elements.knight.KnightViewer;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_7'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import pt.feup.tvvs.soulknight.view.elements.monsters.MonsterViewer;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_8'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import pt.feup.tvvs.soulknight.view.elements.rocks.RockViewer;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_9'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import pt.feup.tvvs.soulknight.view.elements.tile.TileViewer;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_10'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import pt.feup.tvvs.soulknight.view.elements.tree.TreeViewer;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_11'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import pt.feup.tvvs.soulknight.view.menu.LogoViewer;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_12'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import pt.feup.tvvs.soulknight.view.menu.OptionViewer;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_13'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import pt.feup.tvvs.soulknight.view.text.GameTextViewer;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_14'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import pt.feup.tvvs.soulknight.view.text.TextViewer;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_15'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_16'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.io.IOException;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_17'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_18'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>public class ViewerProvider {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_19'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private final ParticleViewer particleViewer;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_20'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private final KnightViewer playerViewer;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_21'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private final SpikeViewer spikeViewer;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_22'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private final OrbViewer orbViewer;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_23'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private final TreeViewer treeViewer;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_24'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private final RockViewer rockViewer;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_25'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private final TileViewer tileViewer;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_26'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private final MonsterViewer monsterViewer;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_27'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private final TextViewer textViewer;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_28'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private final OptionViewer entryViewer;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_29'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private final LogoViewer logoViewer;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_30'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_31'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    public ViewerProvider(SpriteLoader spriteLoader) throws IOException {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_32'/>
+32
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_32'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.particleViewer = new ParticleViewer();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_33'/>
+33
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_33'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.playerViewer = new KnightViewer(spriteLoader);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_34'/>
+34
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_34'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.spikeViewer = new SpikeViewer(spriteLoader);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_35'/>
+35
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_35'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.treeViewer = new TreeViewer(spriteLoader);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_36'/>
+36
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_36'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.rockViewer = new RockViewer(spriteLoader);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_37'/>
+37
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_37'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.orbViewer = new OrbViewer(spriteLoader);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_38'/>
+38
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_38'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.tileViewer = new TileViewer(spriteLoader);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_39'/>
+39
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_39'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.monsterViewer = new MonsterViewer(spriteLoader);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_40'/>
+40
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_40'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.textViewer = new GameTextViewer();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_41'/>
+41
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_41'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.entryViewer = new OptionViewer(textViewer);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_42'/>
+42
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_42'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.logoViewer = new LogoViewer(spriteLoader);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_43'/>
+43
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_43'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_44'/>
+44
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_44'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_45'/>
+45
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_45'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public ParticleViewer getParticleViewer() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_46'/>
+46
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_46'>1</a>
+<span>
+
+1. getParticleViewer : replaced return value with null for pt/feup/tvvs/soulknight/view/sprites/ViewerProvider::getParticleViewer &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return particleViewer;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_47'/>
+47
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_47'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_48'/>
+48
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_48'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_49'/>
+49
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_49'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public KnightViewer getPlayerViewer() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_50'/>
+50
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_50'>1</a>
+<span>
+
+1. getPlayerViewer : replaced return value with null for pt/feup/tvvs/soulknight/view/sprites/ViewerProvider::getPlayerViewer &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return playerViewer;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_51'/>
+51
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_51'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_52'/>
+52
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_52'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_53'/>
+53
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_53'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public SpikeViewer getSpikeViewer() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_54'/>
+54
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_54'>1</a>
+<span>
+
+1. getSpikeViewer : replaced return value with null for pt/feup/tvvs/soulknight/view/sprites/ViewerProvider::getSpikeViewer &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return spikeViewer;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_55'/>
+55
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_55'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_56'/>
+56
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_56'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_57'/>
+57
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_57'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public TreeViewer getTreeViewer() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_58'/>
+58
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_58'>1</a>
+<span>
+
+1. getTreeViewer : replaced return value with null for pt/feup/tvvs/soulknight/view/sprites/ViewerProvider::getTreeViewer &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return treeViewer;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_59'/>
+59
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_59'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_60'/>
+60
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_60'>1</a>
+<span>
+
+1. getOrbViewer : replaced return value with null for pt/feup/tvvs/soulknight/view/sprites/ViewerProvider::getOrbViewer &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    public OrbViewer getOrbViewer(){return orbViewer;}</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_61'/>
+61
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_61'>1</a>
+<span>
+
+1. getRockViewer : replaced return value with null for pt/feup/tvvs/soulknight/view/sprites/ViewerProvider::getRockViewer &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    public RockViewer getRockViewer(){return rockViewer;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_62'/>
+62
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_62'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public TileViewer getTileViewer() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_63'/>
+63
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_63'>1</a>
+<span>
+
+1. getTileViewer : replaced return value with null for pt/feup/tvvs/soulknight/view/sprites/ViewerProvider::getTileViewer &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return tileViewer;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_64'/>
+64
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_64'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_65'/>
+65
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_65'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_66'/>
+66
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_66'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public TextViewer getTextViewer() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_67'/>
+67
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_67'>1</a>
+<span>
+
+1. getTextViewer : replaced return value with null for pt/feup/tvvs/soulknight/view/sprites/ViewerProvider::getTextViewer &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return textViewer;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_68'/>
+68
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_68'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_69'/>
+69
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_69'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_70'/>
+70
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_70'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public OptionViewer getEntryViewer() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_71'/>
+71
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_71'>1</a>
+<span>
+
+1. getEntryViewer : replaced return value with null for pt/feup/tvvs/soulknight/view/sprites/ViewerProvider::getEntryViewer &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return entryViewer;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_72'/>
+72
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_72'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_73'/>
+73
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_73'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_74'/>
+74
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_74'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public LogoViewer getLogoViewer() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_75'/>
+75
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_75'>1</a>
+<span>
+
+1. getLogoViewer : replaced return value with null for pt/feup/tvvs/soulknight/view/sprites/ViewerProvider::getLogoViewer &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return logoViewer;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_76'/>
+76
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_76'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_77'/>
+77
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_77'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_78'/>
+78
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_78'>1</a>
+<span>
+
+1. getMonsterViewer : replaced return value with null for pt/feup/tvvs/soulknight/view/sprites/ViewerProvider::getMonsterViewer &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    public MonsterViewer getMonsterViewer() {return monsterViewer;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6f96d39f_79'/>
+79
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_79'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6f96d39f_46'>46</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_46'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getParticleViewer<br/><b>Killed by : </b>pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests]/[method:testAllViewersInitializedInConstructor()]</span></span> replaced return value with null for pt/feup/tvvs/soulknight/view/sprites/ViewerProvider::getParticleViewer &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6f96d39f_50'>50</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_50'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getPlayerViewer<br/><b>Killed by : </b>pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests]/[method:testGetPlayerViewerReturnsActualViewer()]</span></span> replaced return value with null for pt/feup/tvvs/soulknight/view/sprites/ViewerProvider::getPlayerViewer &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6f96d39f_54'>54</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_54'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getSpikeViewer<br/><b>Killed by : </b>pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests]/[method:testGetSpikeViewerReturnsActualViewer()]</span></span> replaced return value with null for pt/feup/tvvs/soulknight/view/sprites/ViewerProvider::getSpikeViewer &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6f96d39f_58'>58</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_58'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getTreeViewer<br/><b>Killed by : </b>pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests]/[method:testGetTreeViewerReturnsActualViewer()]</span></span> replaced return value with null for pt/feup/tvvs/soulknight/view/sprites/ViewerProvider::getTreeViewer &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6f96d39f_60'>60</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_60'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getOrbViewer<br/><b>Killed by : </b>pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests]/[method:testAllViewersInitializedInConstructor()]</span></span> replaced return value with null for pt/feup/tvvs/soulknight/view/sprites/ViewerProvider::getOrbViewer &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6f96d39f_61'>61</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_61'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getRockViewer<br/><b>Killed by : </b>pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests]/[method:testGetRockViewerReturnsActualViewer()]</span></span> replaced return value with null for pt/feup/tvvs/soulknight/view/sprites/ViewerProvider::getRockViewer &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6f96d39f_63'>63</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_63'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getTileViewer<br/><b>Killed by : </b>pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests]/[method:testAllViewersInitializedInConstructor()]</span></span> replaced return value with null for pt/feup/tvvs/soulknight/view/sprites/ViewerProvider::getTileViewer &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6f96d39f_67'>67</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_67'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getTextViewer<br/><b>Killed by : </b>pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests]/[method:testGetTextViewerReturnsActualViewer()]</span></span> replaced return value with null for pt/feup/tvvs/soulknight/view/sprites/ViewerProvider::getTextViewer &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6f96d39f_71'>71</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_71'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getEntryViewer<br/><b>Killed by : </b>pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests]/[method:testGetEntryViewerReturnsActualViewer()]</span></span> replaced return value with null for pt/feup/tvvs/soulknight/view/sprites/ViewerProvider::getEntryViewer &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6f96d39f_75'>75</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_75'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getLogoViewer<br/><b>Killed by : </b>pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests]/[method:testGetLogoViewerReturnsActualViewer()]</span></span> replaced return value with null for pt/feup/tvvs/soulknight/view/sprites/ViewerProvider::getLogoViewer &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6f96d39f_78'>78</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6f96d39f_78'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getMonsterViewer<br/><b>Killed by : </b>pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests]/[method:testAllViewersInitializedInConstructor()]</span></span> replaced return value with null for pt/feup/tvvs/soulknight/view/sprites/ViewerProvider::getMonsterViewer &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+
+<li class='mutator'>CONDITIONALS_BOUNDARY</li>
+
+<li class='mutator'>EMPTY_RETURNS</li>
+
+<li class='mutator'>FALSE_RETURNS</li>
+
+<li class='mutator'>INCREMENTS</li>
+
+<li class='mutator'>INVERT_NEGS</li>
+
+<li class='mutator'>MATH</li>
+
+<li class='mutator'>NEGATE_CONDITIONALS</li>
+
+<li class='mutator'>NULL_RETURNS</li>
+
+<li class='mutator'>PRIMITIVE_RETURNS</li>
+
+<li class='mutator'>TRUE_RETURNS</li>
+
+<li class='mutator'>VOID_METHOD_CALLS</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests]/[method:testGetRockViewerReturnsActualViewer()] (160 ms)</li><li>pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests]/[method:testAllViewersInitializedInConstructor()] (160 ms)</li><li>pt.feup.tvvs.soulknight.controller.menu.OptionControllerWhiteBoxTest.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.controller.menu.OptionControllerWhiteBoxTest]/[method:testMoveStartGameSelect()] (399 ms)</li><li>pt.feup.tvvs.soulknight.controller.game.SceneControllerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.controller.game.SceneControllerMutationTests]/[method:testOrbRequirementLevel1()] (459 ms)</li><li>pt.feup.tvvs.soulknight.controller.game.SceneControllerWhiteBoxTest.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.controller.game.SceneControllerWhiteBoxTest]/[method:testMoveNext()] (608 ms)</li><li>pt.feup.tvvs.soulknight.controller.game.SceneControllerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.controller.game.SceneControllerMutationTests]/[method:testOrbRequirementMultiplication()] (676 ms)</li><li>pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests]/[method:testGetPlayerViewerReturnsActualViewer()] (150 ms)</li><li>pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests]/[method:testGettersReturnSameInstance()] (149 ms)</li><li>pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests]/[method:testGetEntryViewerReturnsActualViewer()] (158 ms)</li><li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:constructor_shouldCreateSettingsMenuState()] (151 ms)</li><li>pt.feup.tvvs.soulknight.state.MainMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.MainMenuStateMutationTests]/[method:getModel_shouldNotReturnNull()] (151 ms)</li><li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:getModel_shouldNotReturnNull()] (153 ms)</li><li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:testCreateControllerReturnsNonNull()] (155 ms)</li><li>pt.feup.tvvs.soulknight.state.MainMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.MainMenuStateMutationTests]/[method:getModel_shouldReturnMainMenu()] (155 ms)</li><li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:getModel_shouldReturnSettingsMenu()] (156 ms)</li><li>pt.feup.tvvs.soulknight.state.MainMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.MainMenuStateMutationTests]/[method:testConstructorUsesProvidedModel()] (157 ms)</li><li>pt.feup.tvvs.soulknight.state.MainMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.MainMenuStateMutationTests]/[method:testCreateScreenViewerReturnsNonNull()] (159 ms)</li><li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:constructor_shouldNotThrowException()] (161 ms)</li><li>pt.feup.tvvs.soulknight.state.MainMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.MainMenuStateMutationTests]/[method:constructor_shouldCreateMainMenuState()] (161 ms)</li><li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:testConstructorUsesProvidedModel()] (161 ms)</li><li>pt.feup.tvvs.soulknight.state.MainMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.MainMenuStateMutationTests]/[method:testCreateControllerReturnsNonNull()] (162 ms)</li><li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:testCreateScreenViewerReturnsNonNull()] (163 ms)</li><li>pt.feup.tvvs.soulknight.state.MainMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.MainMenuStateMutationTests]/[method:constructor_shouldNotThrowException()] (188 ms)</li><li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:testMultipleStatesAreIndependent()] (306 ms)</li><li>pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.SettingsMenuStateMutationTests]/[method:testModelIsStoredCorrectly()] (316 ms)</li><li>pt.feup.tvvs.soulknight.state.MainMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.MainMenuStateMutationTests]/[method:testMultipleStatesAreIndependent()] (323 ms)</li><li>pt.feup.tvvs.soulknight.state.MainMenuStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.MainMenuStateMutationTests]/[method:testModelIsStoredCorrectly()] (328 ms)</li><li>pt.feup.tvvs.soulknight.controller.menu.SettingsMenuControllerWhiteBoxTest.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.controller.menu.SettingsMenuControllerWhiteBoxTest]/[method:testOnQuit()] (445 ms)</li><li>pt.feup.tvvs.soulknight.controller.menu.SettingsMenuControllerWhiteBoxTest.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.controller.menu.SettingsMenuControllerWhiteBoxTest]/[method:testMoveQuit()] (466 ms)</li><li>pt.feup.tvvs.soulknight.controller.menu.OptionControllerWhiteBoxTest.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.controller.menu.OptionControllerWhiteBoxTest]/[method:testMoveSettingsSelect()] (479 ms)</li><li>pt.feup.tvvs.soulknight.controller.game.SceneControllerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.controller.game.SceneControllerMutationTests]/[method:testQuitActionChangesState()] (502 ms)</li><li>pt.feup.tvvs.soulknight.controller.game.SceneControllerWhiteBoxTest.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.controller.game.SceneControllerWhiteBoxTest]/[method:testMoveQuit()] (512 ms)</li><li>pt.feup.tvvs.soulknight.controller.menu.OptionControllerWhiteBoxTest.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.controller.menu.OptionControllerWhiteBoxTest]/[method:testMoveMainMenuSelect()] (585 ms)</li><li>pt.feup.tvvs.soulknight.controller.credits.CreditsControllerWhiteBoxTest.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.controller.credits.CreditsControllerWhiteBoxTest]/[method:move_setsMainMenuState_whenActionIsQuit()] (1265 ms)</li><li>pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests]/[method:testGetLogoViewerReturnsActualViewer()] (160 ms)</li><li>pt.feup.tvvs.soulknight.state.CreditsStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.CreditsStateMutationTests]/[method:testCreateControllerReturnsNonNull()] (377 ms)</li><li>pt.feup.tvvs.soulknight.state.CreditsStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.CreditsStateMutationTests]/[method:testCreateScreenViewerReturnsNonNull()] (386 ms)</li><li>pt.feup.tvvs.soulknight.state.CreditsStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.CreditsStateMutationTests]/[method:testCreditsContainKnightInfo()] (406 ms)</li><li>pt.feup.tvvs.soulknight.state.CreditsStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.CreditsStateMutationTests]/[method:getModel_shouldNotReturnNull()] (415 ms)</li><li>pt.feup.tvvs.soulknight.state.CreditsStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.CreditsStateMutationTests]/[method:getModel_shouldReturnCredits()] (472 ms)</li><li>pt.feup.tvvs.soulknight.controller.game.SceneControllerWhiteBoxTest.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.controller.game.SceneControllerWhiteBoxTest]/[method:testMoveFinal()] (480 ms)</li><li>pt.feup.tvvs.soulknight.state.CreditsStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.CreditsStateMutationTests]/[method:constructor_shouldNotThrowException()] (509 ms)</li><li>pt.feup.tvvs.soulknight.state.CreditsStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.CreditsStateMutationTests]/[method:constructor_shouldCreateCreditsState()] (560 ms)</li><li>pt.feup.tvvs.soulknight.controller.game.SceneControllerMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.controller.game.SceneControllerMutationTests]/[method:testTransitionToCreditsOnLastLevel()] (711 ms)</li><li>pt.feup.tvvs.soulknight.state.CreditsStateMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.state.CreditsStateMutationTests]/[method:testModelIsStoredCorrectly()] (839 ms)</li><li>pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests]/[method:testGetOrbViewerReturnsActualViewer()] (232 ms)</li><li>pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests]/[method:testGetParticleViewerReturnsActualViewer()] (191 ms)</li><li>pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests]/[method:testGetTextViewerReturnsActualViewer()] (144 ms)</li><li>pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests]/[method:testGetTileViewerReturnsActualViewer()] (222 ms)</li><li>pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests]/[method:testGetMonsterViewerReturnsActualViewer()] (163 ms)</li><li>pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests]/[method:testGetTreeViewerReturnsActualViewer()] (152 ms)</li><li>pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests.[engine:junit-jupiter]/[class:pt.feup.tvvs.soulknight.view.sprites.ViewerProviderMutationTests]/[method:testGetSpikeViewerReturnsActualViewer()] (155 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='https://pitest.org'>PIT</a> 1.20.3
+
+</body>
+</html>

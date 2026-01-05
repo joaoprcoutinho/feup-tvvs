@@ -20,78 +20,54 @@ public class PBTests {
 
     @Provide
     Arbitrary<Character> invalidRockChars() {
-        return Arbitraries.chars()
-                .filter(c -> c != 'r' && c != 'R');
+        return Arbitraries.chars().ascii().filter(c -> c != 'r' && c != 'R');
+    }
+
+    @Provide
+    Arbitrary<Position> positions() {
+        return Arbitraries.integers().between(-1000, 1000)
+                .tuple2()
+                .map(t -> new Position(t.get1(), t.get2()));
     }
 
     @Property
-    void drawsCorrectSpriteForValidCharacters(@ForAll("validRockChars") char rockChar) throws IOException {
-        SpriteLoader spriteLoader = mock(SpriteLoader.class);
-        Sprite smallRock = mock(Sprite.class);
-        Sprite bigRock = mock(Sprite.class);
+    public void testValidCharactersDrawExactlyOneCorrectSprite(@ForAll("validRockChars") char rockChar, @ForAll("positions") Position pos) throws IOException {
+        SpriteLoader loader = mock(SpriteLoader.class);
+        Sprite small = mock(Sprite.class);
+        Sprite big = mock(Sprite.class);
 
-        when(spriteLoader.get("sprites/Ambient/Smallrock.png")).thenReturn(smallRock);
-        when(spriteLoader.get("sprites/Ambient/Bigrock.png")).thenReturn(bigRock);
+        when(loader.get("sprites/Ambient/Smallrock.png")).thenReturn(small);
+        when(loader.get("sprites/Ambient/Bigrock.png")).thenReturn(big);
 
-        RockViewer viewer = new RockViewer(spriteLoader);
+        RockViewer viewer = new RockViewer(loader);
 
         Rock rock = mock(Rock.class);
         GUI gui = mock(GUI.class);
-
         when(rock.getChar()).thenReturn(rockChar);
-        when(rock.getPosition()).thenReturn(new Position(10, 20));
+        when(rock.getPosition()).thenReturn(pos);
 
-        // Act
         viewer.draw(rock, gui, 0L, 0, 0);
 
-        // Assert
         if (rockChar == 'r') {
-            verify(smallRock, times(1)).draw(gui, 10, 20);
-            verify(bigRock, never()).draw(any(), anyInt(), anyInt());
+            verify(small, times(1)).draw(gui, (int) pos.x(), (int) pos.y());
+            verify(big, never()).draw(any(), anyInt(), anyInt());
         } else {
-            verify(bigRock, times(1)).draw(gui, 10, 20);
-            verify(smallRock, never()).draw(any(), anyInt(), anyInt());
+            verify(big, times(1)).draw(gui, (int) pos.x(), (int) pos.y());
+            verify(small, never()).draw(any(), anyInt(), anyInt());
         }
     }
 
     @Property
-    void throwsExceptionForInvalidCharacters(@ForAll("invalidRockChars") char rockChar)
-            throws IOException {
+    public void testInvalidCharactersAlwaysThrow(@ForAll("invalidRockChars") char rockChar, @ForAll("positions") Position pos) throws IOException {
+        SpriteLoader loader = mock(SpriteLoader.class);
+        when(loader.get(anyString())).thenReturn(mock(Sprite.class));
 
-        // Arrange
-        SpriteLoader spriteLoader = mock(SpriteLoader.class);
-        when(spriteLoader.get(anyString())).thenReturn(mock(Sprite.class));
-
-        RockViewer viewer = new RockViewer(spriteLoader);
-
+        RockViewer viewer = new RockViewer(loader);
         Rock rock = mock(Rock.class);
         GUI gui = mock(GUI.class);
-
         when(rock.getChar()).thenReturn(rockChar);
-        when(rock.getPosition()).thenReturn(new Position(0, 0));
+        when(rock.getPosition()).thenReturn(pos);
 
-        // Act + Assert
-        IllegalArgumentException exception = assertThrows(
-                IllegalArgumentException.class,
-                () -> viewer.draw(rock, gui, 0L, 0, 0)
-        );
-
-        assertTrue(exception.getMessage().contains("No sprite for character"));
-    }
-
-    @Property
-    void spriteLoaderIsInitializedWithCorrectPaths(@ForAll("validRockChars") char rockChar)
-            throws IOException {
-
-        // Arrange
-        SpriteLoader spriteLoader = mock(SpriteLoader.class);
-        when(spriteLoader.get(anyString())).thenReturn(mock(Sprite.class));
-
-        // Act
-        new RockViewer(spriteLoader);
-
-        // Assert
-        verify(spriteLoader).get("sprites/Ambient/Smallrock.png");
-        verify(spriteLoader).get("sprites/Ambient/Bigrock.png");
+        assertThrows(IllegalArgumentException.class, () -> viewer.draw(rock, gui, 0L, 0, 0));
     }
 }

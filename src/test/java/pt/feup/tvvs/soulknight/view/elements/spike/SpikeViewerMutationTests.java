@@ -32,7 +32,7 @@ public class SpikeViewerMutationTests {
     }
 
     @Test
-    void draw_shouldUseGroundSprite() throws IOException {
+    public void draw_shouldUseGroundSprite() throws IOException {
         SpikeViewer viewer = new SpikeViewer(spriteLoader);
         Spike spike = mock(Spike.class);
         when(spike.getCharacter()).thenReturn('^');
@@ -44,7 +44,7 @@ public class SpikeViewerMutationTests {
     }
 
     @Test
-    void draw_shouldUseBrown1Sprite() throws IOException {
+    public void draw_shouldUseBrown1Sprite() throws IOException {
         SpikeViewer viewer = new SpikeViewer(spriteLoader);
         Spike spike = mock(Spike.class);
         when(spike.getCharacter()).thenReturn('+');
@@ -56,7 +56,7 @@ public class SpikeViewerMutationTests {
     }
 
     @Test
-    void draw_shouldUseBrown2Sprite() throws IOException {
+    public void draw_shouldUseBrown2Sprite() throws IOException {
         SpikeViewer viewer = new SpikeViewer(spriteLoader);
         Spike spike = mock(Spike.class);
         when(spike.getCharacter()).thenReturn('-');
@@ -68,7 +68,7 @@ public class SpikeViewerMutationTests {
     }
 
     @Test
-    void draw_shouldUseCorrectXPosition() throws IOException {
+    public void draw_shouldUseCorrectXPosition() throws IOException {
         SpikeViewer viewer = new SpikeViewer(spriteLoader);
         Spike spike = mock(Spike.class);
         when(spike.getCharacter()).thenReturn('^');
@@ -80,7 +80,7 @@ public class SpikeViewerMutationTests {
     }
 
     @Test
-    void draw_shouldUseCorrectYPosition() throws IOException {
+    public void draw_shouldUseCorrectYPosition() throws IOException {
         SpikeViewer viewer = new SpikeViewer(spriteLoader);
         Spike spike = mock(Spike.class);
         when(spike.getCharacter()).thenReturn('^');

@@ -21,19 +21,19 @@ public class SoundLoaderMutationTests {
     }
 
     @Test
-    void loadSound_shouldReturnClipOnSuccess() throws Exception {
+    public void loadSound_shouldReturnClipOnSuccess() throws Exception {
         Clip result = soundLoader.loadSound(audioInput, musicClip);
-        assertEquals(musicClip, result, "Should return the same clip instance");
+        assertEquals(musicClip, result);
     }
 
     @Test
-    void loadSound_shouldCallOpenOnClip() throws Exception {
+    public void loadSound_shouldCallOpenOnClip() throws Exception {
         soundLoader.loadSound(audioInput, musicClip);
         verify(musicClip).open(audioInput);
     }
 
     @Test
-    void loadSound_shouldThrowExceptionOnError() throws Exception {
+    public void loadSound_shouldThrowExceptionOnError() throws Exception {
         doThrow(new RuntimeException("Test error")).when(musicClip).open(audioInput);
         
         Exception exception = assertThrows(Exception.class, () -> {
@@ -44,8 +44,8 @@ public class SoundLoaderMutationTests {
     }
 
     @Test
-    void loadSound_shouldNotReturnNull() throws Exception {
+    public void loadSound_shouldNotReturnNull() throws Exception {
         Clip result = soundLoader.loadSound(audioInput, musicClip);
-        assertNotNull(result, "Should not return null on success");
+        assertNotNull(result);
     }
 }

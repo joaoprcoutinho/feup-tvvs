@@ -15,81 +15,69 @@ import static org.mockito.Mockito.*;
 
 public class GameMutationTests {
 
-    // ========== PIXEL_WIDTH Constant Tests ==========
-    
     @Test
-    void testPixelWidthConstant() {
+    public void testPixelWidthConstant() {
         assertEquals(230, Game.PIXEL_WIDTH);
     }
 
     @Test
-    void testPixelWidthIsExactly230() {
-        // Kills mutations replacing 230 with other values
+    public void testPixelWidthIsExactly230() {
         assertEquals(230, Game.PIXEL_WIDTH);
         assertNotEquals(0, Game.PIXEL_WIDTH);
         assertNotEquals(1, Game.PIXEL_WIDTH);
         assertNotEquals(-230, Game.PIXEL_WIDTH);
         assertNotEquals(229, Game.PIXEL_WIDTH);
         assertNotEquals(231, Game.PIXEL_WIDTH);
-        assertNotEquals(130, Game.PIXEL_WIDTH); // Not swapped with height
+        assertNotEquals(130, Game.PIXEL_WIDTH);
     }
 
     @Test
-    void testPixelWidthBounds() {
-        assertTrue(Game.PIXEL_WIDTH > 0, "Width must be positive");
-        assertTrue(Game.PIXEL_WIDTH > 100, "Width should be at least 100");
-        assertTrue(Game.PIXEL_WIDTH < 500, "Width should be less than 500");
-        assertTrue(Game.PIXEL_WIDTH > Game.PIXEL_HEIGHT, "Width > Height for landscape");
+    public void testPixelWidthBounds() {
+        assertTrue(Game.PIXEL_WIDTH > 0);
+        assertTrue(Game.PIXEL_WIDTH > 100);
+        assertTrue(Game.PIXEL_WIDTH < 500);
+        assertTrue(Game.PIXEL_WIDTH > Game.PIXEL_HEIGHT);
     }
 
-    // ========== PIXEL_HEIGHT Constant Tests ==========
-
     @Test
-    void testPixelHeightConstant() {
+    public void testPixelHeightConstant() {
         assertEquals(130, Game.PIXEL_HEIGHT);
     }
 
     @Test
-    void testPixelHeightIsExactly130() {
-        // Kills mutations replacing 130 with other values
+    public void testPixelHeightIsExactly130() {
         assertEquals(130, Game.PIXEL_HEIGHT);
         assertNotEquals(0, Game.PIXEL_HEIGHT);
         assertNotEquals(1, Game.PIXEL_HEIGHT);
         assertNotEquals(-130, Game.PIXEL_HEIGHT);
         assertNotEquals(129, Game.PIXEL_HEIGHT);
         assertNotEquals(131, Game.PIXEL_HEIGHT);
-        assertNotEquals(230, Game.PIXEL_HEIGHT); // Not swapped with width
+        assertNotEquals(230, Game.PIXEL_HEIGHT);
     }
 
     @Test
-    void testPixelHeightBounds() {
-        assertTrue(Game.PIXEL_HEIGHT > 0, "Height must be positive");
-        assertTrue(Game.PIXEL_HEIGHT > 50, "Height should be at least 50");
-        assertTrue(Game.PIXEL_HEIGHT < 300, "Height should be less than 300");
+    public void testPixelHeightBounds() {
+        assertTrue(Game.PIXEL_HEIGHT > 0);
+        assertTrue(Game.PIXEL_HEIGHT > 50);
+        assertTrue(Game.PIXEL_HEIGHT < 300);
     }
 
-    // ========== Aspect Ratio Tests ==========
-
     @Test
-    void testAspectRatio() {
-        // Width should be greater than height for landscape
+    public void testAspectRatio() {
         assertTrue(Game.PIXEL_WIDTH > Game.PIXEL_HEIGHT);
         double ratio = (double) Game.PIXEL_WIDTH / Game.PIXEL_HEIGHT;
-        assertTrue(ratio > 1.0, "Aspect ratio should be > 1 for landscape");
-        assertTrue(ratio < 3.0, "Aspect ratio should be reasonable");
+        assertTrue(ratio > 1.0);
+        assertTrue(ratio < 3.0);
     }
 
     @Test
-    void testDimensionsDifference() {
+    public void testDimensionsDifference() {
         int diff = Game.PIXEL_WIDTH - Game.PIXEL_HEIGHT;
-        assertEquals(100, diff, "Difference should be 100 (230-130)");
+        assertEquals(100, diff);
     }
 
-    // ========== getNumberOfLevels Tests ==========
-
     @Test
-    void testGetNumberOfLevelsReturns4() {
-        // Can't instantiate Game easily, but we can verify expected value
+    public void testGetNumberOfLevelsReturns4() {
         int expectedLevels = 4;
         assertTrue(expectedLevels > 0);
         assertEquals(4, expectedLevels);
@@ -99,39 +87,34 @@ public class GameMutationTests {
     }
 
     @Test
-    void testNumberOfLevelsIsPositive() {
+    public void testNumberOfLevelsIsPositive() {
         int levels = 4;
-        assertTrue(levels > 0, "Number of levels must be positive");
-        assertTrue(levels >= 1, "Must have at least 1 level");
-        assertTrue(levels <= 10, "Should have reasonable number of levels");
+        assertTrue(levels > 0);
+        assertTrue(levels >= 1);
+        assertTrue(levels <= 10);
     }
 
-    // ========== State Management Tests ==========
-
     @Test
-    void testSetStateAcceptsNonNull() {
+    public void testSetStateAcceptsNonNull() {
         State<?> mockState = mock(State.class);
         assertNotNull(mockState);
     }
 
     @Test
-    void testStateCanBeMocked() {
+    public void testStateCanBeMocked() {
         State<?> mockState = mock(State.class);
-        // Verify mock is properly created
         assertNotNull(mockState);
         assertFalse(mockState.getClass().equals(State.class));
     }
 
-    // ========== Resolution Scale Tests ==========
-
     @Test
-    void testResolutionScaleEnumExists() {
+    public void testResolutionScaleEnumExists() {
         RescalableGUI.ResolutionScale[] scales = RescalableGUI.ResolutionScale.values();
         assertTrue(scales.length > 0);
     }
 
     @Test
-    void testResolutionScaleValues() {
+    public void testResolutionScaleValues() {
         RescalableGUI.ResolutionScale[] scales = RescalableGUI.ResolutionScale.values();
         assertNotNull(scales);
         for (RescalableGUI.ResolutionScale scale : scales) {
@@ -140,19 +123,16 @@ public class GameMutationTests {
         }
     }
 
-    // ========== Frame Time Calculation Tests ==========
-    
     @Test
-    void testFpsFrameTimeCalculation() {
-        // FPS = 30 means frameTime = 1000 / 30 ≈ 33ms
+    public void testFpsFrameTimeCalculation() {
         int FPS = 30;
         int frameTime = 1000 / FPS;
-        assertEquals(33, frameTime, "Frame time should be 33ms for 30 FPS");
-        assertTrue(frameTime > 0, "Frame time must be positive");
+        assertEquals(33, frameTime);
+        assertTrue(frameTime > 0);
     }
 
     @Test
-    void testFpsIs30() {
+    public void testFpsIs30() {
         int FPS = 30;
         assertEquals(30, FPS);
         assertNotEquals(0, FPS);
@@ -161,63 +141,48 @@ public class GameMutationTests {
         assertNotEquals(31, FPS);
     }
 
-    // ========== Thread Sleep Initial Delay Tests ==========
-
     @Test
-    void testInitialSleepDelay() {
-        // The game has Thread.sleep(100) at start
+    public void testInitialSleepDelay() {
         long sleepTime = 100;
         assertEquals(100, sleepTime);
         assertNotEquals(0, sleepTime);
         assertTrue(sleepTime > 0);
     }
 
-    // ========== FPS Counter Tests ==========
-
     @Test
-    void testFpsCounterInterval() {
-        // FPS counter updates every 1000ms
+    public void testFpsCounterInterval() {
         long interval = 1000;
         assertEquals(1000, interval);
         assertTrue(interval > 0);
     }
 
-    // ========== Constant Uniqueness Tests ==========
-
     @Test
-    void testConstantsAreDistinct() {
-        assertNotEquals(Game.PIXEL_WIDTH, Game.PIXEL_HEIGHT, 
-            "Width and Height should be different");
+    public void testConstantsAreDistinct() {
+        assertNotEquals(Game.PIXEL_WIDTH, Game.PIXEL_HEIGHT);
     }
 
     @Test
-    void testConstantsMathRelationship() {
-        // Verify mathematical relationships that mutations might break
-        assertTrue(Game.PIXEL_WIDTH + Game.PIXEL_HEIGHT == 360, "Sum should be 360");
-        assertTrue(Game.PIXEL_WIDTH * Game.PIXEL_HEIGHT == 29900, "Product should be 29900");
+    public void testConstantsMathRelationship() {
+        assertTrue(Game.PIXEL_WIDTH + Game.PIXEL_HEIGHT == 360);
+        assertTrue(Game.PIXEL_WIDTH * Game.PIXEL_HEIGHT == 29900);
     }
 
-    // ========== Boundary Tests for Mutations ==========
-
     @Test
-    void testPixelWidthNotIncrementedOrDecremented() {
-        // Kills increment/decrement mutations
+    public void testPixelWidthNotIncrementedOrDecremented() {
         assertNotEquals(Game.PIXEL_WIDTH + 1, 230);
         assertNotEquals(Game.PIXEL_WIDTH - 1, 230);
         assertEquals(230, Game.PIXEL_WIDTH);
     }
 
     @Test
-    void testPixelHeightNotIncrementedOrDecremented() {
-        // Kills increment/decrement mutations
+    public void testPixelHeightNotIncrementedOrDecremented() {
         assertNotEquals(Game.PIXEL_HEIGHT + 1, 130);
         assertNotEquals(Game.PIXEL_HEIGHT - 1, 130);
         assertEquals(130, Game.PIXEL_HEIGHT);
     }
 
     @Test
-    void testConstantsNotNegated() {
-        // Kills negation mutations
+    public void testConstantsNotNegated() {
         assertTrue(Game.PIXEL_WIDTH > 0);
         assertTrue(Game.PIXEL_HEIGHT > 0);
         assertNotEquals(-Game.PIXEL_WIDTH, Game.PIXEL_WIDTH);

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class PairListMutationTests {
     
     @Test
-    void constructor_shouldSetFirstList() {
+    public void constructor_shouldSetFirstList() {
         List<String> first = List.of("a", "b");
         List<String> second = List.of("c", "d");
         PairList<String> pairList = new PairList<>(first, second);
@@ -19,7 +19,7 @@ public class PairListMutationTests {
     }
 
     @Test
-    void constructor_shouldSetSecondList() {
+    public void constructor_shouldSetSecondList() {
         List<String> first = List.of("a", "b");
         List<String> second = List.of("c", "d");
         PairList<String> pairList = new PairList<>(first, second);
@@ -28,7 +28,7 @@ public class PairListMutationTests {
     }
 
     @Test
-    void getFirstList_shouldNotReturnSecondList() {
+    public void getFirstList_shouldNotReturnSecondList() {
         List<String> first = List.of("a", "b");
         List<String> second = List.of("c", "d");
         PairList<String> pairList = new PairList<>(first, second);
@@ -37,7 +37,7 @@ public class PairListMutationTests {
     }
 
     @Test
-    void getSecondList_shouldNotReturnFirstList() {
+    public void getSecondList_shouldNotReturnFirstList() {
         List<String> first = List.of("a", "b");
         List<String> second = List.of("c", "d");
         PairList<String> pairList = new PairList<>(first, second);
@@ -46,7 +46,7 @@ public class PairListMutationTests {
     }
 
     @Test
-    void getFirstList_shouldReturnSameInstance() {
+    public void getFirstList_shouldReturnSameInstance() {
         List<String> first = new ArrayList<>(List.of("a", "b"));
         List<String> second = new ArrayList<>(List.of("c", "d"));
         PairList<String> pairList = new PairList<>(first, second);
@@ -55,7 +55,7 @@ public class PairListMutationTests {
     }
 
     @Test
-    void getSecondList_shouldReturnSameInstance() {
+    public void getSecondList_shouldReturnSameInstance() {
         List<String> first = new ArrayList<>(List.of("a", "b"));
         List<String> second = new ArrayList<>(List.of("c", "d"));
         PairList<String> pairList = new PairList<>(first, second);
